@@ -227,12 +227,37 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
         cost = float(r.get("cost_eur", 0.0) or 0.0)
         fees = float(r.get("fees_eur", 0.0) or 0.0)
         inv_acc = f"{acc_inv_prefix}{asset}"
+        # 1) Dr Inventory (cost)
         if cost > 0:
-            rows.append({"month": m, "account": inv_acc, "debit": cost, "credit": 0.0, "asset": asset, "memo": f"Buy {asset} - inventory at cost"})
+            rows.append({
+                "month": m, 
+                "account": inv_acc, 
+                "debit": cost, 
+                "credit": 0.0, 
+                "asset": asset, 
+                "memo": f"Buy {asset} - inventory at cost"
+            })
+        # 2) Dr Fees Expense
         if fees > 0:
-            rows.append({"month": m, "account": acc_fee, "debit": fees, "credit": 0.0, "asset": asset, "memo": f"Buy {asset} - fees"})
-        if cost > 0:
-            rows.append({"month": m, "account": acc_cash, "debit": 0.0, "credit": cost, "asset": asset, "memo": f"Buy {asset} - cash outflow"})
+            rows.append({
+                "month": m, 
+                "account": acc_fee, 
+                "debit": fees, 
+                "credit": 0.0, 
+                "asset": asset, 
+                "memo": f"Buy {asset} - fees"
+            })
+        # 3) Cr Cash (cost + fees)
+        total_cash_out = cost + fees
+        if abs(total_cash_out) > 1e-10:
+            rows.append({
+                "month": m, 
+                "account": acc_cash, 
+                "debit": 0.0, 
+                "credit": total_cash_out, 
+                "asset": asset, 
+                "memo": f"Buy {asset} - cash outflow (cost + fees)"
+            })
 
     jl = pd.DataFrame(rows)
     if jl.empty: return jl

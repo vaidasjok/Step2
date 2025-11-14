@@ -1,57 +1,57 @@
 month,account,debit,credit,asset,memo
-2023-07,101000 Cash EUR,425.09,0.0,ETH,Sells proceeds ETH
+2023-07,271001 Cash EUR,425.09,0.0,ETH,Sells proceeds ETH
 2023-07,1460 Crypto Asset ETH,0.0,432.1,ETH,Relieve cost ETH
 2023-07,611500 Trading Fees,0.68,0.0,ETH,Trading fees ETH
-2023-07,701000 Trading Gains/Losses,7.02,0.0,ETH,Realized PnL ETH
-2023-07,101000 Cash EUR,1207.24,0.0,USDC,Sells proceeds USDC
+2023-07,701000 Trading Gains/Losses,6.34,0.0,ETH,Realized PnL before fees ETH
+2023-07,271001 Cash EUR,1207.24,0.0,USDC,Sells proceeds USDC
 2023-07,611500 Trading Fees,2.42,0.0,USDC,Trading fees USDC
-2023-07,701000 Trading Gains/Losses,0.0,1207.24,USDC,Realized PnL USDC
-2023-07,101000 Cash EUR,548.9,0.0,USDT,Sells proceeds USDT
+2023-07,701000 Trading Gains/Losses,0.0,1209.65,USDC,Realized PnL before fees USDC
+2023-07,271001 Cash EUR,548.9,0.0,USDT,Sells proceeds USDT
 2023-07,611500 Trading Fees,1.1,0.0,USDT,Trading fees USDT
-2023-07,701000 Trading Gains/Losses,0.0,548.9,USDT,Realized PnL USDT
-2023-08,101000 Cash EUR,3639.3,0.0,BTC,Sells proceeds BTC
+2023-07,701000 Trading Gains/Losses,0.0,550.0,USDT,Realized PnL before fees USDT
+2023-08,271001 Cash EUR,3639.3,0.0,BTC,Sells proceeds BTC
 2023-08,611500 Trading Fees,5.83,0.0,BTC,Trading fees BTC
-2023-08,701000 Trading Gains/Losses,0.0,3639.3,BTC,Realized PnL BTC
-2023-08,101000 Cash EUR,55319.34,0.0,USDT,Sells proceeds USDT
+2023-08,701000 Trading Gains/Losses,0.0,3645.14,BTC,Realized PnL before fees BTC
+2023-08,271001 Cash EUR,55319.34,0.0,USDT,Sells proceeds USDT
 2023-08,611500 Trading Fees,110.86,0.0,USDT,Trading fees USDT
-2023-08,701000 Trading Gains/Losses,0.0,55319.34,USDT,Realized PnL USDT
-2023-09,101000 Cash EUR,4.59,0.0,BTC,Sells proceeds BTC
+2023-08,701000 Trading Gains/Losses,0.0,55430.2,USDT,Realized PnL before fees USDT
+2023-09,271001 Cash EUR,4.59,0.0,BTC,Sells proceeds BTC
 2023-09,611500 Trading Fees,0.01,0.0,BTC,Trading fees BTC
-2023-09,701000 Trading Gains/Losses,0.0,4.59,BTC,Realized PnL BTC
-2023-09,101000 Cash EUR,78.74,0.0,ETH,Sells proceeds ETH
+2023-09,701000 Trading Gains/Losses,0.0,4.6,BTC,Realized PnL before fees BTC
+2023-09,271001 Cash EUR,78.74,0.0,ETH,Sells proceeds ETH
 2023-09,1460 Crypto Asset ETH,0.0,88.62,ETH,Relieve cost ETH
 2023-09,611500 Trading Fees,0.21,0.0,ETH,Trading fees ETH
-2023-09,701000 Trading Gains/Losses,9.89,0.0,ETH,Realized PnL ETH
-2023-09,101000 Cash EUR,9.97,0.0,TRX,Sells proceeds TRX
+2023-09,701000 Trading Gains/Losses,9.68,0.0,ETH,Realized PnL before fees ETH
+2023-09,271001 Cash EUR,9.97,0.0,TRX,Sells proceeds TRX
 2023-09,1460 Crypto Asset TRX,0.0,9.09,TRX,Relieve cost TRX
 2023-09,611500 Trading Fees,0.03,0.0,TRX,Trading fees TRX
-2023-09,701000 Trading Gains/Losses,0.0,0.88,TRX,Realized PnL TRX
-2023-09,101000 Cash EUR,41532.94,0.0,USDT,Sells proceeds USDT
+2023-09,701000 Trading Gains/Losses,0.0,0.91,TRX,Realized PnL before fees TRX
+2023-09,271001 Cash EUR,41532.94,0.0,USDT,Sells proceeds USDT
 2023-09,1460 Crypto Asset USDT,0.0,40769.5,USDT,Relieve cost USDT
 2023-09,611500 Trading Fees,83.23,0.0,USDT,Trading fees USDT
-2023-09,701000 Trading Gains/Losses,0.0,763.44,USDT,Realized PnL USDT
-2023-10,101000 Cash EUR,7.55,0.0,USDC,Sells proceeds USDC
+2023-09,701000 Trading Gains/Losses,0.0,846.67,USDT,Realized PnL before fees USDT
+2023-10,271001 Cash EUR,7.55,0.0,USDC,Sells proceeds USDC
 2023-10,611500 Trading Fees,0.02,0.0,USDC,Trading fees USDC
-2023-10,701000 Trading Gains/Losses,0.0,7.55,USDC,Realized PnL USDC
-2023-10,101000 Cash EUR,166131.66,0.0,USDT,Sells proceeds USDT
+2023-10,701000 Trading Gains/Losses,0.0,7.57,USDC,Realized PnL before fees USDC
+2023-10,271001 Cash EUR,166131.66,0.0,USDT,Sells proceeds USDT
 2023-10,1460 Crypto Asset USDT,0.0,14771.36,USDT,Relieve cost USDT
 2023-10,611500 Trading Fees,332.93,0.0,USDT,Trading fees USDT
-2023-10,701000 Trading Gains/Losses,0.0,151360.3,USDT,Realized PnL USDT
-2023-11,101000 Cash EUR,85.76,0.0,USDC,Sells proceeds USDC
+2023-10,701000 Trading Gains/Losses,0.0,151693.23,USDT,Realized PnL before fees USDT
+2023-11,271001 Cash EUR,85.76,0.0,USDC,Sells proceeds USDC
 2023-11,1460 Crypto Asset USDC,0.0,12.81,USDC,Relieve cost USDC
 2023-11,611500 Trading Fees,0.17,0.0,USDC,Trading fees USDC
-2023-11,701000 Trading Gains/Losses,0.0,72.95,USDC,Realized PnL USDC
-2023-11,101000 Cash EUR,212113.67,0.0,USDT,Sells proceeds USDT
+2023-11,701000 Trading Gains/Losses,0.0,73.12,USDC,Realized PnL before fees USDC
+2023-11,271001 Cash EUR,212113.67,0.0,USDT,Sells proceeds USDT
 2023-11,611500 Trading Fees,425.08,0.0,USDT,Trading fees USDT
-2023-11,701000 Trading Gains/Losses,0.0,212113.67,USDT,Realized PnL USDT
-2023-12,101000 Cash EUR,74.69,0.0,BTC,Sells proceeds BTC
+2023-11,701000 Trading Gains/Losses,0.0,212538.75,USDT,Realized PnL before fees USDT
+2023-12,271001 Cash EUR,74.69,0.0,BTC,Sells proceeds BTC
 2023-12,1460 Crypto Asset BTC,0.0,50.66,BTC,Relieve cost BTC
 2023-12,611500 Trading Fees,0.12,0.0,BTC,Trading fees BTC
-2023-12,701000 Trading Gains/Losses,0.0,24.03,BTC,Realized PnL BTC
-2023-12,101000 Cash EUR,197.56,0.0,ETH,Sells proceeds ETH
+2023-12,701000 Trading Gains/Losses,0.0,24.15,BTC,Realized PnL before fees BTC
+2023-12,271001 Cash EUR,197.56,0.0,ETH,Sells proceeds ETH
 2023-12,1460 Crypto Asset ETH,0.0,183.63,ETH,Relieve cost ETH
 2023-12,611500 Trading Fees,0.32,0.0,ETH,Trading fees ETH
-2023-12,701000 Trading Gains/Losses,0.0,13.94,ETH,Realized PnL ETH
-2023-12,101000 Cash EUR,235565.06,0.0,USDT,Sells proceeds USDT
+2023-12,701000 Trading Gains/Losses,0.0,14.25,ETH,Realized PnL before fees ETH
+2023-12,271001 Cash EUR,235565.06,0.0,USDT,Sells proceeds USDT
 2023-12,611500 Trading Fees,472.07,0.0,USDT,Trading fees USDT
-2023-12,701000 Trading Gains/Losses,0.0,235565.06,USDT,Realized PnL USDT
+2023-12,701000 Trading Gains/Losses,0.0,236037.13,USDT,Realized PnL before fees USDT
