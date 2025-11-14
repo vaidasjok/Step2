@@ -139,6 +139,7 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
         cost = float(r["cost_eur"] or 0.0)
         fees = float(r["fees_eur"] or 0.0)
         pnl = float(r["realized_pnl_eur"] or 0.0)
+        pnl_before_fees = pnl + fees
 
         # Accounts
         acc_cash = params.get("cash_eur", "101000 Cash EUR")  # adjust if you split USDT
@@ -163,12 +164,29 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
         # Fees (Dr expense)
         if abs(fees) > 1e-10:
             rows.append({"month": month, "account": acc_fee,  "debit": fees if fees>0 else 0.0, "credit": -fees if fees<0 else 0.0,                  "asset": asset, "memo": f"Trading fees {asset}"})
-        # PnL (plug)
-        if abs(pnl) > 1e-10:
-            if pnl >= 0:
-                rows.append({"month": month, "account": acc_pnl, "debit": 0.0, "credit": pnl, "asset": asset, "memo": f"Realized PnL {asset}"})
+        # PnL (plug) – BEFORE fees
+        # We post PnL BEFORE fees here, and Trading Fees separately.             
+        if abs(pnl_before_fees) > 1e-10:
+            if pnl_before_fees >= 0:
+                # Profit before fees -> credit PnL
+                rows.append({
+                    "month": month,
+                    "account": acc_pnl,
+                    "debit": 0.0,
+                    "credit": pnl_before_fees,
+                    "asset": asset,
+                    "memo": f"Realized PnL before fees {asset}"
+                })
             else:
-                rows.append({"month": month, "account": acc_pnl, "debit": -pnl, "credit": 0.0, "asset": asset, "memo": f"Realized PnL {asset}"})
+                # Loss before fees -> debit PnL
+                rows.append({
+                    "month": month,
+                    "account": acc_pnl,
+                    "debit": -pnl_before_fees,
+                    "credit": 0.0,
+                    "asset": asset,
+                    "memo": f"Realized PnL before fees {asset}"
+                })
 
     jl = pd.DataFrame(rows)
     # Optional: round to 2 decimals for posting
