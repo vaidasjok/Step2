@@ -267,15 +267,27 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
     return jl
 
 
-def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
+def build_ledger_journals(unified: pd.DataFrame, params: dict) -> pd.DataFrame:
     """
-    Build monthly ledger journal from deposits, withdrawals and fees.
-    Requires df to contain:
-       date_utc, event_type, base_ccy, eur_amount, eur_fee
+    Minimal ledger-based journals (monthly). Does NOT touch your trades logic.
+    Uses columns: source, event_type, base_ccy, eur_amount, eur_fee, qty_base, date_utc.
+    Covers:
+      - EUR deposits/withdrawals (bank <-> exchange EUR)
+      - USD/USDT/USDC deposits/withdrawals (exchange USD-like <-> transfers clearing)
+      - Crypto deposits/withdrawals (inventory <-> transfers clearing; plus network fee)
+      - Staking/earn/interest/funding income
+      - Fee-only ledger lines
     """
+    if unified is None or unified.empty:
+        return pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
 
-    led = df.copy()
-    led["month"] = pd.to_datetime(led["date_utc"], errors="coerce").dt.to_period("M").astype(str)
+    df = unified.copy()
+    df["month"] = pd.to_datetime(df["date_utc"], errors="coerce").dt.to_period("M").astype(str)
+    led = df[(df["source"]=="ledger") & (df["event_type"].astype(str).str.lower()!="trade")].copy()
+
+    if led.empty:
+        return pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
+
     led["asset"] = led["base_ccy"].astype(str).str.upper()
     led["etype"] = led["event_type"].astype(str).str.lower()
 
@@ -284,72 +296,91 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
     acc_exch_usdl  = params.get("exchange_usd_like", params.get("cash_usd_like","101100 Cash USD/USDT"))
     acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
     acc_fee        = params.get("fees_expense","611500 Trading Fees")
+    acc_income     = params.get("staking_income","531200 Staking/Other income")
     acc_clear      = params.get("transfers_clearing","149900 Transfers clearing")
 
     rows = []
 
-    def add_row(month, account, debit, credit, asset, memo):
-        rows.append({
-            "month": month,
-            "account": account,
-            "debit": float(debit or 0.0),
-            "credit": float(credit or 0.0),
-            "asset": asset,
-            "memo": memo
-        })
+    def add(m, acc, dr, cr, asset, memo):
+        rows.append({"month": m, "account": acc,
+                     "debit": float(dr or 0.0), "credit": float(cr or 0.0),
+                     "asset": asset, "memo": memo})
 
     for _, r in led.iterrows():
-        m = r["month"]
-        asset = r["asset"]
-        et = r["etype"]
+        m = r["month"]; et = r["etype"]; asset = r["asset"]
         eur_amt = float(r["eur_amount"]) if pd.notna(r["eur_amount"]) else 0.0
         fee_eur = float(r["eur_fee"]) if pd.notna(r["eur_fee"]) else 0.0
 
-        # --- 1. EUR deposits / withdrawals ---
-        if asset == "EUR" and et == "deposit" and eur_amt > 0:
-            add_row(m, acc_exch_eur, eur_amt, 0.0, asset, "EUR deposit to exchange")
-            add_row(m, acc_bank_eur, 0.0, eur_amt, asset, "EUR deposit to exchange")
+        # A) EUR deposits/withdrawals (bank <-> exchange)
+        if asset == "EUR" and et in {"deposit","withdrawal"}:
+            if et == "deposit" and eur_amt > 0:
+                add(m, acc_exch_eur, eur_amt, 0.0, "EUR", "EUR deposit to exchange")
+                add(m, acc_bank_eur, 0.0, eur_amt, "EUR", "EUR deposit to exchange")
+            elif et == "withdrawal" and eur_amt < 0:
+                out = -eur_amt
+                add(m, acc_bank_eur, out, 0.0, "EUR", "EUR withdrawal to bank")
+                add(m, acc_exch_eur, 0.0, out, "EUR", "EUR withdrawal to bank")
+            if fee_eur > 0:
+                add(m, acc_fee, fee_eur, 0.0, "EUR", "Fiat movement fee")
 
-        elif asset == "EUR" and et == "withdrawal" and eur_amt < 0:
-            amt = -eur_amt
-            add_row(m, acc_bank_eur, amt, 0.0, asset, "EUR withdrawal from exchange")
-            add_row(m, acc_exch_eur, 0.0, amt, asset, "EUR withdrawal from exchange")
+        # B) USD/USDT/USDC deposits/withdrawals (to clearing by default)
+        elif asset in {"USD","USDT","USDC"} and et in {"deposit","withdrawal"}:
+            if et == "deposit" and eur_amt > 0:
+                add(m, acc_exch_usdl, eur_amt, 0.0, asset, f"{asset} deposit to exchange")
+                add(m, acc_clear, 0.0, eur_amt, asset, f"{asset} deposit (review counterpart)")
+            elif et == "withdrawal" and eur_amt < 0:
+                out = -eur_amt
+                add(m, acc_clear, out, 0.0, asset, f"{asset} withdrawal (review counterpart)")
+                add(m, acc_exch_usdl, 0.0, out, asset, f"{asset} withdrawal from exchange")
+            if fee_eur > 0:
+                add(m, acc_fee, fee_eur, 0.0, asset, f"{asset} movement fee")
 
-        # --- 2. Crypto deposit (increase inventory) ---
-        elif et == "deposit" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt > 0:
+        # C) Crypto deposits/withdrawals (inventory <-> clearing)
+        elif asset not in {"EUR","USD","USDT","USDC"} and et in {"deposit","withdrawal"}:
             inv_acc = f"{acc_inv_prefix}{asset}"
-            add_row(m, inv_acc, eur_amt, 0.0, asset, f"{asset} deposit (inventory increase)")
-            add_row(m, acc_clear, 0.0, eur_amt, asset, "Transfer clearing")
+            if et == "deposit" and eur_amt > 0:
+                add(m, inv_acc, eur_amt, 0.0, asset, f"{asset} deposit from external")
+                add(m, acc_clear, 0.0, eur_amt, asset, f"{asset} deposit from external")
+            elif et == "withdrawal" and eur_amt < 0:
+                out = -eur_amt
+                add(m, acc_clear, out, 0.0, asset, f"{asset} withdrawal to external")
+                add(m, inv_acc, 0.0, out, asset, f"{asset} withdrawal to external")
+                if fee_eur > 0:
+                    add(m, acc_fee, fee_eur, 0.0, asset, f"{asset} network fee")
 
-        # --- 3. Crypto withdrawal (decrease inventory) ---
-        elif et == "withdrawal" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt < 0:
-            amt = -eur_amt
-            inv_acc = f"{acc_inv_prefix}{asset}"
-            add_row(m, acc_clear, amt, 0.0, asset, "Transfer clearing")
-            add_row(m, inv_acc, 0.0, amt, asset, f"{asset} withdrawal (inventory decrease)")
-
-        # --- 4. Fees (always apply) ---
-        if fee_eur > 0:
-            add_row(m, acc_fee, fee_eur, 0.0, asset, "Fee paid")
-            # credit side: which account?
-            if asset in {"USD","USDT","USDC"}:
-                add_row(m, acc_exch_usdl, 0.0, fee_eur, asset, "Fee credit")
+        # D) Staking/earn/interest/funding income
+        elif et in {"staking","reward","rewards","earn","interest","funding"} and eur_amt > 0:
+            if asset in {"EUR","USD","USDT","USDC"}:
+                cash_acc = acc_exch_eur if asset=="EUR" else acc_exch_usdl
+                add(m, cash_acc, eur_amt, 0.0, asset, f"{asset} income")
+                add(m, acc_income, 0.0, eur_amt, asset, f"{asset} income")
             else:
-                add_row(m, acc_exch_eur, 0.0, fee_eur, asset, "Fee credit")
+                inv_acc = f"{acc_inv_prefix}{asset}"
+                add(m, inv_acc, eur_amt, 0.0, asset, f"{asset} staking/earn income")
+                add(m, acc_income, 0.0, eur_amt, asset, f"{asset} staking/earn income")
+
+        # E) Fee-only ledger lines
+        elif et == "fee" and fee_eur > 0:
+            if asset == "EUR":
+                add(m, acc_fee, fee_eur, 0.0, asset, "Fiat fee")
+                add(m, acc_exch_eur, 0.0, fee_eur, asset, "Fiat fee")
+            elif asset in {"USD","USDT","USDC"}:
+                add(m, acc_fee, fee_eur, 0.0, asset, "USD-like fee")
+                add(m, acc_exch_usdl, 0.0, fee_eur, asset, "USD-like fee")
+            else:
+                inv_acc = f"{acc_inv_prefix}{asset}"
+                add(m, acc_fee, fee_eur, 0.0, asset, f"{asset} fee")
+                add(m, inv_acc, 0.0, fee_eur, asset, f"{asset} fee")
+
+        # other event types: ignore (keeps change minimal)
 
     jl = pd.DataFrame(rows)
     if jl.empty:
         return jl
-
     _force_numeric(jl, ["debit","credit"])
-    jl = jl.groupby(["month","account","asset","memo"], as_index=False).agg(
-        debit=("debit","sum"), credit=("credit","sum")
-    )
-
-    jl["debit"] = jl["debit"].round(2)
-    jl["credit"] = jl["credit"].round(2)
+    jl = jl.groupby(["month","account","asset","memo"], as_index=False).agg(debit=("debit","sum"), credit=("credit","sum"))
+    jl["debit"] = jl["debit"].round(2); jl["credit"] = jl["credit"].round(2)
     return jl
-
 
 # End building journals 2025-09-01
 
@@ -387,7 +418,7 @@ def main():
         jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
 
     try:
-        jl_ledger = build_ledger_journals(df, PARAM_ACCOUNTS)
+        jl_ledger = build_ledger_journals(unified, PARAM_ACCOUNTS)
     except Exception as e:
         print("WARN: ledger journal failed:", e)
         jl_ledger = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])

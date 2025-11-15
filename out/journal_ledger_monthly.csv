@@ -1,0 +1,111 @@
+month,account,asset,memo,debit,credit
+2023-06,1460 Crypto Asset ETH,ETH,ETH withdrawal (inventory decrease),0.0,445.71
+2023-06,149900 Transfers clearing,ETH,Transfer clearing,445.71,0.0
+2023-06,271001 Cash EUR,ETH,Fee credit,0.0,11.41
+2023-06,271006 Cash USD/USDT,USDC,Fee credit,0.0,4.6
+2023-06,271006 Cash USD/USDT,USDT,Fee credit,0.0,64.0
+2023-06,611500 Trading Fees,ETH,Fee paid,11.41,0.0
+2023-06,611500 Trading Fees,USDC,Fee paid,4.6,0.0
+2023-06,611500 Trading Fees,USDT,Fee paid,64.0,0.0
+2023-07,1460 Crypto Asset ETH,ETH,ETH withdrawal (inventory decrease),0.0,98.51
+2023-07,1460 Crypto Asset TRX,TRX,TRX withdrawal (inventory decrease),0.0,546.36
+2023-07,149900 Transfers clearing,ETH,Transfer clearing,98.51,0.0
+2023-07,149900 Transfers clearing,TRX,Transfer clearing,546.36,0.0
+2023-07,271001 Cash EUR,ETH,Fee credit,0.0,10.21
+2023-07,271001 Cash EUR,TRX,Fee credit,0.0,3.64
+2023-07,271006 Cash USD/USDT,USDC,Fee credit,0.0,4.59
+2023-07,271006 Cash USD/USDT,USDT,Fee credit,0.0,285.55
+2023-07,611500 Trading Fees,ETH,Fee paid,10.21,0.0
+2023-07,611500 Trading Fees,TRX,Fee paid,3.64,0.0
+2023-07,611500 Trading Fees,USDC,Fee paid,4.59,0.0
+2023-07,611500 Trading Fees,USDT,Fee paid,285.55,0.0
+2023-08,1460 Crypto Asset BTC,BTC,BTC deposit (inventory increase),3645.14,0.0
+2023-08,149900 Transfers clearing,BTC,Transfer clearing,0.0,3645.14
+2023-08,271006 Cash USD/USDT,USDC,Fee credit,0.0,10.94
+2023-08,271006 Cash USD/USDT,USDT,Fee credit,0.0,665.57
+2023-08,611500 Trading Fees,USDC,Fee paid,10.94,0.0
+2023-08,611500 Trading Fees,USDT,Fee paid,665.57,0.0
+2023-09,101000 Bank EUR,EUR,EUR withdrawal from exchange,40819.81,0.0
+2023-09,1460 Crypto Asset BTC,BTC,BTC deposit (inventory increase),19120.99,0.0
+2023-09,1460 Crypto Asset BTC,BTC,BTC withdrawal (inventory decrease),0.0,19113.83
+2023-09,1460 Crypto Asset TRX,TRX,TRX withdrawal (inventory decrease),0.0,8.36
+2023-09,149900 Transfers clearing,BTC,Transfer clearing,19113.83,19120.99
+2023-09,149900 Transfers clearing,TRX,Transfer clearing,8.36,0.0
+2023-09,271001 Cash EUR,BTC,Fee credit,0.0,2.57
+2023-09,271001 Cash EUR,EUR,EUR withdrawal from exchange,0.0,40819.81
+2023-09,271001 Cash EUR,EUR,Fee credit,0.0,56.41
+2023-09,271001 Cash EUR,TRX,Fee credit,0.0,1.18
+2023-09,271006 Cash USD/USDT,USDC,Fee credit,0.0,8.42
+2023-09,271006 Cash USD/USDT,USDT,Fee credit,0.0,613.96
+2023-09,611500 Trading Fees,BTC,Fee paid,2.57,0.0
+2023-09,611500 Trading Fees,EUR,Fee paid,56.41,0.0
+2023-09,611500 Trading Fees,TRX,Fee paid,1.18,0.0
+2023-09,611500 Trading Fees,USDC,Fee paid,8.42,0.0
+2023-09,611500 Trading Fees,USDT,Fee paid,613.96,0.0
+2023-10,101000 Bank EUR,EUR,EUR withdrawal from exchange,167060.64,0.0
+2023-10,1460 Crypto Asset BTC,BTC,BTC withdrawal (inventory decrease),0.0,292.72
+2023-10,149900 Transfers clearing,BTC,Transfer clearing,292.72,0.0
+2023-10,271001 Cash EUR,BTC,Fee credit,0.0,2.62
+2023-10,271001 Cash EUR,EUR,EUR withdrawal from exchange,0.0,167060.64
+2023-10,271001 Cash EUR,EUR,Fee credit,0.0,146.71
+2023-10,271006 Cash USD/USDT,USDC,Fee credit,0.0,40.69
+2023-10,271006 Cash USD/USDT,USDT,Fee credit,0.0,721.77
+2023-10,611500 Trading Fees,BTC,Fee paid,2.62,0.0
+2023-10,611500 Trading Fees,EUR,Fee paid,146.71,0.0
+2023-10,611500 Trading Fees,USDC,Fee paid,40.69,0.0
+2023-10,611500 Trading Fees,USDT,Fee paid,721.77,0.0
+2023-11,101000 Bank EUR,EUR,EUR withdrawal from exchange,212385.53,0.0
+2023-11,1460 Crypto Asset ETH,ETH,ETH withdrawal (inventory decrease),0.0,8986.17
+2023-11,1460 Crypto Asset TRX,TRX,TRX withdrawal (inventory decrease),0.0,7.82
+2023-11,149900 Transfers clearing,ETH,Transfer clearing,8986.17,0.0
+2023-11,149900 Transfers clearing,TRX,Transfer clearing,7.82,0.0
+2023-11,271001 Cash EUR,ETH,Fee credit,0.0,11.08
+2023-11,271001 Cash EUR,EUR,EUR withdrawal from exchange,0.0,212385.53
+2023-11,271001 Cash EUR,EUR,Fee credit,0.0,223.36
+2023-11,271001 Cash EUR,TRX,Fee credit,0.0,1.54
+2023-11,271006 Cash USD/USDT,USDC,Fee credit,0.0,60.12
+2023-11,271006 Cash USD/USDT,USDT,Fee credit,0.0,959.8
+2023-11,611500 Trading Fees,ETH,Fee paid,11.08,0.0
+2023-11,611500 Trading Fees,EUR,Fee paid,223.36,0.0
+2023-11,611500 Trading Fees,TRX,Fee paid,1.54,0.0
+2023-11,611500 Trading Fees,USDC,Fee paid,60.12,0.0
+2023-11,611500 Trading Fees,USDT,Fee paid,959.8,0.0
+2023-12,101000 Bank EUR,EUR,EUR deposit to exchange,0.0,10.0
+2023-12,101000 Bank EUR,EUR,EUR withdrawal from exchange,231221.98,0.0
+2023-12,1460 Crypto Asset BTC,BTC,BTC deposit (inventory increase),214113.72,0.0
+2023-12,1460 Crypto Asset BTC,BTC,BTC withdrawal (inventory decrease),0.0,218863.03
+2023-12,1460 Crypto Asset ETH,ETH,ETH deposit (inventory increase),128463.75,0.0
+2023-12,1460 Crypto Asset ETH,ETH,ETH withdrawal (inventory decrease),0.0,129585.94
+2023-12,1460 Crypto Asset NYM,NYM,NYM deposit (inventory increase),14.26,0.0
+2023-12,1460 Crypto Asset NYM,NYM,NYM withdrawal (inventory decrease),0.0,14.87
+2023-12,149900 Transfers clearing,BTC,Transfer clearing,218863.03,214113.72
+2023-12,149900 Transfers clearing,ETH,Transfer clearing,129585.94,128463.75
+2023-12,149900 Transfers clearing,NYM,Transfer clearing,14.87,14.26
+2023-12,271001 Cash EUR,BTC,Fee credit,0.0,31.19
+2023-12,271001 Cash EUR,ETH,Fee credit,0.0,18.5
+2023-12,271001 Cash EUR,EUR,EUR deposit to exchange,10.0,0.0
+2023-12,271001 Cash EUR,EUR,EUR withdrawal from exchange,0.0,231221.98
+2023-12,271001 Cash EUR,EUR,Fee credit,0.0,143.39
+2023-12,271001 Cash EUR,NYM,Fee credit,0.0,0.31
+2023-12,271006 Cash USD/USDT,USD,Fee credit,0.0,0.04
+2023-12,271006 Cash USD/USDT,USDC,Fee credit,0.0,134.57
+2023-12,271006 Cash USD/USDT,USDT,Fee credit,0.0,1001.39
+2023-12,611500 Trading Fees,BTC,Fee paid,31.19,0.0
+2023-12,611500 Trading Fees,ETH,Fee paid,18.5,0.0
+2023-12,611500 Trading Fees,EUR,Fee paid,143.39,0.0
+2023-12,611500 Trading Fees,NYM,Fee paid,0.31,0.0
+2023-12,611500 Trading Fees,USD,Fee paid,0.04,0.0
+2023-12,611500 Trading Fees,USDC,Fee paid,134.57,0.0
+2023-12,611500 Trading Fees,USDT,Fee paid,1001.39,0.0
+NaT,271001 Cash EUR,BTC,Fee credit,0.0,19.36
+NaT,271001 Cash EUR,ETH,Fee credit,0.0,5.41
+NaT,271001 Cash EUR,NYM,Fee credit,0.0,0.04
+NaT,271001 Cash EUR,TRX,Fee credit,0.0,1.53
+NaT,271006 Cash USD/USDT,USDC,Fee credit,0.0,7.5
+NaT,271006 Cash USD/USDT,USDT,Fee credit,0.0,1536.13
+NaT,611500 Trading Fees,BTC,Fee paid,19.36,0.0
+NaT,611500 Trading Fees,ETH,Fee paid,5.41,0.0
+NaT,611500 Trading Fees,NYM,Fee paid,0.04,0.0
+NaT,611500 Trading Fees,TRX,Fee paid,1.53,0.0
+NaT,611500 Trading Fees,USDC,Fee paid,7.5,0.0
+NaT,611500 Trading Fees,USDT,Fee paid,1536.13,0.0
