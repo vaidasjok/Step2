@@ -15,7 +15,7 @@ PARAM_ACCOUNTS = {
     "cash_usd_like": "274100 Crypto USD Wallets",   # <— your custom account
 
     # 3. Crypto inventory – all coins grouped into a single short-term asset account
-    "crypto_inventory_prefix": "262500 Cost of acquisition of crypto assets", 
+    "crypto_inventory": "262500 Cost of acquisition of crypto assets", 
     # (prefix is still used, but because you want ONE account, it will not append asset symbols)
 
     # 4. Trading fees
@@ -35,7 +35,7 @@ PARAM_ACCOUNTS = {
     "bank_eur": "271001 Bank",
 
     # 9. Exchange EUR (if exchange holds EUR balances)
-    "exchange_eur": "271001 Bank"
+    "exchange_eur": "272001 Cash"
 }
 
 # ----------------------------
@@ -50,7 +50,13 @@ def load_unified(path: Path) -> pd.DataFrame:
     if path.suffix.lower() in [".xlsx", ".xls"]:
         df = pd.read_excel(path, sheet_name=0)
     else:
-        df = pd.read_csv(path, parse_dates=["date_utc"], low_memory=False)
+        # df = pd.read_csv(path, parse_dates=["date_utc"], low_memory=False)
+        # let it read as text, we will normalize date ourselves
+        df = pd.read_csv(path, low_memory=False)
+        
+    # --- NEW: normalize date_utc robustly (handles with/without milliseconds, always UTC) ---
+    df["date_utc"] = pd.to_datetime(df["date_utc"], utc=True, errors="coerce")
+    
     # normalize
     exp = ["date_utc","source","event_type","base_ccy","quote_ccy","side",
            "qty_base","qty_quote","eur_amount","eur_fee","txid","exchange"]
@@ -60,6 +66,13 @@ def load_unified(path: Path) -> pd.DataFrame:
     df["side"] = df["side"].astype(str).str.lower()
     for c in ["qty_base","qty_quote","eur_amount","eur_fee"]:
         df[c] = pd.to_numeric(df[c], errors="coerce")
+        
+    # --- OPTIONAL: debug any rows where date_utc is NaT ---
+    bad = df["date_utc"].isna()
+    if bad.any():
+        print("WARN: rows with invalid date_utc in unified file:")
+        print(df.loc[bad, ["source","event_type","base_ccy","eur_amount","eur_fee"]].head(20))
+
     return df
 
 def fifo_pnl(trades: pd.DataFrame):
@@ -167,7 +180,8 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
 
         # Accounts
         acc_cash = params.get("cash_eur", "101000 Cash EUR")  # adjust if you split USDT
-        acc_inv  = f'{params.get("crypto_inventory_prefix","1460 Crypto Asset ")}{asset}'
+        # acc_inv  = f'{params.get("crypto_inventory_prefix","1460 Crypto Asset ")}{asset}'
+        acc_inv = params["crypto_inventory"]
         acc_fee  = params.get("fees_expense", "611500 Trading Fees")
         acc_pnl  = params.get("realized_pnl", "701000 Trading Gains/Losses")
 
@@ -241,7 +255,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
     # month key (keep your current behavior; harmless if tz warning appears)
     df["month"] = pd.to_datetime(df["date_utc"], errors="coerce").dt.to_period("M").astype(str)
 
-    acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
+    #acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
     acc_fee        = params.get("fees_expense","611500 Trading Fees")
     acc_cash       = params.get("cash_eur", "101000 Cash EUR")
 
@@ -250,7 +264,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
         m = r["month"]; asset = str(r["asset"])
         cost = float(r.get("cost_eur", 0.0) or 0.0)
         fees = float(r.get("fees_eur", 0.0) or 0.0)
-        inv_acc = f"{acc_inv_prefix}{asset}"
+        inv_acc = params["crypto_inventory"]
         # 1) Dr Inventory (cost)
         if cost > 0:
             rows.append({
@@ -299,6 +313,16 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
     """
 
     led = df.copy()
+    
+    # Parse dates robustly
+    parsed = pd.to_datetime(led["date_utc"], errors="coerce", utc=True)
+
+    # DEBUG: show ledger rows whose date_utc failed to parse
+    bad_mask = (led["source"] == "ledger") & parsed.isna()
+    if bad_mask.any():
+        print("\n[build_ledger_journals] Ledger rows with invalid date_utc:")
+        print(led.loc[bad_mask, ["date_utc", "exchange", "event_type", "txid"]].head(20))
+    
     led["month"] = pd.to_datetime(led["date_utc"], errors="coerce").dt.to_period("M").astype(str)
     led["asset"] = led["base_ccy"].astype(str).str.upper()
     led["etype"] = led["event_type"].astype(str).str.lower()
@@ -306,7 +330,7 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
     acc_bank_eur   = params.get("bank_eur", "101000 Bank EUR")
     acc_exch_eur   = params.get("exchange_eur", params.get("cash_eur","101000 Cash EUR"))
     acc_exch_usdl  = params.get("exchange_usd_like", params.get("cash_usd_like","101100 Cash USD/USDT"))
-    acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
+    # acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
     acc_fee        = params.get("fees_expense","611500 Trading Fees")
     acc_clear      = params.get("transfers_clearing","149900 Transfers clearing")
 
@@ -341,14 +365,14 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
 
         # --- 2. Crypto deposit (increase inventory) ---
         elif et == "deposit" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt > 0:
-            inv_acc = f"{acc_inv_prefix}{asset}"
+            inv_acc = params["crypto_inventory"]
             add_row(m, inv_acc, eur_amt, 0.0, asset, f"{asset} deposit (inventory increase)")
             add_row(m, acc_clear, 0.0, eur_amt, asset, "Transfer clearing")
 
         # --- 3. Crypto withdrawal (decrease inventory) ---
         elif et == "withdrawal" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt < 0:
             amt = -eur_amt
-            inv_acc = f"{acc_inv_prefix}{asset}"
+            inv_acc = params["crypto_inventory"]
             add_row(m, acc_clear, amt, 0.0, asset, "Transfer clearing")
             add_row(m, inv_acc, 0.0, amt, asset, f"{asset} withdrawal (inventory decrease)")
 
