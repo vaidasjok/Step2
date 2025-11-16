@@ -6,14 +6,38 @@ import numpy as np
 # ---------- CONFIG ----------
 INPUT_PATH = Path("unified_transactions.csv")   # can be .xlsx as well
 OUTPUT_DIR = Path("out")
+
 PARAM_ACCOUNTS = {
-    # Placeholder account codes/names; change to your Odoo CoA
-    "cash_eur": "271001 Cash EUR",
-    "cash_usd_like": "271006 Cash USD/USDT",
-    "crypto_inventory_prefix": "1460 Crypto Asset ",
-    "fees_expense": "611500 Trading Fees",
-    "realized_pnl": "701000 Trading Gains/Losses"
+    # 1. EUR and fiat cash
+    "cash_eur": "271001 Bank",
+
+    # 2. USD-like (USDT/USDC/BUSD…) stored on exchanges
+    "cash_usd_like": "274100 Crypto USD Wallets",   # <— your custom account
+
+    # 3. Crypto inventory – all coins grouped into a single short-term asset account
+    "crypto_inventory_prefix": "262500 Cost of acquisition of crypto assets", 
+    # (prefix is still used, but because you want ONE account, it will not append asset symbols)
+
+    # 4. Trading fees
+    # No dedicated “fees expense” account in your COA → best fit:
+    "fees_expense": "631200 Other Costs and Bank Taxes",
+
+    # 5. Realized trading gains & losses
+    "realized_pnl": "540100 Other Income",
+
+    # 6. Staking / earn / interest income
+    "staking_income": "540100 Other Income",
+
+    # 7. Clearing account for internal transfers between wallets/exchanges
+    "transfers_clearing": "273001 Liquidity Transfer",
+
+    # 8. Bank EUR (for deposits/withdrawals)
+    "bank_eur": "271001 Bank",
+
+    # 9. Exchange EUR (if exchange holds EUR balances)
+    "exchange_eur": "271001 Bank"
 }
+
 # ----------------------------
 
 def _force_numeric(df, cols):
