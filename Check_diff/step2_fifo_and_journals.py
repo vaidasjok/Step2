@@ -23,19 +23,54 @@ def _force_numeric(df, cols):
     return df
 
 def load_unified(path: Path) -> pd.DataFrame:
+    # 1) Read file
     if path.suffix.lower() in [".xlsx", ".xls"]:
         df = pd.read_excel(path, sheet_name=0)
     else:
-        df = pd.read_csv(path, parse_dates=["date_utc"], low_memory=False)
-    # normalize
-    exp = ["date_utc","source","event_type","base_ccy","quote_ccy","side",
-           "qty_base","qty_quote","eur_amount","eur_fee","txid","exchange"]
+        # Do NOT be too clever with parse_dates here; we will normalize manually
+        df = pd.read_csv(path, low_memory=False)
+
+    # 2) Basic column presence check
+    exp = [
+        "date_utc", "source", "event_type",
+        "base_ccy", "quote_ccy", "side",
+        "qty_base", "qty_quote",
+        "eur_amount", "eur_fee",
+        "txid", "exchange",
+    ]
     missing = [c for c in exp if c not in df.columns]
     if missing:
         raise RuntimeError(f"Unified file missing columns: {missing}")
+
+    # 3) Keep original date as text for debugging
+    df["date_utc_raw"] = df["date_utc"].astype(str).str.strip()
+
+    # 4) Robust datetime parse (handles both with and without microseconds)
+    #    We DO NOT drop rows here; we just mark bad ones.
+    df["date_utc"] = pd.to_datetime(
+        df["date_utc_raw"],
+        errors="coerce",    # bad ones -> NaT
+        utc=True
+    )
+
+    bad = df[df["date_utc"].isna()].copy()
+    if not bad.empty:
+        print(f">> WARNING: {len(bad)} rows have invalid date_utc (kept for now, see bad_dates.csv)")
+        # Optional: save them for manual inspection
+        cols_show = [
+            "date_utc_raw", "source", "event_type",
+            "base_ccy", "quote_ccy", "qty_base", "qty_quote",
+            "eur_amount", "eur_fee", "txid", "exchange",
+        ]
+        bad[cols_show].to_csv("bad_dates.csv", index=False)
+
+    # 5) Normalize side + numeric fields
     df["side"] = df["side"].astype(str).str.lower()
-    for c in ["qty_base","qty_quote","eur_amount","eur_fee"]:
-        df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    for c in ["qty_base", "qty_quote", "eur_amount", "eur_fee"]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
     return df
 
 def fifo_pnl(trades: pd.DataFrame):

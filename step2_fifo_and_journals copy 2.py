@@ -47,73 +47,71 @@ def _force_numeric(df, cols):
     return df
 
 def load_unified(path: Path) -> pd.DataFrame:
-    # 1) Read file without smart date parsing
     if path.suffix.lower() in [".xlsx", ".xls"]:
         df = pd.read_excel(path, sheet_name=0)
     else:
+        # df = pd.read_csv(path, parse_dates=["date_utc"], low_memory=False)
+        # let it read as text, we will normalize date ourselves
         df = pd.read_csv(path, low_memory=False)
-
-    # 2) Check required columns
-    exp = [
-        "date_utc", "source", "event_type",
-        "base_ccy", "quote_ccy", "side",
-        "qty_base", "qty_quote",
-        "eur_amount", "eur_fee",
-        "txid", "exchange",
-    ]
+        
+    # --- NEW: normalize date_utc robustly (handles with/without milliseconds, always UTC) ---
+    df["date_utc"] = pd.to_datetime(df["date_utc"], utc=True, errors="coerce")
+    
+    # normalize
+    exp = ["date_utc","source","event_type","base_ccy","quote_ccy","side",
+           "qty_base","qty_quote","eur_amount","eur_fee","txid","exchange"]
     missing = [c for c in exp if c not in df.columns]
     if missing:
         raise RuntimeError(f"Unified file missing columns: {missing}")
-
-    # 3) Keep original raw date for debugging (optional, but safe)
-    df["date_utc_raw"] = df["date_utc"].astype(str).str.strip()
-
-    # 4) Single robust parse – THIS is the only place we decide what's valid
-    # parsed = pd.to_datetime(df["date_utc_raw"], errors="coerce", utc=True)
-    parsed = pd.to_datetime(df["date_utc_raw"], format='ISO8601', errors="coerce")
-
-    # Show if anything is truly invalid
-    bad_mask = parsed.isna()
-    if bad_mask.any():
-        bad = df.loc[bad_mask].copy()
-        print(f">> WARNING: {bad_mask.sum()} rows have invalid date_utc; see bad_dates.csv")
-        cols_show = [
-            "date_utc_raw", "source", "event_type",
-            "base_ccy", "quote_ccy", "qty_base", "qty_quote",
-            "eur_amount", "eur_fee", "txid", "exchange",
-        ]
-        bad[cols_show].to_csv("bad_dates.csv", index=False)
-        # OPTIONAL: if you prefer to drop truly invalid rows, uncomment:
-        # parsed = parsed[~bad_mask]
-        # df = df.loc[~bad_mask].copy()
-
-    # 5) Store the parsed datetimes
-    df["date_utc"] = parsed
-
-    # 6) Normalize side + numeric fields
+    
     df["side"] = df["side"].astype(str).str.lower()
+    
+    # --- STRONG DATE PARSING WITH DEBUG ---
+    # Keep original raw value just in case we need to inspect later
+    df["date_utc_raw"] = df["date_utc"]
 
-    for c in ["qty_base", "qty_quote", "eur_amount", "eur_fee"]:
+    # Try to parse all as UTC-aware timestamps
+    parsed = pd.to_datetime(df["date_utc"], errors="coerce", utc=True)
+    bad_mask = parsed.isna()
+
+    # Debug: print a small sample of bad rows (you already saw ~20 of these)
+    bad_rows = df[bad_mask].copy()
+    if not bad_rows.empty:
+        print(">> WARNING: bad date_utc values in unified file (showing up to 20 rows):")
+        print(bad_rows[["date_utc_raw","source","event_type","txid","exchange"]].head(20))
+
+    # OPTION: if you have an alternative time column, try to fix here.
+    # Example (uncomment and adapt if you have 'time' column):
+    # alt_mask = bad_mask & df["time"].notna()
+    # if alt_mask.any():
+    #     parsed_alt = pd.to_datetime(df.loc[alt_mask, "time"], errors="coerce", utc=True)
+    #     parsed.loc[alt_mask] = parsed_alt
+    #     bad_mask = parsed.isna()
+    #     bad_rows = df[bad_mask]
+    #     if not bad_rows.empty:
+    #         print(">> Still bad after using 'time' column:", len(bad_rows))
+
+    # FINAL STEP: drop rows that still have invalid dates
+    if bad_mask.any():
+        print(f">> Dropping {bad_mask.sum()} rows with invalid date_utc from unified dataset")
+        df = df.loc[~bad_mask].copy()
+        parsed = parsed[~bad_mask]
+
+    # Replace date_utc with the parsed, clean version
+    df["date_utc"] = parsed
+    
+    # --- FORCE NUMERIC ON AMOUNTS ---
+    for c in ["qty_base","qty_quote","eur_amount","eur_fee"]:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
 
     return df
 
-
 def fifo_pnl(trades: pd.DataFrame):
     trades = trades.copy()
-
-    # 1) Keep only true trade rows (no matter if they came from "trades" or "ledger")
-    trades["event_type"] = trades["event_type"].astype(str).str.lower()
-    trades["side"] = trades["side"].astype(str).str.lower()
-
-    trades = trades[trades["event_type"] == "trade"]
-
-    # 2) Require valuation (eur_amount), otherwise FIFO makes no sense
+    trades = trades[(trades["source"]=="trades") & (trades["event_type"]=="trade")]
     trades = trades[trades["eur_amount"].notna()]
-
-    # 3) Sort deterministically
-    trades = trades.sort_values(["date_utc", "txid"]).reset_index(drop=True)
+    trades = trades.sort_values(["date_utc","txid"]).reset_index(drop=True)
 
     lots_state = {}
     rows = []
@@ -185,34 +183,28 @@ def fifo_pnl(trades: pd.DataFrame):
     #     realized_pnl_eur=("realized_pnl_eur","sum")
     # ).sort_values(["month","asset"])
     
-    # If no trades passed the filters, return empty but well-formed tables
+    # NEW: if there are no trade rows, return empty result frames
     if pnl_detailed.empty:
-        pnl_detailed = pd.DataFrame(
-            columns=[
-                "date_utc", "exchange", "txid", "asset", "side", "qty",
-                "proceeds_eur", "cost_eur", "fees_eur", "realized_pnl_eur", "month"
-            ]
-        )
         monthly = pd.DataFrame(
-            columns=["month", "asset", "qty_sold", "proceeds_eur",
-                     "cost_eur", "fees_eur", "realized_pnl_eur"]
+            columns=["month","asset","qty_sold","proceeds_eur",
+                     "cost_eur","fees_eur","realized_pnl_eur"]
         )
         inventory = pd.DataFrame(
-            columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
+            columns=["asset","closing_units","closing_cost_eur","avg_cost_eur_per_unit"]
         )
         return pnl_detailed, monthly, inventory
 
-    # Normal path when we DO have trades
+    # Normal path (we have at least one trade row)
     pnl_detailed["month"] = pd.to_datetime(pnl_detailed["date_utc"]).dt.to_period("M").astype(str)
 
-    realized = pnl_detailed[pnl_detailed["side"] == "sell"].copy()
-    monthly = realized.groupby(["month", "asset"], as_index=False).agg(
-        qty_sold=("qty", "sum"),
-        proceeds_eur=("proceeds_eur", "sum"),
-        cost_eur=("cost_eur", "sum"),
-        fees_eur=("fees_eur", "sum"),
-        realized_pnl_eur=("realized_pnl_eur", "sum"),
-    ).sort_values(["month", "asset"])
+    realized = pnl_detailed[pnl_detailed["side"]=="sell"].copy()
+    monthly = realized.groupby(["month","asset"], as_index=False).agg(
+        qty_sold=("qty","sum"),
+        proceeds_eur=("proceeds_eur","sum"),
+        cost_eur=("cost_eur","sum"),
+        fees_eur=("fees_eur","sum"),
+        realized_pnl_eur=("realized_pnl_eur","sum")
+    ).sort_values(["month","asset"])
 
     inv_rows = []
     for asset, lots in lots_state.items():
@@ -220,13 +212,11 @@ def fifo_pnl(trades: pd.DataFrame):
         total_cost = sum(l["total_cost"] for l in lots)
         avg_cost = (total_cost / total_units) if total_units else 0.0
         inv_rows.append({
-            "asset": asset,
-            "closing_units": total_units,
-            "closing_cost_eur": total_cost,
-            "avg_cost_eur_per_unit": avg_cost,
+            "asset": asset, "closing_units": total_units, "closing_cost_eur": total_cost,
+            "avg_cost_eur_per_unit": avg_cost
         })
     inventory = pd.DataFrame(inv_rows).sort_values("asset") if inv_rows else pd.DataFrame(
-        columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
+        columns=["asset","closing_units","closing_cost_eur","avg_cost_eur_per_unit"]
     )
     return pnl_detailed, monthly, inventory
 
