@@ -2,6 +2,7 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
+from pandas.tseries.offsets import MonthEnd
 
 # ---------- CONFIG ----------
 INPUT_PATH = Path("unified_transactions.csv")   # can be .xlsx as well
@@ -45,6 +46,26 @@ def _force_numeric(df, cols):
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
+
+def add_posting_date(jl: pd.DataFrame, month_col: str = "month") -> pd.DataFrame:
+    """
+    Add a posting_date column based on a YYYY-MM month column.
+    Example: '2023-07' -> '2023-07-31'
+    """
+    if jl is None or jl.empty or month_col not in jl.columns:
+        return jl
+
+    # Convert 'YYYY-MM' to first day of month
+    tmp = pd.to_datetime(jl[month_col].astype(str) + "-01", errors="coerce")
+
+    # Move to last calendar day of the month
+    tmp = tmp + MonthEnd(1)
+
+    # Store as ISO date string (Odoo likes 'YYYY-MM-DD')
+    jl["posting_date"] = tmp.dt.strftime("%Y-%m-%d")
+
+    return jl
+
 
 def load_unified(path: Path) -> pd.DataFrame:
     # 1) Read file without smart date parsing
@@ -486,6 +507,8 @@ def main():
 
     # Build a simple monthly journal (sells only). Extend later for buys, ledger, deposits/withdrawals.
     jl = build_monthly_journal(monthly, PARAM_ACCOUNTS)
+    # Add posting date column for Odoo.
+    jl = add_posting_date(jl, month_col="month")
     _force_numeric(jl,       ["debit", "credit"])
     (OUTPUT_DIR/"journal_monthly.csv").write_text(jl.to_csv(index=False))
 
@@ -495,15 +518,19 @@ def main():
     # --- Extra journals: minimal, separate CSVs; no Excel changes ---
     try:
         jl_buys = build_buys_journal(pnl_detailed, PARAM_ACCOUNTS)
+        # Add posting date column for Odoo.
+        jl_buys = add_posting_date(jl_buys, month_col="month")
     except Exception as e:
         print("WARN: buys journal failed:", e)
         jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
 
     try:
         jl_ledger = build_ledger_journals(df, PARAM_ACCOUNTS)
+        # Add posting date column for Odoo.
+        jl_ledger = add_posting_date(jl_ledger, month_col="month")
     except Exception as e:
         print("WARN: ledger journal failed:", e)
-        jl_ledger = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
+        jl_ledger = pd.DataFrame(columns=["month","account","debit","credit","asset","memo","posting_date"])
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     if not jl_buys.empty:
