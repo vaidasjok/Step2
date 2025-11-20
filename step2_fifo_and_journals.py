@@ -539,6 +539,11 @@ def main():
         (OUTPUT_DIR / "journal_ledger_monthly.csv").write_text(jl_ledger.to_csv(index=False))
 
     # End additional csv files
+    
+    # Write all three journals into one file.
+    
+    unified_all_journals = pd.concat([jl, jl_buys, jl_ledger], ignore_index=True)
+    (OUTPUT_DIR / "unified_all_journals.csv").write_text(unified_all_journals.to_csv(index=False))
 
 if __name__ == "__main__":
     main()
