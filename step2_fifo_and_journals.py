@@ -184,22 +184,27 @@ def fifo_pnl(trades: pd.DataFrame):
                 "realized_pnl_eur": 0.0
             })
         elif r["side"] == "sell" and qty_base < 0:
-            units_to_sell = abs(qty_base)
+            units = abs(qty_base)
             proceeds_net = eur_val - fee_eur  # eur_val positive for sells
-            cost, remainder = relieve_lot(asset, units_to_sell)
+            cost, remainder = relieve_lot(asset, units)
             realized = proceeds_net - cost
             rows.append({
                 "date_utc": r["date_utc"], "exchange": r["exchange"], "txid": r["txid"],
-                "asset": asset, "side": "sell", "qty": units_to_sell,
+                "asset": asset, "side": "sell", "qty": units,
                 "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
                 "realized_pnl_eur": realized, "short_sold_without_inventory": bool(remainder>1e-18)
             })
-        elif r["event_type"] == "deposit":
+        # --- DEPOSIT (zero cost inventory increase) ---
+        elif et == "deposit" and qty_base > 0:
             add_lot(asset, qty_base, total_cost = 0)
-        elif r["event_type"] == "withdrawal":
+            
+        # --- WITHDRAWAL (inventory decrease) ---
+        elif et == "withdrawal" and qty_base < 0:
             units = abs(qty_base)
-            relieve_lot(asset, units), pnl=0
-        elif r["base_ccy"] == r["fee_ccy"] and r["fee_ccy"] is not None:
+            relieve_lot(asset, units)
+            
+        # --- FEE IN BASE CURRENCY ---
+        elif r["fee_ccy"] == asset and r["fee"] > 0:
             relieve_lot(asset, r["fee"])
 
     pnl_detailed = pd.DataFrame(rows)
