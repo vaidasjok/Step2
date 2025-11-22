@@ -135,6 +135,8 @@ def fifo_pnl(trades: pd.DataFrame):
 
     # 3) Sort deterministically
     trades = trades.sort_values(["date_utc", "txid"]).reset_index(drop=True)
+    # trades = trades.sort_values(["date_utc", "base_ccy"]).reset_index(drop=True)
+
 
     lots_state = {}
     rows = []
