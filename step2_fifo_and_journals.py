@@ -172,6 +172,8 @@ def fifo_pnl(trades: pd.DataFrame):
         qty_base = float(r["qty_base"] or 0.0)
         fee_eur = float(r["eur_fee"] or 0.0)
         eur_val = float(r["eur_amount"] or 0.0)  # quote leg value (sign follows qty_quote)
+        et = str(r["event_type"]).lower()
+        
         if r["side"] == "buy" and qty_base > 0:
             total_cost = -eur_val + fee_eur  # eur_val negative on buys
             add_lot(asset, qty_base, total_cost)
@@ -182,7 +184,7 @@ def fifo_pnl(trades: pd.DataFrame):
                 "realized_pnl_eur": 0.0
             })
         elif r["side"] == "sell" and qty_base < 0:
-            units_to_sell = -qty_base
+            units_to_sell = abs(qty_base)
             proceeds_net = eur_val - fee_eur  # eur_val positive for sells
             cost, remainder = relieve_lot(asset, units_to_sell)
             realized = proceeds_net - cost
@@ -192,6 +194,13 @@ def fifo_pnl(trades: pd.DataFrame):
                 "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
                 "realized_pnl_eur": realized, "short_sold_without_inventory": bool(remainder>1e-18)
             })
+        elif r["event_type"] == "deposit":
+            add_lot(asset, qty_base, total_cost = 0)
+        elif r["event_type"] == "withdrawal":
+            units = abs(qty_base)
+            relieve_lot(asset, units), pnl=0
+        elif r["base_ccy"] == r["fee_ccy"] and r["fee_ccy"] is not None:
+            relieve_lot(asset, r["fee"])
 
     pnl_detailed = pd.DataFrame(rows)
     # if not pnl_detailed.empty:
