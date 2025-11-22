@@ -510,6 +510,7 @@ def main():
     # Add posting date column for Odoo.
     jl = add_posting_date(jl, month_col="month")
     _force_numeric(jl,       ["debit", "credit"])
+    jl["Reference"] = jl.apply(lambda r: f"CRYPTO {r.get('exchange','ALL')} {r['month']}", axis=1)
     (OUTPUT_DIR/"journal_monthly.csv").write_text(jl.to_csv(index=False))
 
     print("Saved in:", OUTPUT_DIR.resolve())
@@ -520,14 +521,22 @@ def main():
         jl_buys = build_buys_journal(pnl_detailed, PARAM_ACCOUNTS)
         # Add posting date column for Odoo.
         jl_buys = add_posting_date(jl_buys, month_col="month")
+        
+        jl_buys["Reference"] = jl_buys.apply(
+            lambda r: f"CRYPTO {r.get('exchange','ALL')} {r['month']}", axis=1
+        )
     except Exception as e:
         print("WARN: buys journal failed:", e)
-        jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
-
+        jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])        
     try:
         jl_ledger = build_ledger_journals(df, PARAM_ACCOUNTS)
         # Add posting date column for Odoo.
         jl_ledger = add_posting_date(jl_ledger, month_col="month")
+        
+        jl_ledger["Reference"] = jl_ledger.apply(
+            lambda r: f"CRYPTO {r.get('exchange','ALL')} {r['month']}", axis=1
+        )
+        
     except Exception as e:
         print("WARN: ledger journal failed:", e)
         jl_ledger = pd.DataFrame(columns=["month","account","debit","credit","asset","memo","posting_date"])
