@@ -121,25 +121,26 @@ def load_unified(path: Path) -> pd.DataFrame:
     return df
 
 
-def fifo_pnl(trades: pd.DataFrame):
-    trades = trades.copy()
+def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
+    df = df.copy()
+    df["event_type"] = df["event_type"].astype(str).str.lower()
+    df["side"] = df["side"].astype(str).str.lower()
 
-    # 1) Keep only true trade rows (no matter if they came from "trades" or "ledger")
-    trades["event_type"] = trades["event_type"].astype(str).str.lower()
-    trades["side"] = trades["side"].astype(str).str.lower()
-
-    trades = trades[trades["event_type"] == "trade"]
-
-    # 2) Require valuation (eur_amount), otherwise FIFO makes no sense
-    trades = trades[trades["eur_amount"].notna()]
-
-    # 3) Sort deterministically
-    trades = trades.sort_values(["date_utc", "txid"]).reset_index(drop=True)
-    # trades = trades.sort_values(["date_utc", "base_ccy"]).reset_index(drop=True)
-
+    # We will process ALL rows, but only "trade" rows create PnL rows.
+    df = df.sort_values(["date_utc", "txid"]).reset_index(drop=True)
 
     lots_state = {}
     rows = []
+
+    # --- counters for run-time info ---
+    stats = {
+        "trade_buys": 0, "trade_sells": 0,
+        "deposits_costed": 0, "deposits_zero_cost": 0,
+        "withdrawals": 0,
+        "staking_costed": 0, "staking_zero_cost": 0,
+        "base_fees_relived": 0,
+        "short_sells": 0,
+    }
 
     def add_lot(asset, units, total_cost):
         lots_state.setdefault(asset, [])
@@ -168,46 +169,115 @@ def fifo_pnl(trades: pd.DataFrame):
                 i += 1
         lots_state[asset] = lots
         return cost, remaining
+    
+    def add_lot_with_cost(asset, units, eur_cost, reason):
+        units = float(units)
+        eur_cost = float(eur_cost or 0.0)
 
-    for _, r in trades.iterrows():
+        if units <= 0:
+            return
+
+        add_lot(asset, units, eur_cost)
+
+        if verbose:
+            unit_cost = eur_cost / units if units else 0.0
+            print(f"[FIFO] ADD LOT {reason}: {asset} +{units:g} units, cost={eur_cost:.2f} EUR, unit_cost={unit_cost:.6f}")
+
+
+    for _, r in df.iterrows():
         asset = str(r["base_ccy"]).upper()
-        qty_base = float(r["qty_base"] or 0.0)
-        fee_eur = float(r["eur_fee"] or 0.0)
-        eur_val = float(r["eur_amount"] or 0.0)  # quote leg value (sign follows qty_quote)
         et = str(r["event_type"]).lower()
-        
-        if r["side"] == "buy" and qty_base > 0:
-            total_cost = -eur_val + fee_eur  # eur_val negative on buys
-            add_lot(asset, qty_base, total_cost)
-            rows.append({
-                "date_utc": r["date_utc"], "exchange": r["exchange"], "txid": r["txid"],
-                "asset": asset, "side": "buy", "qty": qty_base,
-                "proceeds_eur": 0.0, "cost_eur": total_cost, "fees_eur": fee_eur,
-                "realized_pnl_eur": 0.0
-            })
-        elif r["side"] == "sell" and qty_base < 0:
-            units = abs(qty_base)
-            proceeds_net = eur_val - fee_eur  # eur_val positive for sells
-            cost, remainder = relieve_lot(asset, units)
-            realized = proceeds_net - cost
-            rows.append({
-                "date_utc": r["date_utc"], "exchange": r["exchange"], "txid": r["txid"],
-                "asset": asset, "side": "sell", "qty": units,
-                "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
-                "realized_pnl_eur": realized, "short_sold_without_inventory": bool(remainder>1e-18)
-            })
-        # --- DEPOSIT (zero cost inventory increase) ---
-        elif et == "deposit" and qty_base > 0:
-            add_lot(asset, qty_base, total_cost = 0)
-            
-        # --- WITHDRAWAL (inventory decrease) ---
-        elif et == "withdrawal" and qty_base < 0:
+        side = str(r.get("side", "")).lower()
+
+        qty_base = float(r.get("qty_base") or 0.0)
+        fee_eur  = float(r.get("eur_fee") or 0.0)
+        eur_val  = float(r.get("eur_amount") or 0.0)  # signed; buys negative, sells positive (per your unified schema)
+        fee_ccy  = str(r.get("fee_ccy") or "").upper()
+        fee_amt  = float(r.get("fee") or 0.0)
+
+        # ---------------------------
+        # 1) TRADES (PnL + inventory)
+        # ---------------------------
+        if et == "trade":
+            if side == "buy" and qty_base > 0:
+                total_cost = -eur_val + fee_eur   # eur_val negative on buys
+                add_lot_with_cost(asset, qty_base, total_cost, "TRADE BUY")
+                stats["trade_buys"] += 1
+
+                rows.append({
+                    "date_utc": r["date_utc"], "exchange": r.get("exchange"), "txid": r.get("txid"),
+                    "asset": asset, "side": "buy", "qty": qty_base,
+                    "proceeds_eur": 0.0, "cost_eur": total_cost, "fees_eur": fee_eur,
+                    "realized_pnl_eur": 0.0
+                })
+
+            elif side == "sell" and qty_base < 0:
+                units = abs(qty_base)
+                proceeds_net = eur_val - fee_eur  # eur_val positive for sells
+                cost, remainder = relieve_lot(asset, units)
+                realized = proceeds_net - cost
+
+                if remainder > 1e-18:
+                    stats["short_sells"] += 1
+                    if verbose:
+                        print(f"[FIFO][WARN] SHORT SELL: {asset} sold {units:g}, missing {remainder:g} units in inventory.")
+
+                stats["trade_sells"] += 1
+
+                rows.append({
+                    "date_utc": r["date_utc"], "exchange": r.get("exchange"), "txid": r.get("txid"),
+                    "asset": asset, "side": "sell", "qty": units,
+                    "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
+                    "realized_pnl_eur": realized,
+                    "short_sold_without_inventory": bool(remainder > 1e-18)
+                })
+
+        # ------------------------------------
+        # 2) DEPOSITS / TRANSFERS IN (+inventory)
+        # ------------------------------------
+        elif et in {"deposit", "transfer_in"} and qty_base > 0:
+            # Option 1 confirmed: use eur_amount as acquisition cost if available
+            if eur_val > 0:
+                add_lot_with_cost(asset, qty_base, eur_val, et.upper())
+                stats["deposits_costed"] += 1
+            else:
+                add_lot_with_cost(asset, qty_base, 0.0, et.upper()+" (ZERO COST)")
+                stats["deposits_zero_cost"] += 1
+                if verbose:
+                    print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
+
+        # ---------------------------------------
+        # 3) WITHDRAWALS / TRANSFERS OUT (-inventory)
+        # ---------------------------------------
+        elif et in {"withdrawal", "transfer_out"} and qty_base < 0:
             units = abs(qty_base)
             relieve_lot(asset, units)
-            
-        # --- FEE IN BASE CURRENCY ---
-        elif r["fee_ccy"] == asset and r["fee"] > 0:
-            relieve_lot(asset, r["fee"])
+            stats["withdrawals"] += 1
+            if verbose:
+                print(f"[FIFO] RELIEVE LOT {et.upper()}: {asset} -{units:g} units")
+
+        # ---------------------------------------
+        # 4) STAKING / EARN / AIRDROP (+inventory)
+        # ---------------------------------------
+        elif et in {"staking", "earn", "interest", "airdrop", "reward"} and qty_base > 0:
+            if eur_val > 0:
+                add_lot_with_cost(asset, qty_base, eur_val, et.upper())
+                stats["staking_costed"] += 1
+            else:
+                add_lot_with_cost(asset, qty_base, 0.0, et.upper()+" (ZERO COST)")
+                stats["staking_zero_cost"] += 1
+                if verbose:
+                    print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
+
+        # ---------------------------------------
+        # 5) FEE IN BASE CURRENCY (-inventory)
+        # ---------------------------------------
+        if fee_ccy == asset and fee_amt > 0:
+            relieve_lot(asset, fee_amt)
+            stats["base_fees_relived"] += 1
+            if verbose:
+                print(f"[FIFO] RELIEVE LOT FEE in base: {asset} fee {fee_amt:g} units")
+
 
     pnl_detailed = pd.DataFrame(rows)
     # if not pnl_detailed.empty:
@@ -265,6 +335,13 @@ def fifo_pnl(trades: pd.DataFrame):
     inventory = pd.DataFrame(inv_rows).sort_values("asset") if inv_rows else pd.DataFrame(
         columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
     )
+    
+    if verbose:
+        print("\n[FIFO] RUN SUMMARY")
+        for k, v in stats.items():
+            print(f"  - {k}: {v}")
+        print(f"  - assets with open lots: {len(lots_state)}")
+
     return pnl_detailed, monthly, inventory
 
 def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFrame:
