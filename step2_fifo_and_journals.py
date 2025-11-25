@@ -123,6 +123,11 @@ def load_unified(path: Path) -> pd.DataFrame:
 
 def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
     df = df.copy()
+
+    if verbose:
+        print("[FIFO] Using Option A: eur_amount as acquisition cost for deposits / staking / rewards.")
+    
+    
     df["event_type"] = df["event_type"].astype(str).str.lower()
     df["side"] = df["side"].astype(str).str.lower()
 
@@ -186,6 +191,9 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
 
     for _, r in df.iterrows():
         asset = str(r["base_ccy"]).upper()
+        if "." in asset:
+            asset = asset.split(".")[0]  # BTC.M -> BTC for FIFO only
+            
         et = str(r["event_type"]).lower()
         side = str(r.get("side", "")).lower()
 
@@ -193,6 +201,9 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         fee_eur  = float(r.get("eur_fee") or 0.0)
         eur_val  = float(r.get("eur_amount") or 0.0)  # signed; buys negative, sells positive (per your unified schema)
         fee_ccy  = str(r.get("fee_ccy") or "").upper()
+        # normalize fee_ccy the same way (so BTC.M fees hit BTC lots)
+        if "." in fee_ccy:
+            fee_ccy = fee_ccy.split(".")[0]
         fee_amt  = float(r.get("fee") or 0.0)
 
         # ---------------------------
@@ -236,12 +247,16 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         # 2) DEPOSITS / TRANSFERS IN (+inventory)
         # ------------------------------------
         elif et in {"deposit", "transfer_in"} and qty_base > 0:
-            # Option 1 confirmed: use eur_amount as acquisition cost if available
-            if eur_val > 0:
-                add_lot_with_cost(asset, qty_base, eur_val, et.upper())
+            # ✅ Option A: use eur_amount as acquisition cost when available.
+            # Some exchanges might export eur_amount as negative or positive;
+            # for deposits we always treat cost as ABS(eur_amount).
+            if eur_val != 0:
+                eur_cost = abs(eur_val)
+                add_lot_with_cost(asset, qty_base, eur_cost, et.upper())
                 stats["deposits_costed"] += 1
             else:
-                add_lot_with_cost(asset, qty_base, 0.0, et.upper()+" (ZERO COST)")
+                # True zero-cost deposits (rare; e.g., manual opening balance)
+                add_lot_with_cost(asset, qty_base, 0.0, et.upper() + " (ZERO COST)")
                 stats["deposits_zero_cost"] += 1
                 if verbose:
                     print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
@@ -260,17 +275,19 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         # 4) STAKING / EARN / AIRDROP (+inventory)
         # ---------------------------------------
         elif et in {"staking", "earn", "interest", "airdrop", "reward"} and qty_base > 0:
-            if eur_val > 0:
-                add_lot_with_cost(asset, qty_base, eur_val, et.upper())
+            # Same principle: use EUR valuation as cost basis (reward at fair value).
+            if eur_val != 0:
+                eur_cost = abs(eur_val)
+                add_lot_with_cost(asset, qty_base, eur_cost, et.upper())
                 stats["staking_costed"] += 1
             else:
-                add_lot_with_cost(asset, qty_base, 0.0, et.upper()+" (ZERO COST)")
+                add_lot_with_cost(asset, qty_base, 0.0, et.upper() + " (ZERO COST)")
                 stats["staking_zero_cost"] += 1
                 if verbose:
                     print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
 
         # ---------------------------------------
-        # 5) FEE IN BASE CURRENCY (-inventory)
+        # 5) FEE IN BASE CURRENCY (-inventory, on top of trade/deposit logic)
         # ---------------------------------------
         if fee_ccy == asset and fee_amt > 0:
             relieve_lot(asset, fee_amt)
