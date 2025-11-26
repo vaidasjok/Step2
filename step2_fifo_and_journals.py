@@ -308,7 +308,7 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
     #     fees_eur=("fees_eur","sum"),
     #     realized_pnl_eur=("realized_pnl_eur","sum")
     # ).sort_values(["month","asset"])
-    
+        
     # If no trades passed the filters, return empty but well-formed tables
     if pnl_detailed.empty:
         pnl_detailed = pd.DataFrame(
@@ -330,6 +330,7 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
     pnl_detailed["month"] = pd.to_datetime(pnl_detailed["date_utc"]).dt.to_period("M").astype(str)
 
     realized = pnl_detailed[pnl_detailed["side"] == "sell"].copy()
+    
     monthly = realized.groupby(["month", "asset"], as_index=False).agg(
         qty_sold=("qty", "sum"),
         proceeds_eur=("proceeds_eur", "sum"),
@@ -349,6 +350,7 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
             "closing_cost_eur": total_cost,
             "avg_cost_eur_per_unit": avg_cost,
         })
+        
     inventory = pd.DataFrame(inv_rows).sort_values("asset") if inv_rows else pd.DataFrame(
         columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
     )
@@ -391,15 +393,42 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
 
         # Dr Cash
         if abs(proceeds) > 1e-10:
-            rows.append({"month": month, "account": acc_cash, "debit": proceeds if proceeds>0 else 0.0, "credit": -proceeds if proceeds<0 else 0.0, "asset": asset, "memo": f"Sells proceeds {asset}"})
-        # Cr Inventory
+            rows.append({
+                "month": month, 
+                "account": acc_cash, 
+                "debit": proceeds if proceeds > 0 else 0.0, 
+                "credit": -proceeds if proceeds < 0 else 0.0,
+                # "debit": max(proceeds, 0),
+                # "credit": max(-proceeds, 0), 
+                "asset": asset, 
+                "memo": f"Sells proceeds {asset}"
+            })
+        # Cr Inventory (FIFO cost of units sold)
         if abs(cost) > 1e-10:
-            rows.append({"month": month, "account": acc_inv,  "debit": 0.0,                    "credit": cost,                                      "asset": asset, "memo": f"Relieve cost {asset}"})
+            rows.append({
+                "month": month, 
+                "account": acc_inv,  
+                "debit": 0.0,                    
+                "credit": cost,                                      
+                "asset": asset, 
+                "memo": f"Relieve cost {asset}"
+            })
         # Fees (Dr expense)
         if abs(fees) > 1e-10:
-            rows.append({"month": month, "account": acc_fee,  "debit": fees if fees>0 else 0.0, "credit": -fees if fees<0 else 0.0,                  "asset": asset, "memo": f"Trading fees {asset}"})
+            rows.append({
+                "month": month, 
+                "account": acc_fee,  
+                "debit": fees if fees > 0 else 0.0, 
+                "credit": -fees if fees < 0 else 0.0,
+                # "debit": max(fees, 0), 
+                # "credit": max(-fees, 0),
+                "asset": asset, 
+                "memo": f"Trading fees {asset}"
+            })
         # PnL (plug) – BEFORE fees
-        # We post PnL BEFORE fees here, and Trading Fees separately.             
+        # We post PnL BEFORE fees here, and Trading Fees separately. 
+        #   Debits  = net proceeds + fees  = gross proceeds
+        #   Credits = cost + pnl_before_fees = cost + (gross - cost) = gross            
         if abs(pnl_before_fees) > 1e-10:
             if pnl_before_fees >= 0:
                 # Profit before fees -> credit PnL
@@ -422,12 +451,68 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
                     "memo": f"Realized PnL before fees {asset}"
                 })
 
+    # jl = pd.DataFrame(rows)
+    # # Optional: round to 2 decimals for posting
+    # for c in ["debit","credit"]:
+    #     if c in jl.columns:
+    #         jl[c] = jl[c].round(2)
+    # return jl
+    
+    # Build DataFrame from rows
     jl = pd.DataFrame(rows)
-    # Optional: round to 2 decimals for posting
-    for c in ["debit","credit"]:
+    if jl.empty:
+        return jl
+    
+
+    # # --- helper: rebalance per month (rounding plug on PnL line) ---
+    # def _rebalance_one_month(group: pd.DataFrame) -> pd.DataFrame:
+    #     # 1) round first
+    #     group["debit"]  = group["debit"].round(2)
+    #     group["credit"] = group["credit"].round(2)
+
+    #     diff = round(group["debit"].sum() - group["credit"].sum(), 2)
+    #     if abs(diff) < 0.01:
+    #         # already balanced to cents
+    #         return group
+
+    #     # 2) find PnL line to plug into
+    #     pnl_account = params.get("realized_pnl", "540100 Other Income")
+    #     mask_pnl = group["account"] == pnl_account
+
+    #     if mask_pnl.any():
+    #         idx = group[mask_pnl].index[0]
+    #     else:
+    #         # fallback: if no explicit PnL line, adjust the first line
+    #         idx = group.index[0]
+
+    #     # 3) adjust PnL:
+    #     #    if debits > credits  -> increase credit
+    #     #    if credits > debits  -> increase debit
+    #     if diff > 0:
+    #         # more debit than credit → increase credit
+    #         group.loc[idx, "credit"] += diff
+    #     else:
+    #         # more credit than debit → increase debit
+    #         group.loc[idx, "debit"]  += -diff
+
+    #     return group
+
+    # Apply rebalance per month (you can switch to ["month","asset"] if you want per-asset balance)
+    # jl = jl.groupby("month", group_keys=False).apply(_rebalance_one_month)
+    
+    for c in ["debit", "credit"]:
         if c in jl.columns:
             jl[c] = jl[c].round(2)
+
+    # Debug: print imbalance (should be 0.00 if our logic is correct)
+    total_debit = float(jl["debit"].sum() if "debit" in jl.columns else 0.0)
+    total_credit = float(jl["credit"].sum() if "credit" in jl.columns else 0.0)
+    diff = round(total_debit - total_credit, 2)
+    if abs(diff) > 0.01:
+        print(f"[JOURNAL_MONTHLY][WARN] debit {total_debit:.2f} vs credit {total_credit:.2f}, diff={diff:.2f}")
+
     return jl
+
 
 # Build journals 2025-09-01
 import pandas as pd
