@@ -338,6 +338,27 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         fees_eur=("fees_eur", "sum"),
         realized_pnl_eur=("realized_pnl_eur", "sum"),
     ).sort_values(["month", "asset"])
+    
+    # vj debug 
+    # --- DEBUG: check that, per month/asset, pnl = proceeds - cost ---
+    # If this identity fails for some groups, journal_monthly *cannot* balance.
+    print("Start Check")
+    monthly["_balance_check"] = (
+        monthly["proceeds_eur"] - monthly["cost_eur"] - monthly["realized_pnl_eur"]
+    ).round(6)
+    bad_pnl = monthly[monthly["_balance_check"].abs() > 0.01]
+    if verbose and not bad_pnl.empty:
+        print("\n[FIFO][WARN] Inconsistent monthly PnL rows "
+              "(proceeds - cost - realized_pnl != 0):")
+        print(
+            bad_pnl[
+                ["month", "asset",
+                 "proceeds_eur", "cost_eur",
+                 "realized_pnl_eur", "_balance_check"]
+            ].head(40)
+        )
+    print("End Check")
+    # vj end debug
 
     inv_rows = []
     for asset, lots in lots_state.items():
@@ -510,6 +531,24 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
     diff = round(total_debit - total_credit, 2)
     if abs(diff) > 0.01:
         print(f"[JOURNAL_MONTHLY][WARN] debit {total_debit:.2f} vs credit {total_credit:.2f}, diff={diff:.2f}")
+        
+        # vj check 
+        print("start check")
+        # see which (month, asset) blocks are off
+        grp = jl.groupby(["month", "asset"], dropna=False).agg(
+            debit_sum=("debit", "sum"),
+            credit_sum=("credit", "sum"),
+        )
+        grp["diff"] = (grp["debit_sum"] - grp["credit_sum"]).round(2)
+        bad = grp[grp["diff"].abs() > 0.01]
+        if not bad.empty:
+            print("\n[JOURNAL_MONTHLY][DETAIL] Imbalanced month/asset groups:")
+            print(
+                bad.sort_values("diff", key=lambda s: s.abs(), ascending=False)
+                   .head(30)
+            )
+        print("end check")
+        # vj end check
 
     return jl
 

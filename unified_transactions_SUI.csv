@@ -1,7 +1,0 @@
-﻿date_utc,exchange,txid,source,event_type,base_ccy,quote_ccy,side,qty_base,qty_quote,price_quote_per_base,fee,fee_ccy,eur_amount,eur_fee,notes
-2024-03-26 21:19:00+00:00,Kraken,FTMQRs0-EbAJSnw5R0fSdr43kT5TeE,ledger,deposit,SUI,,,1,,,0,,,,
-2024-03-26 21:20:00+00:00,Kraken,FTA5lKJ-qrmN5AgmPBpSxjFES7xhSn,ledger,deposit,SUI,,,6785.825,,,0,,,,
-2024-05-01 22:26:00+00:00,Kraken,TOBSIS-6X3J5-X2FLF3,ledger,trade,SUI,,,-5107.82,,,0,,,,
-2024-05-01 22:26:00+00:00,Kraken,TX4FYU-C5KW2-JMF6LF,ledger,trade,SUI,,,-1679,,,0,,,,
-2024-05-01 22:26:28+00:00,Kraken,O2QSIB-MRJLQ-IPTS4L,trades,trade,SUI,USD,sell,-1679,1914.06,1.14,3.82812,USD,1785.83691,3.57167382,
-2024-05-01 22:26:28+00:00,Kraken,O2QSIB-MRJLQ-IPTS4L,trades,trade,SUI,USD,sell,-5107.824,5822.92,1.14,11.64584,USD,5432.841949,10.8656839,

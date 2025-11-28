@@ -1,0 +1,5 @@
+date_utc_raw,source,event_type,base_ccy,quote_ccy,qty_base,qty_quote,eur_amount,eur_fee,txid,exchange
+nan,ledger,transfer,,,,,,,ac42b5090ff86a02,gate
+nan,ledger,transfer,,,,,,,2fb752e38acb2440,gate
+nan,ledger,transfer,,,,,,,ac42b5090ff86a02,gate
+nan,ledger,transfer,,,,,,,2fb752e38acb2440,gate
