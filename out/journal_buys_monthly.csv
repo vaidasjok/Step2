@@ -1,28 +1,28 @@
 month,account,asset,memo,debit,credit,posting_date,Reference
 2023-06,262500 Cost of acquisition of crypto assets,ETH,Buy ETH - inventory at cost,458.31,0.0,2023-06-30,CRYPTO ALL 2023-06
-2023-06,271001 Bank,ETH,Buy ETH - cash outflow (cost + fees),0.0,459.5,2023-06-30,CRYPTO ALL 2023-06
+2023-06,274200 Exchanges EUR,ETH,Buy ETH - cash outflow (cost + fees),0.0,459.5,2023-06-30,CRYPTO ALL 2023-06
 2023-06,631200 Other Costs and Bank Taxes,ETH,Buy ETH - fees,1.19,0.0,2023-06-30,CRYPTO ALL 2023-06
 2023-07,262500 Cost of acquisition of crypto assets,ETH,Buy ETH - inventory at cost,109.15,0.0,2023-07-31,CRYPTO ALL 2023-07
 2023-07,262500 Cost of acquisition of crypto assets,TRX,Buy TRX - inventory at cost,551.43,0.0,2023-07-31,CRYPTO ALL 2023-07
-2023-07,271001 Bank,ETH,Buy ETH - cash outflow (cost + fees),0.0,109.43,2023-07-31,CRYPTO ALL 2023-07
-2023-07,271001 Bank,TRX,Buy TRX - cash outflow (cost + fees),0.0,552.86,2023-07-31,CRYPTO ALL 2023-07
+2023-07,274200 Exchanges EUR,ETH,Buy ETH - cash outflow (cost + fees),0.0,109.43,2023-07-31,CRYPTO ALL 2023-07
+2023-07,274200 Exchanges EUR,TRX,Buy TRX - cash outflow (cost + fees),0.0,552.86,2023-07-31,CRYPTO ALL 2023-07
 2023-07,631200 Other Costs and Bank Taxes,ETH,Buy ETH - fees,0.28,0.0,2023-07-31,CRYPTO ALL 2023-07
 2023-07,631200 Other Costs and Bank Taxes,TRX,Buy TRX - fees,1.43,0.0,2023-07-31,CRYPTO ALL 2023-07
 2023-08,262500 Cost of acquisition of crypto assets,USDT,Buy USDT - inventory at cost,55540.86,0.0,2023-08-31,CRYPTO ALL 2023-08
-2023-08,271001 Bank,USDT,Buy USDT - cash outflow (cost + fees),0.0,55651.72,2023-08-31,CRYPTO ALL 2023-08
+2023-08,274200 Exchanges EUR,USDT,Buy USDT - cash outflow (cost + fees),0.0,55651.72,2023-08-31,CRYPTO ALL 2023-08
 2023-08,631200 Other Costs and Bank Taxes,USDT,Buy USDT - fees,110.86,0.0,2023-08-31,CRYPTO ALL 2023-08
 2023-09,262500 Cost of acquisition of crypto assets,TRX,Buy TRX - inventory at cost,19.6,0.0,2023-09-30,CRYPTO ALL 2023-09
-2023-09,271001 Bank,TRX,Buy TRX - cash outflow (cost + fees),0.0,19.65,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274200 Exchanges EUR,TRX,Buy TRX - cash outflow (cost + fees),0.0,19.65,2023-09-30,CRYPTO ALL 2023-09
 2023-09,631200 Other Costs and Bank Taxes,TRX,Buy TRX - fees,0.05,0.0,2023-09-30,CRYPTO ALL 2023-09
 2023-10,262500 Cost of acquisition of crypto assets,BTC,Buy BTC - inventory at cost,296.1,0.0,2023-10-31,CRYPTO ALL 2023-10
-2023-10,271001 Bank,BTC,Buy BTC - cash outflow (cost + fees),0.0,296.87,2023-10-31,CRYPTO ALL 2023-10
+2023-10,274200 Exchanges EUR,BTC,Buy BTC - cash outflow (cost + fees),0.0,296.87,2023-10-31,CRYPTO ALL 2023-10
 2023-10,631200 Other Costs and Bank Taxes,BTC,Buy BTC - fees,0.77,0.0,2023-10-31,CRYPTO ALL 2023-10
 2023-11,262500 Cost of acquisition of crypto assets,ETH,Buy ETH - inventory at cost,64.63,0.0,2023-11-30,CRYPTO ALL 2023-11
 2023-11,262500 Cost of acquisition of crypto assets,TRX,Buy TRX - inventory at cost,9.38,0.0,2023-11-30,CRYPTO ALL 2023-11
 2023-11,262500 Cost of acquisition of crypto assets,USDC,Buy USDC - inventory at cost,26.59,0.0,2023-11-30,CRYPTO ALL 2023-11
-2023-11,271001 Bank,ETH,Buy ETH - cash outflow (cost + fees),0.0,64.8,2023-11-30,CRYPTO ALL 2023-11
-2023-11,271001 Bank,TRX,Buy TRX - cash outflow (cost + fees),0.0,9.4,2023-11-30,CRYPTO ALL 2023-11
-2023-11,271001 Bank,USDC,Buy USDC - cash outflow (cost + fees),0.0,26.65,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,ETH,Buy ETH - cash outflow (cost + fees),0.0,64.8,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,TRX,Buy TRX - cash outflow (cost + fees),0.0,9.4,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,USDC,Buy USDC - cash outflow (cost + fees),0.0,26.65,2023-11-30,CRYPTO ALL 2023-11
 2023-11,631200 Other Costs and Bank Taxes,ETH,Buy ETH - fees,0.17,0.0,2023-11-30,CRYPTO ALL 2023-11
 2023-11,631200 Other Costs and Bank Taxes,TRX,Buy TRX - fees,0.02,0.0,2023-11-30,CRYPTO ALL 2023-11
 2023-11,631200 Other Costs and Bank Taxes,USDC,Buy USDC - fees,0.05,0.0,2023-11-30,CRYPTO ALL 2023-11
@@ -30,10 +30,10 @@ month,account,asset,memo,debit,credit,posting_date,Reference
 2023-12,262500 Cost of acquisition of crypto assets,ETH,Buy ETH - inventory at cost,1334.06,0.0,2023-12-31,CRYPTO ALL 2023-12
 2023-12,262500 Cost of acquisition of crypto assets,NYM,Buy NYM - inventory at cost,15.22,0.0,2023-12-31,CRYPTO ALL 2023-12
 2023-12,262500 Cost of acquisition of crypto assets,USDC,Buy USDC - inventory at cost,2427.66,0.0,2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,BTC,Buy BTC - cash outflow (cost + fees),0.0,4880.6,2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,ETH,Buy ETH - cash outflow (cost + fees),0.0,1336.63,2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,NYM,Buy NYM - cash outflow (cost + fees),0.0,15.26,2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,USDC,Buy USDC - cash outflow (cost + fees),0.0,2432.5,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,BTC,Buy BTC - cash outflow (cost + fees),0.0,4880.6,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,ETH,Buy ETH - cash outflow (cost + fees),0.0,1336.63,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,NYM,Buy NYM - cash outflow (cost + fees),0.0,15.26,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,USDC,Buy USDC - cash outflow (cost + fees),0.0,2432.5,2023-12-31,CRYPTO ALL 2023-12
 2023-12,631200 Other Costs and Bank Taxes,BTC,Buy BTC - fees,12.62,0.0,2023-12-31,CRYPTO ALL 2023-12
 2023-12,631200 Other Costs and Bank Taxes,ETH,Buy ETH - fees,2.57,0.0,2023-12-31,CRYPTO ALL 2023-12
 2023-12,631200 Other Costs and Bank Taxes,NYM,Buy NYM - fees,0.04,0.0,2023-12-31,CRYPTO ALL 2023-12

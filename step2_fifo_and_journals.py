@@ -36,7 +36,7 @@ PARAM_ACCOUNTS = {
     "bank_eur": "271001 Bank",
 
     # 9. Exchange EUR (if exchange holds EUR balances)
-    "exchange_eur": "272001 Cash"
+    "exchange_eur": "274200 Exchanges EUR"
 }
 
 # ----------------------------
@@ -399,6 +399,7 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
 
         # Accounts
         acc_cash = params.get("cash_eur", "101000 Cash EUR")  # adjust if you split USDT
+        acc_exch_eur   = params.get("exchange_eur", params.get("cash_eur","101000 Cash EUR"))
         # acc_inv  = f'{params.get("crypto_inventory_prefix","1460 Crypto Asset ")}{asset}'
         acc_inv = params["crypto_inventory"]
         acc_fee  = params.get("fees_expense", "611500 Trading Fees")
@@ -416,7 +417,7 @@ def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFra
         if abs(proceeds) > 1e-10:
             rows.append({
                 "month": month, 
-                "account": acc_cash, 
+                "account": acc_exch_eur, 
                 "debit": proceeds if proceeds > 0 else 0.0, 
                 "credit": -proceeds if proceeds < 0 else 0.0,
                 # "debit": max(proceeds, 0),
@@ -578,6 +579,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
     #acc_inv_prefix = params.get("crypto_inventory_prefix","1460 Crypto Asset ")
     acc_fee        = params.get("fees_expense","611500 Trading Fees")
     acc_cash       = params.get("cash_eur", "101000 Cash EUR")
+    acc_exch_eur   = params.get("exchange_eur", params.get("cash_eur","101000 Cash EUR"))
 
     rows = []
     for _, r in df.iterrows():
@@ -610,7 +612,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
         if abs(total_cash_out) > 1e-10:
             rows.append({
                 "month": m, 
-                "account": acc_cash, 
+                "account": acc_exch_eur, 
                 "debit": 0.0, 
                 "credit": total_cash_out, 
                 "asset": asset, 
