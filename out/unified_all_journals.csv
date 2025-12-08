@@ -1,221 +1,473 @@
 month,account,debit,credit,asset,memo,posting_date,Reference
-2023-07,274200 Exchanges EUR,425.09,0.0,ETH,Sells proceeds ETH,2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,0.0,451.66,ETH,Relieve cost ETH,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,0.68,0.0,ETH,Trading fees ETH,2023-07-31,CRYPTO ALL 2023-07
-2023-07,540100 Other Income,25.89,0.0,ETH,Realized PnL before fees ETH,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,1207.24,0.0,USDC,Sells proceeds USDC,2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,0.0,1198.38,USDC,Relieve cost USDC,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,2.42,0.0,USDC,Trading fees USDC,2023-07-31,CRYPTO ALL 2023-07
-2023-07,540100 Other Income,0.0,11.27,USDC,Realized PnL before fees USDC,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,548.9,0.0,USDT,Sells proceeds USDT,2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,0.0,550.69,USDT,Relieve cost USDT,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,1.1,0.0,USDT,Trading fees USDT,2023-07-31,CRYPTO ALL 2023-07
-2023-07,540100 Other Income,0.69,0.0,USDT,Realized PnL before fees USDT,2023-07-31,CRYPTO ALL 2023-07
-2023-08,274200 Exchanges EUR,3639.3,0.0,BTC,Sells proceeds BTC,2023-08-31,CRYPTO ALL 2023-08
-2023-08,262500 Cost of acquisition of crypto assets,0.0,3641.7,BTC,Relieve cost BTC,2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,5.83,0.0,BTC,Trading fees BTC,2023-08-31,CRYPTO ALL 2023-08
-2023-08,540100 Other Income,0.0,3.44,BTC,Realized PnL before fees BTC,2023-08-31,CRYPTO ALL 2023-08
-2023-08,274200 Exchanges EUR,55319.34,0.0,USDT,Sells proceeds USDT,2023-08-31,CRYPTO ALL 2023-08
-2023-08,262500 Cost of acquisition of crypto assets,0.0,55514.43,USDT,Relieve cost USDT,2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,110.86,0.0,USDT,Trading fees USDT,2023-08-31,CRYPTO ALL 2023-08
-2023-08,540100 Other Income,84.23,0.0,USDT,Realized PnL before fees USDT,2023-08-31,CRYPTO ALL 2023-08
-2023-09,274200 Exchanges EUR,4.59,0.0,BTC,Sells proceeds BTC,2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,4.48,BTC,Relieve cost BTC,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,0.01,0.0,BTC,Trading fees BTC,2023-09-30,CRYPTO ALL 2023-09
-2023-09,540100 Other Income,0.0,0.12,BTC,Realized PnL before fees BTC,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,78.74,0.0,ETH,Sells proceeds ETH,2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,79.29,ETH,Relieve cost ETH,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,0.21,0.0,ETH,Trading fees ETH,2023-09-30,CRYPTO ALL 2023-09
-2023-09,540100 Other Income,0.35,0.0,ETH,Realized PnL before fees ETH,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,9.97,0.0,TRX,Sells proceeds TRX,2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,9.95,TRX,Relieve cost TRX,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,0.03,0.0,TRX,Trading fees TRX,2023-09-30,CRYPTO ALL 2023-09
-2023-09,540100 Other Income,0.0,0.05,TRX,Realized PnL before fees TRX,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,41532.94,0.0,USDT,Sells proceeds USDT,2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,41518.2,USDT,Relieve cost USDT,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,83.23,0.0,USDT,Trading fees USDT,2023-09-30,CRYPTO ALL 2023-09
-2023-09,540100 Other Income,0.0,97.97,USDT,Realized PnL before fees USDT,2023-09-30,CRYPTO ALL 2023-09
-2023-10,274200 Exchanges EUR,7.55,0.0,USDC,Sells proceeds USDC,2023-10-31,CRYPTO ALL 2023-10
-2023-10,262500 Cost of acquisition of crypto assets,0.0,7.59,USDC,Relieve cost USDC,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,0.02,0.0,USDC,Trading fees USDC,2023-10-31,CRYPTO ALL 2023-10
-2023-10,540100 Other Income,0.03,0.0,USDC,Realized PnL before fees USDC,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,166131.66,0.0,USDT,Sells proceeds USDT,2023-10-31,CRYPTO ALL 2023-10
-2023-10,262500 Cost of acquisition of crypto assets,0.0,166176.34,USDT,Relieve cost USDT,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,332.93,0.0,USDT,Trading fees USDT,2023-10-31,CRYPTO ALL 2023-10
-2023-10,540100 Other Income,0.0,288.24,USDT,Realized PnL before fees USDT,2023-10-31,CRYPTO ALL 2023-10
-2023-11,274200 Exchanges EUR,85.76,0.0,USDC,Sells proceeds USDC,2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,0.0,85.94,USDC,Relieve cost USDC,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,0.17,0.0,USDC,Trading fees USDC,2023-11-30,CRYPTO ALL 2023-11
-2023-11,540100 Other Income,0.01,0.0,USDC,Realized PnL before fees USDC,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,212113.67,0.0,USDT,Sells proceeds USDT,2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,0.0,212413.85,USDT,Relieve cost USDT,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,425.08,0.0,USDT,Trading fees USDT,2023-11-30,CRYPTO ALL 2023-11
-2023-11,540100 Other Income,0.0,124.9,USDT,Realized PnL before fees USDT,2023-11-30,CRYPTO ALL 2023-11
-2023-12,274200 Exchanges EUR,74.69,0.0,BTC,Sells proceeds BTC,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,75.9,BTC,Relieve cost BTC,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.12,0.0,BTC,Trading fees BTC,2023-12-31,CRYPTO ALL 2023-12
-2023-12,540100 Other Income,1.08,0.0,BTC,Realized PnL before fees BTC,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,197.56,0.0,ETH,Sells proceeds ETH,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,194.16,ETH,Relieve cost ETH,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.32,0.0,ETH,Trading fees ETH,2023-12-31,CRYPTO ALL 2023-12
-2023-12,540100 Other Income,0.0,3.72,ETH,Realized PnL before fees ETH,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,235565.06,0.0,USDT,Sells proceeds USDT,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,236024.18,USDT,Relieve cost USDT,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,472.07,0.0,USDT,Trading fees USDT,2023-12-31,CRYPTO ALL 2023-12
-2023-12,540100 Other Income,0.0,12.95,USDT,Realized PnL before fees USDT,2023-12-31,CRYPTO ALL 2023-12
-2023-06,262500 Cost of acquisition of crypto assets,458.31,0.0,ETH,Buy ETH - inventory at cost,2023-06-30,CRYPTO ALL 2023-06
-2023-06,274200 Exchanges EUR,0.0,459.5,ETH,Buy ETH - cash outflow (cost + fees),2023-06-30,CRYPTO ALL 2023-06
-2023-06,631200 Other Costs and Bank Taxes,1.19,0.0,ETH,Buy ETH - fees,2023-06-30,CRYPTO ALL 2023-06
-2023-07,262500 Cost of acquisition of crypto assets,109.15,0.0,ETH,Buy ETH - inventory at cost,2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,551.43,0.0,TRX,Buy TRX - inventory at cost,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,0.0,109.43,ETH,Buy ETH - cash outflow (cost + fees),2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,0.0,552.86,TRX,Buy TRX - cash outflow (cost + fees),2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,0.28,0.0,ETH,Buy ETH - fees,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,1.43,0.0,TRX,Buy TRX - fees,2023-07-31,CRYPTO ALL 2023-07
-2023-08,262500 Cost of acquisition of crypto assets,55540.86,0.0,USDT,Buy USDT - inventory at cost,2023-08-31,CRYPTO ALL 2023-08
-2023-08,274200 Exchanges EUR,0.0,55651.72,USDT,Buy USDT - cash outflow (cost + fees),2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,110.86,0.0,USDT,Buy USDT - fees,2023-08-31,CRYPTO ALL 2023-08
-2023-09,262500 Cost of acquisition of crypto assets,19.6,0.0,TRX,Buy TRX - inventory at cost,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,19.65,TRX,Buy TRX - cash outflow (cost + fees),2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,0.05,0.0,TRX,Buy TRX - fees,2023-09-30,CRYPTO ALL 2023-09
-2023-10,262500 Cost of acquisition of crypto assets,296.1,0.0,BTC,Buy BTC - inventory at cost,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,0.0,296.87,BTC,Buy BTC - cash outflow (cost + fees),2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,0.77,0.0,BTC,Buy BTC - fees,2023-10-31,CRYPTO ALL 2023-10
-2023-11,262500 Cost of acquisition of crypto assets,64.63,0.0,ETH,Buy ETH - inventory at cost,2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,9.38,0.0,TRX,Buy TRX - inventory at cost,2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,26.59,0.0,USDC,Buy USDC - inventory at cost,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,64.8,ETH,Buy ETH - cash outflow (cost + fees),2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,9.4,TRX,Buy TRX - cash outflow (cost + fees),2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,26.65,USDC,Buy USDC - cash outflow (cost + fees),2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,0.17,0.0,ETH,Buy ETH - fees,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,0.02,0.0,TRX,Buy TRX - fees,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,0.05,0.0,USDC,Buy USDC - fees,2023-11-30,CRYPTO ALL 2023-11
-2023-12,262500 Cost of acquisition of crypto assets,4867.98,0.0,BTC,Buy BTC - inventory at cost,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,1334.06,0.0,ETH,Buy ETH - inventory at cost,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,15.22,0.0,NYM,Buy NYM - inventory at cost,2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,2427.66,0.0,USDC,Buy USDC - inventory at cost,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,4880.6,BTC,Buy BTC - cash outflow (cost + fees),2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,1336.63,ETH,Buy ETH - cash outflow (cost + fees),2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,15.26,NYM,Buy NYM - cash outflow (cost + fees),2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,2432.5,USDC,Buy USDC - cash outflow (cost + fees),2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,12.62,0.0,BTC,Buy BTC - fees,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,2.57,0.0,ETH,Buy ETH - fees,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.04,0.0,NYM,Buy NYM - fees,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,4.85,0.0,USDC,Buy USDC - fees,2023-12-31,CRYPTO ALL 2023-12
-2023-06,262500 Cost of acquisition of crypto assets,0.0,452.1,ETH,ETH withdrawal (inventory decrease),2023-06-30,CRYPTO ALL 2023-06
-2023-06,273001 Liquidity Transfer,452.1,0.0,ETH,Transfer clearing,2023-06-30,CRYPTO ALL 2023-06
-2023-06,274100 Crypto USD Wallets,0.0,4.6,USDC,Fee credit,2023-06-30,CRYPTO ALL 2023-06
-2023-06,274100 Crypto USD Wallets,0.0,64.0,USDT,Fee credit,2023-06-30,CRYPTO ALL 2023-06
-2023-06,274200 Exchanges EUR,0.0,12.76,ETH,Fee credit,2023-06-30,CRYPTO ALL 2023-06
-2023-06,631200 Other Costs and Bank Taxes,12.76,0.0,ETH,Fee paid,2023-06-30,CRYPTO ALL 2023-06
-2023-06,631200 Other Costs and Bank Taxes,4.6,0.0,USDC,Fee paid,2023-06-30,CRYPTO ALL 2023-06
-2023-06,631200 Other Costs and Bank Taxes,64.0,0.0,USDT,Fee paid,2023-06-30,CRYPTO ALL 2023-06
-2023-07,262500 Cost of acquisition of crypto assets,60268.98,0.0,ETH,ETH deposit (inventory increase),2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,0.0,59904.59,ETH,ETH withdrawal (inventory decrease),2023-07-31,CRYPTO ALL 2023-07
-2023-07,262500 Cost of acquisition of crypto assets,0.0,549.25,TRX,TRX withdrawal (inventory decrease),2023-07-31,CRYPTO ALL 2023-07
-2023-07,273001 Liquidity Transfer,59904.59,60268.98,ETH,Transfer clearing,2023-07-31,CRYPTO ALL 2023-07
-2023-07,273001 Liquidity Transfer,549.25,0.0,TRX,Transfer clearing,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274100 Crypto USD Wallets,0.0,7.01,USDC,Fee credit,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274100 Crypto USD Wallets,0.0,286.65,USDT,Fee credit,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,0.0,21.81,ETH,Fee credit,2023-07-31,CRYPTO ALL 2023-07
-2023-07,274200 Exchanges EUR,0.0,5.09,TRX,Fee credit,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,21.81,0.0,ETH,Fee paid,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,5.09,0.0,TRX,Fee paid,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,7.01,0.0,USDC,Fee paid,2023-07-31,CRYPTO ALL 2023-07
-2023-07,631200 Other Costs and Bank Taxes,286.65,0.0,USDT,Fee paid,2023-07-31,CRYPTO ALL 2023-07
-2023-08,262500 Cost of acquisition of crypto assets,3641.7,0.0,BTC,BTC deposit (inventory increase),2023-08-31,CRYPTO ALL 2023-08
-2023-08,273001 Liquidity Transfer,0.0,3641.7,BTC,Transfer clearing,2023-08-31,CRYPTO ALL 2023-08
-2023-08,274100 Crypto USD Wallets,0.0,10.94,USDC,Fee credit,2023-08-31,CRYPTO ALL 2023-08
-2023-08,274100 Crypto USD Wallets,0.0,887.29,USDT,Fee credit,2023-08-31,CRYPTO ALL 2023-08
-2023-08,274200 Exchanges EUR,0.0,5.83,BTC,Fee credit,2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,5.83,0.0,BTC,Fee paid,2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,10.94,0.0,USDC,Fee paid,2023-08-31,CRYPTO ALL 2023-08
-2023-08,631200 Other Costs and Bank Taxes,887.29,0.0,USDT,Fee paid,2023-08-31,CRYPTO ALL 2023-08
-2023-09,262500 Cost of acquisition of crypto assets,18614.37,0.0,BTC,BTC deposit (inventory increase),2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,18607.39,BTC,BTC withdrawal (inventory decrease),2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,69342.34,0.0,ETH,ETH deposit (inventory increase),2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,69245.01,ETH,ETH withdrawal (inventory decrease),2023-09-30,CRYPTO ALL 2023-09
-2023-09,262500 Cost of acquisition of crypto assets,0.0,8.19,TRX,TRX withdrawal (inventory decrease),2023-09-30,CRYPTO ALL 2023-09
-2023-09,271001 Bank,40819.81,0.0,EUR,EUR withdrawal from exchange,2023-09-30,CRYPTO ALL 2023-09
-2023-09,273001 Liquidity Transfer,18607.39,18614.37,BTC,Transfer clearing,2023-09-30,CRYPTO ALL 2023-09
-2023-09,273001 Liquidity Transfer,69245.01,69342.34,ETH,Transfer clearing,2023-09-30,CRYPTO ALL 2023-09
-2023-09,273001 Liquidity Transfer,8.19,0.0,TRX,Transfer clearing,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274100 Crypto USD Wallets,0.0,8.42,USDC,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274100 Crypto USD Wallets,0.0,697.2,USDT,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,2.51,BTC,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,18.38,ETH,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,40819.81,EUR,EUR withdrawal from exchange,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,56.41,EUR,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,274200 Exchanges EUR,0.0,1.24,TRX,Fee credit,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,2.51,0.0,BTC,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,18.38,0.0,ETH,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,56.41,0.0,EUR,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,1.24,0.0,TRX,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,8.42,0.0,USDC,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-09,631200 Other Costs and Bank Taxes,697.2,0.0,USDT,Fee paid,2023-09-30,CRYPTO ALL 2023-09
-2023-10,262500 Cost of acquisition of crypto assets,0.0,292.5,BTC,BTC withdrawal (inventory decrease),2023-10-31,CRYPTO ALL 2023-10
-2023-10,262500 Cost of acquisition of crypto assets,9512.06,0.0,ETH,ETH deposit (inventory increase),2023-10-31,CRYPTO ALL 2023-10
-2023-10,262500 Cost of acquisition of crypto assets,0.0,9507.63,ETH,ETH withdrawal (inventory decrease),2023-10-31,CRYPTO ALL 2023-10
-2023-10,271001 Bank,167060.64,0.0,EUR,EUR withdrawal from exchange,2023-10-31,CRYPTO ALL 2023-10
-2023-10,273001 Liquidity Transfer,292.5,0.0,BTC,Transfer clearing,2023-10-31,CRYPTO ALL 2023-10
-2023-10,273001 Liquidity Transfer,9507.63,9512.06,ETH,Transfer clearing,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274100 Crypto USD Wallets,0.0,40.71,USDC,Fee credit,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274100 Crypto USD Wallets,0.0,1054.7,USDT,Fee credit,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,0.0,3.38,BTC,Fee credit,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,0.0,4.43,ETH,Fee credit,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,0.0,167060.64,EUR,EUR withdrawal from exchange,2023-10-31,CRYPTO ALL 2023-10
-2023-10,274200 Exchanges EUR,0.0,146.71,EUR,Fee credit,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,3.38,0.0,BTC,Fee paid,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,4.43,0.0,ETH,Fee paid,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,146.71,0.0,EUR,Fee paid,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,40.71,0.0,USDC,Fee paid,2023-10-31,CRYPTO ALL 2023-10
-2023-10,631200 Other Costs and Bank Taxes,1054.7,0.0,USDT,Fee paid,2023-10-31,CRYPTO ALL 2023-10
-2023-11,262500 Cost of acquisition of crypto assets,9122.56,0.0,ETH,ETH deposit (inventory increase),2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,0.0,9019.77,ETH,ETH withdrawal (inventory decrease),2023-11-30,CRYPTO ALL 2023-11
-2023-11,262500 Cost of acquisition of crypto assets,0.0,7.18,TRX,TRX withdrawal (inventory decrease),2023-11-30,CRYPTO ALL 2023-11
-2023-11,271001 Bank,212385.53,0.0,EUR,EUR withdrawal from exchange,2023-11-30,CRYPTO ALL 2023-11
-2023-11,273001 Liquidity Transfer,9019.77,9122.56,ETH,Transfer clearing,2023-11-30,CRYPTO ALL 2023-11
-2023-11,273001 Liquidity Transfer,7.18,0.0,TRX,Transfer clearing,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274100 Crypto USD Wallets,0.0,60.34,USDC,Fee credit,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274100 Crypto USD Wallets,0.0,1384.88,USDT,Fee credit,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,11.29,ETH,Fee credit,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,212385.53,EUR,EUR withdrawal from exchange,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,223.36,EUR,Fee credit,2023-11-30,CRYPTO ALL 2023-11
-2023-11,274200 Exchanges EUR,0.0,1.44,TRX,Fee credit,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,11.29,0.0,ETH,Fee paid,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,223.36,0.0,EUR,Fee paid,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,1.44,0.0,TRX,Fee paid,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,60.34,0.0,USDC,Fee paid,2023-11-30,CRYPTO ALL 2023-11
-2023-11,631200 Other Costs and Bank Taxes,1384.88,0.0,USDT,Fee paid,2023-11-30,CRYPTO ALL 2023-11
-2023-12,262500 Cost of acquisition of crypto assets,317342.23,0.0,BTC,BTC deposit (inventory increase),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,316387.63,BTC,BTC withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,18692.02,0.0,DOT,DOT deposit (inventory increase),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,18691.27,DOT,DOT withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,154923.06,0.0,ETH,ETH deposit (inventory increase),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,156024.84,ETH,ETH withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,14.07,0.0,NYM,NYM deposit (inventory increase),2023-12-31,CRYPTO ALL 2023-12
-2023-12,262500 Cost of acquisition of crypto assets,0.0,14.73,NYM,NYM withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,0.0,10.0,EUR,EUR deposit to exchange,2023-12-31,CRYPTO ALL 2023-12
-2023-12,271001 Bank,231221.98,0.0,EUR,EUR withdrawal from exchange,2023-12-31,CRYPTO ALL 2023-12
-2023-12,273001 Liquidity Transfer,316387.63,317342.23,BTC,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
-2023-12,273001 Liquidity Transfer,18691.27,18692.02,DOT,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
-2023-12,273001 Liquidity Transfer,156024.84,154923.06,ETH,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
-2023-12,273001 Liquidity Transfer,14.73,14.07,NYM,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274100 Crypto USD Wallets,0.0,0.04,USD,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274100 Crypto USD Wallets,0.0,139.42,USDC,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274100 Crypto USD Wallets,0.0,1473.46,USDT,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,75.61,BTC,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,0.76,DOT,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,27.23,ETH,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,10.0,0.0,EUR,EUR deposit to exchange,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,231221.98,EUR,EUR withdrawal from exchange,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,143.39,EUR,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,274200 Exchanges EUR,0.0,0.35,NYM,Fee credit,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,75.61,0.0,BTC,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.76,0.0,DOT,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,27.23,0.0,ETH,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,143.39,0.0,EUR,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.35,0.0,NYM,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,0.04,0.0,USD,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,139.42,0.0,USDC,Fee paid,2023-12-31,CRYPTO ALL 2023-12
-2023-12,631200 Other Costs and Bank Taxes,1473.46,0.0,USDT,Fee paid,2023-12-31,CRYPTO ALL 2023-12
+2024-01,274200 Exchanges EUR,3566.91,0.0,BTC,Sells proceeds BTC,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,3510.06,BTC,Relieve cost BTC,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,1.79,0.0,BTC,Trading fees BTC,2024-01-31,CRYPTO ALL 2024-01
+2024-01,540100 Other Income,0.0,58.64,BTC,Realized PnL before fees BTC,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,9375.38,0.0,DYDX,Sells proceeds DYDX,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,9189.49,DYDX,Relieve cost DYDX,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,4.39,0.0,DYDX,Trading fees DYDX,2024-01-31,CRYPTO ALL 2024-01
+2024-01,540100 Other Income,0.0,190.28,DYDX,Realized PnL before fees DYDX,2024-01-31,CRYPTO ALL 2024-01
+2024-02,274200 Exchanges EUR,1564.99,0.0,BTC,Sells proceeds BTC,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,0.0,1144.64,BTC,Relieve cost BTC,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,0.78,0.0,BTC,Trading fees BTC,2024-02-29,CRYPTO ALL 2024-02
+2024-02,540100 Other Income,0.0,421.14,BTC,Realized PnL before fees BTC,2024-02-29,CRYPTO ALL 2024-02
+2024-03,274200 Exchanges EUR,547.7,0.0,BNB,Sells proceeds BNB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,483.91,BNB,Relieve cost BNB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.25,0.0,BNB,Trading fees BNB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.0,64.03,BNB,Realized PnL before fees BNB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,118.93,0.0,BONK,Sells proceeds BONK,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,88.81,BONK,Relieve cost BONK,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.05,0.0,BONK,Trading fees BONK,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.0,30.18,BONK,Realized PnL before fees BONK,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,31808.49,0.0,BTC,Sells proceeds BTC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,30900.59,BTC,Relieve cost BTC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,13.53,0.0,BTC,Trading fees BTC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.0,921.43,BTC,Realized PnL before fees BTC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,34617.24,0.0,FRONT,Sells proceeds FRONT,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,35904.55,FRONT,Relieve cost FRONT,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,14.96,0.0,FRONT,Trading fees FRONT,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,1272.34,0.0,FRONT,Realized PnL before fees FRONT,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,2.35,0.0,SHIB,Sells proceeds SHIB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,2.85,SHIB,Relieve cost SHIB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.0,0.0,SHIB,Trading fees SHIB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.51,0.0,SHIB,Realized PnL before fees SHIB,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,411.02,0.0,USDC,Sells proceeds USDC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,411.31,USDC,Relieve cost USDC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.19,0.0,USDC,Trading fees USDC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.1,0.0,USDC,Realized PnL before fees USDC,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,3103.18,0.0,WOO,Sells proceeds WOO,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,2304.02,WOO,Relieve cost WOO,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.24,0.0,WOO,Trading fees WOO,2024-03-31,CRYPTO ALL 2024-03
+2024-03,540100 Other Income,0.0,800.4,WOO,Realized PnL before fees WOO,2024-03-31,CRYPTO ALL 2024-03
+2024-04,274200 Exchanges EUR,130889.89,0.0,BTC,Sells proceeds BTC,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,128658.68,BTC,Relieve cost BTC,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,57.3,0.0,BTC,Trading fees BTC,2024-04-30,CRYPTO ALL 2024-04
+2024-04,540100 Other Income,0.0,2288.51,BTC,Realized PnL before fees BTC,2024-04-30,CRYPTO ALL 2024-04
+2024-05,274200 Exchanges EUR,77700.13,0.0,BCH,Sells proceeds BCH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,98712.02,BCH,Relieve cost BCH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,36.09,0.0,BCH,Trading fees BCH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,20975.79,0.0,BCH,Realized PnL before fees BCH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,6126.38,0.0,BTC,Sells proceeds BTC,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,5982.62,BTC,Relieve cost BTC,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,3.07,0.0,BTC,Trading fees BTC,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,0.0,146.82,BTC,Realized PnL before fees BTC,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,9083.48,0.0,DCR,Sells proceeds DCR,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,9484.68,DCR,Relieve cost DCR,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,4.23,0.0,DCR,Trading fees DCR,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,396.96,0.0,DCR,Realized PnL before fees DCR,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,146031.71,0.0,ETH,Sells proceeds ETH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,145832.4,ETH,Relieve cost ETH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,70.42,0.0,ETH,Trading fees ETH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,0.0,269.73,ETH,Realized PnL before fees ETH,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,11044.9,0.0,INJ,Sells proceeds INJ,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,12556.39,INJ,Relieve cost INJ,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,Trading fees INJ,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,1506.51,0.0,INJ,Realized PnL before fees INJ,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,13422.55,0.0,PEPE,Sells proceeds PEPE,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,13186.94,PEPE,Relieve cost PEPE,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,6.05,0.0,PEPE,Trading fees PEPE,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,0.0,241.66,PEPE,Realized PnL before fees PEPE,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,36.73,0.0,TON,Sells proceeds TON,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,0.02,0.0,TON,Trading fees TON,2024-05-31,CRYPTO ALL 2024-05
+2024-05,540100 Other Income,0.0,36.75,TON,Realized PnL before fees TON,2024-05-31,CRYPTO ALL 2024-05
+2024-10,274200 Exchanges EUR,91915.12,0.0,USDT,Sells proceeds USDT,2024-10-31,CRYPTO ALL 2024-10
+2024-10,262500 Cost of acquisition of crypto assets,0.0,94227.86,USDT,Relieve cost USDT,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,82.87,0.0,USDT,Trading fees USDT,2024-10-31,CRYPTO ALL 2024-10
+2024-10,540100 Other Income,2229.87,0.0,USDT,Realized PnL before fees USDT,2024-10-31,CRYPTO ALL 2024-10
+2024-01,262500 Cost of acquisition of crypto assets,227763.06,0.0,BTC,Buy BTC - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,2296.83,0.0,DAI,Buy DAI - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,9193.63,0.0,DYDX,Buy DYDX - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,190714.07,0.0,ETH,Buy ETH - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,4609.22,0.0,PYTH,Buy PYTH - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,495.05,0.0,TRX,Buy TRX - inventory at cost,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,227871.02,BTC,Buy BTC - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,2297.98,DAI,Buy DAI - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,9197.77,DYDX,Buy DYDX - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,190806.25,ETH,Buy ETH - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,4611.53,PYTH,Buy PYTH - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,495.26,TRX,Buy TRX - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,107.96,0.0,BTC,Buy BTC - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,1.15,0.0,DAI,Buy DAI - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,4.14,0.0,DYDX,Buy DYDX - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,92.17,0.0,ETH,Buy ETH - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,2.31,0.0,PYTH,Buy PYTH - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,0.22,0.0,TRX,Buy TRX - fees,2024-01-31,CRYPTO ALL 2024-01
+2024-02,262500 Cost of acquisition of crypto assets,9291.62,0.0,AVAX,Buy AVAX - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,903897.17,0.0,BTC,Buy BTC - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,4900.34,0.0,ETH,Buy ETH - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,2322.8,0.0,FET,Buy FET - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,4656.18,0.0,INJ,Buy INJ - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,184.39,0.0,TRX,Buy TRX - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,2327.29,0.0,WOO,Buy WOO - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,2326.95,0.0,ZETA,Buy ZETA - inventory at cost,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,9296.47,AVAX,Buy AVAX - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,904328.92,BTC,Buy BTC - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,4902.83,ETH,Buy ETH - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,2323.91,FET,Buy FET - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,4658.4,INJ,Buy INJ - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,184.48,TRX,Buy TRX - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,2328.46,WOO,Buy WOO - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,2328.1,ZETA,Buy ZETA - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,4.85,0.0,AVAX,Buy AVAX - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,431.75,0.0,BTC,Buy BTC - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.49,0.0,ETH,Buy ETH - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.11,0.0,FET,Buy FET - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.22,0.0,INJ,Buy INJ - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,0.09,0.0,TRX,Buy TRX - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.17,0.0,WOO,Buy WOO - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.15,0.0,ZETA,Buy ZETA - fees,2024-02-29,CRYPTO ALL 2024-02
+2024-03,262500 Cost of acquisition of crypto assets,18242.02,0.0,ATOM,Buy ATOM - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,9762.88,0.0,AVAX,Buy AVAX - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,4579.13,0.0,AXS,Buy AXS - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,24234.33,0.0,BNB,Buy BNB - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,21100.74,0.0,BONK,Buy BONK - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,77072.97,0.0,BTC,Buy BTC - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,64520.34,0.0,CFX,Buy CFX - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,42923.98,0.0,DOGE,Buy DOGE - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,8917.73,0.0,ETH,Buy ETH - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,29606.28,0.0,FET,Buy FET - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,36.66,0.0,FRONT,Buy FRONT - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,2293.62,0.0,FTM,Buy FTM - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,64364.83,0.0,GRT,Buy GRT - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,27367.3,0.0,MATIC,Buy MATIC - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,23531.2,0.0,PEPE,Buy PEPE - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,12911.58,0.0,SHIB,Buy SHIB - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,2294.84,0.0,STX,Buy STX - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,9193.14,0.0,SUI,Buy SUI - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,14684.26,0.0,TIA,Buy TIA - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,1504.61,0.0,USDC,Buy USDC - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,8371.81,0.0,XTZ,Buy XTZ - inventory at cost,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,18249.31,ATOM,Buy ATOM - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,9766.87,AVAX,Buy AVAX - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,4581.2,AXS,Buy AXS - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,24244.03,BNB,Buy BNB - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,21109.96,BONK,Buy BONK - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,77105.89,BTC,Buy BTC - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,64550.34,CFX,Buy CFX - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,42942.85,DOGE,Buy DOGE - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,8921.84,ETH,Buy ETH - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,29619.5,FET,Buy FET - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,36.68,FRONT,Buy FRONT - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,2294.7,FTM,Buy FTM - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,64390.91,GRT,Buy GRT - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,27378.14,MATIC,Buy MATIC - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,23541.52,PEPE,Buy PEPE - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,12917.03,SHIB,Buy SHIB - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,2295.93,STX,Buy STX - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,9197.32,SUI,Buy SUI - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,14690.14,TIA,Buy TIA - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,1505.29,USDC,Buy USDC - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,8375.03,XTZ,Buy XTZ - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,7.29,0.0,ATOM,Buy ATOM - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,3.99,0.0,AVAX,Buy AVAX - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,2.07,0.0,AXS,Buy AXS - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,9.7,0.0,BNB,Buy BNB - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,9.23,0.0,BONK,Buy BONK - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,32.92,0.0,BTC,Buy BTC - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,30.0,0.0,CFX,Buy CFX - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,18.87,0.0,DOGE,Buy DOGE - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,4.11,0.0,ETH,Buy ETH - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,13.22,0.0,FET,Buy FET - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.02,0.0,FRONT,Buy FRONT - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.08,0.0,FTM,Buy FTM - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,26.08,0.0,GRT,Buy GRT - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.84,0.0,MATIC,Buy MATIC - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.32,0.0,PEPE,Buy PEPE - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.45,0.0,SHIB,Buy SHIB - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.1,0.0,STX,Buy STX - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,4.17,0.0,SUI,Buy SUI - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.89,0.0,TIA,Buy TIA - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.68,0.0,USDC,Buy USDC - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,3.22,0.0,XTZ,Buy XTZ - fees,2024-03-31,CRYPTO ALL 2024-03
+2024-04,262500 Cost of acquisition of crypto assets,98761.47,0.0,BCH,Buy BCH - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,181236.78,0.0,BTC,Buy BTC - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,9489.01,0.0,DCR,Buy DCR - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,45620.6,0.0,ETH,Buy ETH - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,13464.13,0.0,FET,Buy FET - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,11097.72,0.0,INJ,Buy INJ - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,18727.79,0.0,PEPE,Buy PEPE - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,57765.25,0.0,SOL,Buy SOL - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,183630.58,0.0,TON,Buy TON - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,10340.51,0.0,USDC,Buy USDC - inventory at cost,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,98805.78,BCH,Buy BCH - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,181318.27,BTC,Buy BTC - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,9493.23,DCR,Buy DCR - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,45639.03,ETH,Buy ETH - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,13470.63,FET,Buy FET - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,11102.68,INJ,Buy INJ - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,18736.44,PEPE,Buy PEPE - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,57794.86,SOL,Buy SOL - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,183723.28,TON,Buy TON - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,10345.29,USDC,Buy USDC - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,44.31,0.0,BCH,Buy BCH - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,81.48,0.0,BTC,Buy BTC - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.22,0.0,DCR,Buy DCR - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,18.43,0.0,ETH,Buy ETH - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,6.5,0.0,FET,Buy FET - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,Buy INJ - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,8.65,0.0,PEPE,Buy PEPE - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,29.61,0.0,SOL,Buy SOL - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,92.7,0.0,TON,Buy TON - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.77,0.0,USDC,Buy USDC - fees,2024-04-30,CRYPTO ALL 2024-04
+2024-05,262500 Cost of acquisition of crypto assets,21614.6,0.0,BCH,Buy BCH - inventory at cost,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,11531.91,0.0,BTC,Buy BTC - inventory at cost,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,289872.9,0.0,ETH,Buy ETH - inventory at cost,2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,3217.15,0.0,USDC,Buy USDC - inventory at cost,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,21624.72,BCH,Buy BCH - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,11537.08,BTC,Buy BTC - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,290009.33,ETH,Buy ETH - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,3218.76,USDC,Buy USDC - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,10.12,0.0,BCH,Buy BCH - fees,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,5.16,0.0,BTC,Buy BTC - fees,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,136.43,0.0,ETH,Buy ETH - fees,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,1.61,0.0,USDC,Buy USDC - fees,2024-05-31,CRYPTO ALL 2024-05
+2024-06,262500 Cost of acquisition of crypto assets,13.81,0.0,ETH,Buy ETH - inventory at cost,2024-06-30,CRYPTO ALL 2024-06
+2024-06,274200 Exchanges EUR,0.0,13.82,ETH,Buy ETH - cash outflow (cost + fees),2024-06-30,CRYPTO ALL 2024-06
+2024-06,631200 Other Costs and Bank Taxes,0.01,0.0,ETH,Buy ETH - fees,2024-06-30,CRYPTO ALL 2024-06
+2024-10,262500 Cost of acquisition of crypto assets,9.2,0.0,BNB,Buy BNB - inventory at cost,2024-10-31,CRYPTO ALL 2024-10
+2024-10,262500 Cost of acquisition of crypto assets,91.56,0.0,ETH,Buy ETH - inventory at cost,2024-10-31,CRYPTO ALL 2024-10
+2024-10,262500 Cost of acquisition of crypto assets,10.37,0.0,USDT,Buy USDT - inventory at cost,2024-10-31,CRYPTO ALL 2024-10
+2024-10,274200 Exchanges EUR,0.0,9.21,BNB,Buy BNB - cash outflow (cost + fees),2024-10-31,CRYPTO ALL 2024-10
+2024-10,274200 Exchanges EUR,0.0,91.64,ETH,Buy ETH - cash outflow (cost + fees),2024-10-31,CRYPTO ALL 2024-10
+2024-10,274200 Exchanges EUR,0.0,10.38,USDT,Buy USDT - cash outflow (cost + fees),2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.01,0.0,BNB,Buy BNB - fees,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.08,0.0,ETH,Buy ETH - fees,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.01,0.0,USDT,Buy USDT - fees,2024-10-31,CRYPTO ALL 2024-10
+2023-09,262500 Cost of acquisition of crypto assets,0.0,95.55,ETH,ETH withdrawal (inventory decrease),2023-09-30,CRYPTO ALL 2023-09
+2023-09,273001 Liquidity Transfer,95.55,0.0,ETH,Transfer clearing,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274100 Crypto USD Wallets,0.0,0.03,USDC,Fee credit,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274200 Exchanges EUR,0.0,0.1,ETH,Fee credit,2023-09-30,CRYPTO ALL 2023-09
+2023-09,631200 Other Costs and Bank Taxes,0.1,0.0,ETH,Fee paid,2023-09-30,CRYPTO ALL 2023-09
+2023-09,631200 Other Costs and Bank Taxes,0.03,0.0,USDC,Fee paid,2023-09-30,CRYPTO ALL 2023-09
+2023-10,262500 Cost of acquisition of crypto assets,0.0,18.55,TRX,TRX withdrawal (inventory decrease),2023-10-31,CRYPTO ALL 2023-10
+2023-10,273001 Liquidity Transfer,18.55,0.0,TRX,Transfer clearing,2023-10-31,CRYPTO ALL 2023-10
+2023-11,262500 Cost of acquisition of crypto assets,0.0,140.98,ETH,ETH withdrawal (inventory decrease),2023-11-30,CRYPTO ALL 2023-11
+2023-11,273001 Liquidity Transfer,140.98,0.0,ETH,Transfer clearing,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,0.0,0.07,ETH,Fee credit,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,0.07,0.0,ETH,Fee paid,2023-11-30,CRYPTO ALL 2023-11
+2023-12,262500 Cost of acquisition of crypto assets,0.0,45.8,ETH,ETH withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
+2023-12,262500 Cost of acquisition of crypto assets,0.0,6.21,TRX,TRX withdrawal (inventory decrease),2023-12-31,CRYPTO ALL 2023-12
+2023-12,273001 Liquidity Transfer,45.8,0.0,ETH,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
+2023-12,273001 Liquidity Transfer,6.21,0.0,TRX,Transfer clearing,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,0.0,0.02,ETH,Fee credit,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,0.0,0.0,TRX,Fee credit,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,0.02,0.0,ETH,Fee paid,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,0.0,0.0,TRX,Fee paid,2023-12-31,CRYPTO ALL 2023-12
+2024-01,262500 Cost of acquisition of crypto assets,0.0,223891.89,BTC,BTC withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,2291.24,DAI,DAI withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,190316.08,ETH,ETH withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,492.6,TRX,TRX withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01
+2024-01,273001 Liquidity Transfer,223891.89,0.0,BTC,Transfer clearing,2024-01-31,CRYPTO ALL 2024-01
+2024-01,273001 Liquidity Transfer,2291.24,0.0,DAI,Transfer clearing,2024-01-31,CRYPTO ALL 2024-01
+2024-01,273001 Liquidity Transfer,190316.08,0.0,ETH,Transfer clearing,2024-01-31,CRYPTO ALL 2024-01
+2024-01,273001 Liquidity Transfer,492.6,0.0,TRX,Transfer clearing,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,109.75,BTC,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,1.15,DAI,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,8.53,DYDX,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,92.17,ETH,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,2.31,PYTH,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,274200 Exchanges EUR,0.0,0.22,TRX,Fee credit,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,109.75,0.0,BTC,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,1.15,0.0,DAI,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,8.53,0.0,DYDX,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,92.17,0.0,ETH,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,2.31,0.0,PYTH,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-01,631200 Other Costs and Bank Taxes,0.22,0.0,TRX,Fee paid,2024-01-31,CRYPTO ALL 2024-01
+2024-02,262500 Cost of acquisition of crypto assets,0.0,873887.33,BTC,BTC withdrawal (inventory decrease),2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,0.0,4976.99,ETH,ETH withdrawal (inventory decrease),2024-02-29,CRYPTO ALL 2024-02
+2024-02,262500 Cost of acquisition of crypto assets,0.0,183.79,TRX,TRX withdrawal (inventory decrease),2024-02-29,CRYPTO ALL 2024-02
+2024-02,273001 Liquidity Transfer,873887.33,0.0,BTC,Transfer clearing,2024-02-29,CRYPTO ALL 2024-02
+2024-02,273001 Liquidity Transfer,4976.99,0.0,ETH,Transfer clearing,2024-02-29,CRYPTO ALL 2024-02
+2024-02,273001 Liquidity Transfer,183.79,0.0,TRX,Transfer clearing,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,4.85,AVAX,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,432.53,BTC,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,2.49,ETH,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,1.11,FET,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,2.22,INJ,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,0.09,TRX,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,1.17,WOO,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274200 Exchanges EUR,0.0,1.15,ZETA,Fee credit,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,4.85,0.0,AVAX,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,432.53,0.0,BTC,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.49,0.0,ETH,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.11,0.0,FET,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.22,0.0,INJ,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,0.09,0.0,TRX,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.17,0.0,WOO,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.15,0.0,ZETA,Fee paid,2024-02-29,CRYPTO ALL 2024-02
+2024-03,262500 Cost of acquisition of crypto assets,0.0,17133.78,ATOM,ATOM withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,10316.07,AVAX,AVAX withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,29344.99,0.0,BNB,BNB deposit (inventory increase),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,53753.01,BNB,BNB withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,19735.64,BONK,BONK withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,46869.21,BTC,BTC withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,85559.75,CFX,CFX withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,50692.49,DOGE,DOGE withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,9138.69,ETH,ETH withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,32770.9,FET,FET withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,1701942.37,0.0,FRONT,FRONT deposit (inventory increase),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,1666073.66,FRONT,FRONT withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,77865.27,GRT,GRT withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,24335.32,MATIC,MATIC withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,26794.74,PEPE,PEPE withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,12375.16,SHIB,SHIB withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,11844.16,SUI,SUI withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,12840.61,TIA,TIA withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,4604.08,0.0,XRP,XRP deposit (inventory increase),2024-03-31,CRYPTO ALL 2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,8482.33,XTZ,XTZ withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,17133.78,0.0,ATOM,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,10316.07,0.0,AVAX,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,53753.01,29344.99,BNB,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,19735.64,0.0,BONK,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,46869.21,0.0,BTC,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,85559.75,0.0,CFX,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,50692.49,0.0,DOGE,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,9138.69,0.0,ETH,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,32770.9,0.0,FET,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,1666073.66,1701942.37,FRONT,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,77865.27,0.0,GRT,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,24335.32,0.0,MATIC,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,26794.74,0.0,PEPE,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,12375.16,0.0,SHIB,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,11844.16,0.0,SUI,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,12840.61,0.0,TIA,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,0.0,4604.08,XRP,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,273001 Liquidity Transfer,8482.33,0.0,XTZ,Transfer clearing,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274100 Crypto USD Wallets,0.0,0.86,USDC,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,7.29,ATOM,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,3.99,AVAX,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,2.07,AXS,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,9.95,BNB,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,9.28,BONK,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,46.45,BTC,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,30.0,CFX,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,18.87,DOGE,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,4.11,ETH,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,13.22,FET,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,14.98,FRONT,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,1.08,FTM,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,26.08,GRT,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,10.84,MATIC,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,10.32,PEPE,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,5.45,SHIB,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,1.1,STX,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,4.17,SUI,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,5.89,TIA,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,1.24,WOO,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,274200 Exchanges EUR,0.0,3.22,XTZ,Fee credit,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,7.29,0.0,ATOM,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,3.99,0.0,AVAX,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,2.07,0.0,AXS,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,9.95,0.0,BNB,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,9.28,0.0,BONK,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,46.45,0.0,BTC,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,30.0,0.0,CFX,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,18.87,0.0,DOGE,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,4.11,0.0,ETH,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,13.22,0.0,FET,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,14.98,0.0,FRONT,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.08,0.0,FTM,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,26.08,0.0,GRT,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.84,0.0,MATIC,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.32,0.0,PEPE,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.45,0.0,SHIB,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.1,0.0,STX,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,4.17,0.0,SUI,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.89,0.0,TIA,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.86,0.0,USDC,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.24,0.0,WOO,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-03,631200 Other Costs and Bank Taxes,3.22,0.0,XTZ,Fee paid,2024-03-31,CRYPTO ALL 2024-03
+2024-04,262500 Cost of acquisition of crypto assets,9481.3,0.0,BTC,BTC deposit (inventory increase),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,61677.06,BTC,BTC withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,45107.65,ETH,ETH withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,14584.5,FET,FET withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,4672.77,PEPE,PEPE withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,71076.64,SOL,SOL withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,262500 Cost of acquisition of crypto assets,0.0,179548.96,TON,TON withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,61677.06,9481.3,BTC,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,45107.65,0.0,ETH,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,14584.5,0.0,FET,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,4672.77,0.0,PEPE,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,71076.64,0.0,SOL,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,273001 Liquidity Transfer,179548.96,0.0,TON,Transfer clearing,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274100 Crypto USD Wallets,0.0,4.77,USDC,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,44.31,BCH,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,138.78,BTC,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,4.22,DCR,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,18.43,ETH,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,6.5,FET,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,4.97,INJ,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,8.65,PEPE,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,29.61,SOL,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,274200 Exchanges EUR,0.0,92.7,TON,Fee credit,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,44.31,0.0,BCH,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,138.78,0.0,BTC,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.22,0.0,DCR,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,18.43,0.0,ETH,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,6.5,0.0,FET,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,8.65,0.0,PEPE,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,29.61,0.0,SOL,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,92.7,0.0,TON,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-04,631200 Other Costs and Bank Taxes,4.77,0.0,USDC,Fee paid,2024-04-30,CRYPTO ALL 2024-04
+2024-05,262500 Cost of acquisition of crypto assets,0.0,21596.72,BCH,BCH withdrawal (inventory decrease),2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,5982.62,0.0,BTC,BTC deposit (inventory increase),2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,11566.26,BTC,BTC withdrawal (inventory decrease),2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,145844.08,0.0,ETH,ETH deposit (inventory increase),2024-05-31,CRYPTO ALL 2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,284674.08,ETH,ETH withdrawal (inventory decrease),2024-05-31,CRYPTO ALL 2024-05
+2024-05,273001 Liquidity Transfer,21596.72,0.0,BCH,Transfer clearing,2024-05-31,CRYPTO ALL 2024-05
+2024-05,273001 Liquidity Transfer,11566.26,5982.62,BTC,Transfer clearing,2024-05-31,CRYPTO ALL 2024-05
+2024-05,273001 Liquidity Transfer,284674.08,145844.08,ETH,Transfer clearing,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274100 Crypto USD Wallets,0.0,1.61,USDC,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,46.21,BCH,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,8.23,BTC,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,4.23,DCR,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,206.84,ETH,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,4.97,INJ,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,6.05,PEPE,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,274200 Exchanges EUR,0.0,0.02,TON,Fee credit,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,46.21,0.0,BCH,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,8.23,0.0,BTC,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,4.23,0.0,DCR,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,206.84,0.0,ETH,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,6.05,0.0,PEPE,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,0.02,0.0,TON,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-05,631200 Other Costs and Bank Taxes,1.61,0.0,USDC,Fee paid,2024-05-31,CRYPTO ALL 2024-05
+2024-06,262500 Cost of acquisition of crypto assets,0.0,6292.37,AVAX,AVAX withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,2240.14,AXS,AXS withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,2058.94,DOGE,DOGE withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,13.79,ETH,ETH withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,5082.2,FET,FET withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,2067.3,FTM,FTM withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,2836.62,INJ,INJ withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,4451.2,PEPE,PEPE withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,3638.28,PYTH,PYTH withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,1465.48,STX,STX withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,3618.99,XRP,XRP withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,262500 Cost of acquisition of crypto assets,0.0,805.61,ZETA,ZETA withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,6292.37,0.0,AVAX,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,2240.14,0.0,AXS,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,2058.94,0.0,DOGE,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,13.79,0.0,ETH,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,5082.2,0.0,FET,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,2067.3,0.0,FTM,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,2836.62,0.0,INJ,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,4451.2,0.0,PEPE,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,3638.28,0.0,PYTH,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,1465.48,0.0,STX,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,3618.99,0.0,XRP,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,805.61,0.0,ZETA,Transfer clearing,2024-06-30,CRYPTO ALL 2024-06
+2024-06,274200 Exchanges EUR,0.0,0.01,ETH,Fee credit,2024-06-30,CRYPTO ALL 2024-06
+2024-06,631200 Other Costs and Bank Taxes,0.01,0.0,ETH,Fee paid,2024-06-30,CRYPTO ALL 2024-06
+2024-07,262500 Cost of acquisition of crypto assets,46136.88,0.0,BTC,BTC deposit (inventory increase),2024-07-31,CRYPTO ALL 2024-07
+2024-07,262500 Cost of acquisition of crypto assets,0.0,46136.89,BTC,BTC withdrawal (inventory decrease),2024-07-31,CRYPTO ALL 2024-07
+2024-07,273001 Liquidity Transfer,46136.89,46136.88,BTC,Transfer clearing,2024-07-31,CRYPTO ALL 2024-07
+2024-10,262500 Cost of acquisition of crypto assets,0.0,9.25,BNB,BNB withdrawal (inventory decrease),2024-10-31,CRYPTO ALL 2024-10
+2024-10,273001 Liquidity Transfer,9.25,0.0,BNB,Transfer clearing,2024-10-31,CRYPTO ALL 2024-10
+2024-10,274100 Crypto USD Wallets,0.0,82.88,USDT,Fee credit,2024-10-31,CRYPTO ALL 2024-10
+2024-10,274200 Exchanges EUR,0.0,0.01,BNB,Fee credit,2024-10-31,CRYPTO ALL 2024-10
+2024-10,274200 Exchanges EUR,0.0,0.08,ETH,Fee credit,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.01,0.0,BNB,Fee paid,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.08,0.0,ETH,Fee paid,2024-10-31,CRYPTO ALL 2024-10
+2024-10,631200 Other Costs and Bank Taxes,82.88,0.0,USDT,Fee paid,2024-10-31,CRYPTO ALL 2024-10
