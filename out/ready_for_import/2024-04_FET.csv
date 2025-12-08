@@ -1,8 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-04,262500 Cost of acquisition of crypto assets,13464.13,0.0,FET,okx Buy FET - inventory at cost,2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,274200 Exchanges EUR,0.0,13470.63,FET,okx Buy FET - cash outflow (cost + fees),2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,631200 Other Costs and Bank Taxes,6.5,0.0,FET,okx Buy FET - fees,2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,262500 Cost of acquisition of crypto assets,0.0,14584.5,FET,okx FET withdrawal (inventory decrease),2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,273001 Liquidity Transfer,14584.5,0.0,FET,okx Transfer clearing,2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,274200 Exchanges EUR,0.0,6.5,FET,okx Fee credit,2024-04-30,CRYPTO ALL 2024-04,2024-04
-2024-04,631200 Other Costs and Bank Taxes,6.5,0.0,FET,okx Fee paid,2024-04-30,CRYPTO ALL 2024-04,2024-04

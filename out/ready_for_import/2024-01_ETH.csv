@@ -1,8 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-01,262500 Cost of acquisition of crypto assets,190714.07,0.0,ETH,okx Buy ETH - inventory at cost,2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,274200 Exchanges EUR,0.0,190806.25,ETH,okx Buy ETH - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,631200 Other Costs and Bank Taxes,92.17,0.0,ETH,okx Buy ETH - fees,2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,262500 Cost of acquisition of crypto assets,0.0,190316.08,ETH,okx ETH withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,273001 Liquidity Transfer,190316.08,0.0,ETH,okx Transfer clearing,2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,274200 Exchanges EUR,0.0,92.17,ETH,okx Fee credit,2024-01-31,CRYPTO ALL 2024-01,2024-01
-2024-01,631200 Other Costs and Bank Taxes,92.17,0.0,ETH,okx Fee paid,2024-01-31,CRYPTO ALL 2024-01,2024-01

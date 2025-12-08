@@ -1,7 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-05,274200 Exchanges EUR,11044.9,0.0,INJ,Sells proceeds INJ,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,262500 Cost of acquisition of crypto assets,0.0,12556.39,INJ,Relieve cost INJ,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,Trading fees INJ,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,540100 Other Income,1506.51,0.0,INJ,Realized PnL before fees INJ,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,4.97,INJ,okx Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,4.97,0.0,INJ,okx Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05

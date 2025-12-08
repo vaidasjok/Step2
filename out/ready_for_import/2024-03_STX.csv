@@ -1,6 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-03,262500 Cost of acquisition of crypto assets,2294.84,0.0,STX,okx Buy STX - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,2295.93,STX,okx Buy STX - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,1.1,0.0,STX,okx Buy STX - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,1.1,STX,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,1.1,0.0,STX,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

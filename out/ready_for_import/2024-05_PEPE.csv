@@ -1,7 +1,3 @@
 month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-05,274200 Exchanges EUR,13422.55,0.0,PEPE,Sells proceeds PEPE,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,262500 Cost of acquisition of crypto assets,0.0,13186.94,PEPE,Relieve cost PEPE,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,6.05,0.0,PEPE,Trading fees PEPE,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,540100 Other Income,0.0,241.66,PEPE,Realized PnL before fees PEPE,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,6.05,PEPE,okx Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,6.05,0.0,PEPE,okx Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,262500 Cost of acquisition of crypto assets,29991.07,0.0,PEPE,binance PEPE deposit (inventory increase),2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,273001 Liquidity Transfer,0.0,29991.07,PEPE,binance Transfer clearing,2024-05-31,CRYPTO ALL 2024-05,2024-05

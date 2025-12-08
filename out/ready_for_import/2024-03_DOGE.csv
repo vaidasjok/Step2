@@ -1,8 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-03,262500 Cost of acquisition of crypto assets,42923.98,0.0,DOGE,okx Buy DOGE - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,42942.85,DOGE,okx Buy DOGE - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,18.87,0.0,DOGE,okx Buy DOGE - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,262500 Cost of acquisition of crypto assets,0.0,50692.49,DOGE,okx DOGE withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,273001 Liquidity Transfer,50692.49,0.0,DOGE,okx Transfer clearing,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,18.87,DOGE,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,18.87,0.0,DOGE,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

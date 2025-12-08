@@ -1,6 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-03,262500 Cost of acquisition of crypto assets,4579.13,0.0,AXS,okx Buy AXS - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,4581.2,AXS,okx Buy AXS - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,2.07,0.0,AXS,okx Buy AXS - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,2.07,AXS,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,2.07,0.0,AXS,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

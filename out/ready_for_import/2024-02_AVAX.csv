@@ -1,6 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-02,262500 Cost of acquisition of crypto assets,9291.62,0.0,AVAX,okx Buy AVAX - inventory at cost,2024-02-29,CRYPTO ALL 2024-02,2024-02
-2024-02,274200 Exchanges EUR,0.0,9296.47,AVAX,okx Buy AVAX - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02,2024-02
-2024-02,631200 Other Costs and Bank Taxes,4.85,0.0,AVAX,okx Buy AVAX - fees,2024-02-29,CRYPTO ALL 2024-02,2024-02
-2024-02,274200 Exchanges EUR,0.0,4.85,AVAX,okx Fee credit,2024-02-29,CRYPTO ALL 2024-02,2024-02
-2024-02,631200 Other Costs and Bank Taxes,4.85,0.0,AVAX,okx Fee paid,2024-02-29,CRYPTO ALL 2024-02,2024-02

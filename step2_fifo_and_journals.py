@@ -3,6 +3,7 @@ import pandas as pd
 from pathlib import Path
 import numpy as np
 from pandas.tseries.offsets import MonthEnd
+from step3_split_for_import import split_unified_journals_by_asset_month as split
 
 # ---------- CONFIG ----------
 INPUT_PATH = Path("unified_transactions.csv")   # can be .xlsx as well
@@ -683,12 +684,23 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
         # --- 1. EUR deposits / withdrawals ---
         if asset == "EUR" and et == "deposit" and eur_amt > 0:
             add_row(m, acc_exch_eur, eur_amt, 0.0, asset, f"{exchange} EUR deposit to exchange")
-            add_row(m, acc_bank_eur, 0.0, eur_amt, asset, f"{exchange} EUR deposit to exchange")
+            add_row(m, acc_clear, 0.0, eur_amt, asset, f"{exchange} EUR deposit to exchange")
 
         elif asset == "EUR" and et == "withdrawal" and eur_amt < 0:
             amt = -eur_amt
-            add_row(m, acc_bank_eur, amt, 0.0, asset, f"{exchange} EUR withdrawal from exchange")
+            add_row(m, acc_clear, amt, 0.0, asset, f"{exchange} EUR withdrawal from exchange")
             add_row(m, acc_exch_eur, 0.0, amt, asset, f"{exchange} EUR withdrawal from exchange")
+            
+        # --- 1b. USD-like (USD/USDT/USDC) deposits / withdrawals ---
+        elif asset in {"USD", "USDT", "USDC"} and et == "deposit" and eur_amt > 0:
+            # Treat as deposit into USD-like exchange wallet, valued in EUR
+            add_row(m, acc_exch_usdl, eur_amt, 0.0, asset, f"{exchange} {asset} deposit to exchange")
+            add_row(m, acc_clear, 0.0, eur_amt, asset, f"{exchange} {asset} deposit clearing")
+
+        elif asset in {"USD", "USDT", "USDC"} and et == "withdrawal" and eur_amt < 0:
+            amt = -eur_amt
+            add_row(m, acc_clear, amt, 0.0, asset, f"{exchange} {asset} withdrawal clearing")
+            add_row(m, acc_exch_usdl, 0.0, amt, asset, f"{exchange} {asset} withdrawal from exchange")
 
         # --- 2. Crypto deposit (increase inventory) ---
         elif et == "deposit" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt > 0:
@@ -796,6 +808,11 @@ def main():
     
     unified_all_journals = pd.concat([jl, jl_buys, jl_ledger], ignore_index=True)
     (OUTPUT_DIR / "unified_all_journals.csv").write_text(unified_all_journals.to_csv(index=False))
+    
+    split(
+        input_path = "out/unified_all_journals.csv",
+        output_dir = "out/ready_for_import",
+    )
 
 if __name__ == "__main__":
     main()
