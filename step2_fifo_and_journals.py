@@ -587,6 +587,9 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
         cost = float(r.get("cost_eur", 0.0) or 0.0)
         fees = float(r.get("fees_eur", 0.0) or 0.0)
         inv_acc = params["crypto_inventory"]
+        
+        exchange = r["exchange"]
+        
         # 1) Dr Inventory (cost)
         if cost > 0:
             rows.append({
@@ -595,7 +598,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
                 "debit": cost, 
                 "credit": 0.0, 
                 "asset": asset, 
-                "memo": f"Buy {asset} - inventory at cost"
+                "memo": f"{exchange} Buy {asset} - inventory at cost"
             })
         # 2) Dr Fees Expense
         if fees > 0:
@@ -605,7 +608,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
                 "debit": fees, 
                 "credit": 0.0, 
                 "asset": asset, 
-                "memo": f"Buy {asset} - fees"
+                "memo": f"{exchange} Buy {asset} - fees"
             })
         # 3) Cr Cash (cost + fees)
         total_cash_out = cost + fees
@@ -616,7 +619,7 @@ def build_buys_journal(pnl_detailed: pd.DataFrame, params: dict) -> pd.DataFrame
                 "debit": 0.0, 
                 "credit": total_cash_out, 
                 "asset": asset, 
-                "memo": f"Buy {asset} - cash outflow (cost + fees)"
+                "memo": f"{exchange} Buy {asset} - cash outflow (cost + fees)"
             })
 
     jl = pd.DataFrame(rows)
@@ -674,38 +677,40 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
         et = r["etype"]
         eur_amt = float(r["eur_amount"]) if pd.notna(r["eur_amount"]) else 0.0
         fee_eur = float(r["eur_fee"]) if pd.notna(r["eur_fee"]) else 0.0
+        
+        exchange = r["exchange"]
 
         # --- 1. EUR deposits / withdrawals ---
         if asset == "EUR" and et == "deposit" and eur_amt > 0:
-            add_row(m, acc_exch_eur, eur_amt, 0.0, asset, "EUR deposit to exchange")
-            add_row(m, acc_bank_eur, 0.0, eur_amt, asset, "EUR deposit to exchange")
+            add_row(m, acc_exch_eur, eur_amt, 0.0, asset, f"{exchange} EUR deposit to exchange")
+            add_row(m, acc_bank_eur, 0.0, eur_amt, asset, f"{exchange} EUR deposit to exchange")
 
         elif asset == "EUR" and et == "withdrawal" and eur_amt < 0:
             amt = -eur_amt
-            add_row(m, acc_bank_eur, amt, 0.0, asset, "EUR withdrawal from exchange")
-            add_row(m, acc_exch_eur, 0.0, amt, asset, "EUR withdrawal from exchange")
+            add_row(m, acc_bank_eur, amt, 0.0, asset, f"{exchange} EUR withdrawal from exchange")
+            add_row(m, acc_exch_eur, 0.0, amt, asset, f"{exchange} EUR withdrawal from exchange")
 
         # --- 2. Crypto deposit (increase inventory) ---
         elif et == "deposit" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt > 0:
             inv_acc = params["crypto_inventory"]
-            add_row(m, inv_acc, eur_amt, 0.0, asset, f"{asset} deposit (inventory increase)")
-            add_row(m, acc_clear, 0.0, eur_amt, asset, "Transfer clearing")
+            add_row(m, inv_acc, eur_amt, 0.0, asset, f"{exchange} {asset} deposit (inventory increase)")
+            add_row(m, acc_clear, 0.0, eur_amt, asset, f"{exchange} Transfer clearing")
 
         # --- 3. Crypto withdrawal (decrease inventory) ---
         elif et == "withdrawal" and asset not in {"EUR","USD","USDT","USDC"} and eur_amt < 0:
             amt = -eur_amt
             inv_acc = params["crypto_inventory"]
-            add_row(m, acc_clear, amt, 0.0, asset, "Transfer clearing")
-            add_row(m, inv_acc, 0.0, amt, asset, f"{asset} withdrawal (inventory decrease)")
+            add_row(m, acc_clear, amt, 0.0, asset, f"{exchange} Transfer clearing")
+            add_row(m, inv_acc, 0.0, amt, asset, f"{exchange} {asset} withdrawal (inventory decrease)")
 
         # --- 4. Fees (always apply) ---
         if fee_eur > 0:
-            add_row(m, acc_fee, fee_eur, 0.0, asset, "Fee paid")
+            add_row(m, acc_fee, fee_eur, 0.0, asset, f"{exchange} Fee paid")
             # credit side: which account?
             if asset in {"USD","USDT","USDC"}:
-                add_row(m, acc_exch_usdl, 0.0, fee_eur, asset, "Fee credit")
+                add_row(m, acc_exch_usdl, 0.0, fee_eur, asset, f"{exchange} Fee credit")
             else:
-                add_row(m, acc_exch_eur, 0.0, fee_eur, asset, "Fee credit")
+                add_row(m, acc_exch_eur, 0.0, fee_eur, asset, f"{exchange} Fee credit")
 
     jl = pd.DataFrame(rows)
     if jl.empty:
@@ -763,7 +768,9 @@ def main():
         )
     except Exception as e:
         print("WARN: buys journal failed:", e)
-        jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])        
+        jl_buys = pd.DataFrame(columns=["month","account","debit","credit","asset","memo"])
+        
+                
     try:
         jl_ledger = build_ledger_journals(df, PARAM_ACCOUNTS)
         # Add posting date column for Odoo.
