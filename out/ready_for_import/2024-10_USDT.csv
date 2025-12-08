@@ -1,0 +1,10 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-10,274200 Exchanges EUR,91915.12,0.0,USDT,Sells proceeds USDT,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,262500 Cost of acquisition of crypto assets,0.0,94227.86,USDT,Relieve cost USDT,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,631200 Other Costs and Bank Taxes,82.87,0.0,USDT,Trading fees USDT,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,540100 Other Income,2229.87,0.0,USDT,Realized PnL before fees USDT,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,262500 Cost of acquisition of crypto assets,10.37,0.0,USDT,okx Buy USDT - inventory at cost,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,274200 Exchanges EUR,0.0,10.38,USDT,okx Buy USDT - cash outflow (cost + fees),2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,631200 Other Costs and Bank Taxes,0.01,0.0,USDT,okx Buy USDT - fees,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,274100 Crypto USD Wallets,0.0,82.88,USDT,okx Fee credit,2024-10-31,CRYPTO ALL 2024-10,2024-10
+2024-10,631200 Other Costs and Bank Taxes,82.88,0.0,USDT,okx Fee paid,2024-10-31,CRYPTO ALL 2024-10,2024-10

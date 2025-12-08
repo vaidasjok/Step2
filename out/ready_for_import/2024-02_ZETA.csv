@@ -1,0 +1,6 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-02,262500 Cost of acquisition of crypto assets,2326.95,0.0,ZETA,okx Buy ZETA - inventory at cost,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,274200 Exchanges EUR,0.0,2328.1,ZETA,okx Buy ZETA - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.15,0.0,ZETA,okx Buy ZETA - fees,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,274200 Exchanges EUR,0.0,1.15,ZETA,okx Fee credit,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,631200 Other Costs and Bank Taxes,1.15,0.0,ZETA,okx Fee paid,2024-02-29,CRYPTO ALL 2024-02,2024-02

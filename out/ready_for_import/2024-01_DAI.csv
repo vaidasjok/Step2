@@ -1,0 +1,8 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-01,262500 Cost of acquisition of crypto assets,2296.83,0.0,DAI,okx Buy DAI - inventory at cost,2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,274200 Exchanges EUR,0.0,2297.98,DAI,okx Buy DAI - cash outflow (cost + fees),2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,631200 Other Costs and Bank Taxes,1.15,0.0,DAI,okx Buy DAI - fees,2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,262500 Cost of acquisition of crypto assets,0.0,2291.24,DAI,okx DAI withdrawal (inventory decrease),2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,273001 Liquidity Transfer,2291.24,0.0,DAI,okx Transfer clearing,2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,274200 Exchanges EUR,0.0,1.15,DAI,okx Fee credit,2024-01-31,CRYPTO ALL 2024-01,2024-01
+2024-01,631200 Other Costs and Bank Taxes,1.15,0.0,DAI,okx Fee paid,2024-01-31,CRYPTO ALL 2024-01,2024-01

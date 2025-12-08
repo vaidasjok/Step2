@@ -1,0 +1,12 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-03,274200 Exchanges EUR,2.35,0.0,SHIB,Sells proceeds SHIB,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,2.85,SHIB,Relieve cost SHIB,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.0,0.0,SHIB,Trading fees SHIB,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,540100 Other Income,0.51,0.0,SHIB,Realized PnL before fees SHIB,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,12911.58,0.0,SHIB,okx Buy SHIB - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,12917.03,SHIB,okx Buy SHIB - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.45,0.0,SHIB,okx Buy SHIB - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,12375.16,SHIB,okx SHIB withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,273001 Liquidity Transfer,12375.16,0.0,SHIB,okx Transfer clearing,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,5.45,SHIB,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,5.45,0.0,SHIB,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

@@ -1,0 +1,8 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-03,262500 Cost of acquisition of crypto assets,27367.3,0.0,MATIC,okx Buy MATIC - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,27378.14,MATIC,okx Buy MATIC - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.84,0.0,MATIC,okx Buy MATIC - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,24335.32,MATIC,okx MATIC withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,273001 Liquidity Transfer,24335.32,0.0,MATIC,okx Transfer clearing,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,10.84,MATIC,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,10.84,0.0,MATIC,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

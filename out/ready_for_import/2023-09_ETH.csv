@@ -1,0 +1,5 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2023-09,262500 Cost of acquisition of crypto assets,0.0,95.55,ETH,okx ETH withdrawal (inventory decrease),2023-09-30,CRYPTO ALL 2023-09,2023-09
+2023-09,273001 Liquidity Transfer,95.55,0.0,ETH,okx Transfer clearing,2023-09-30,CRYPTO ALL 2023-09,2023-09
+2023-09,274200 Exchanges EUR,0.0,0.1,ETH,okx Fee credit,2023-09-30,CRYPTO ALL 2023-09,2023-09
+2023-09,631200 Other Costs and Bank Taxes,0.1,0.0,ETH,okx Fee paid,2023-09-30,CRYPTO ALL 2023-09,2023-09

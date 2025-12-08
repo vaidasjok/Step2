@@ -1,0 +1,3 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-06,262500 Cost of acquisition of crypto assets,0.0,4451.2,PEPE,okx PEPE withdrawal (inventory decrease),2024-06-30,CRYPTO ALL 2024-06,2024-06
+2024-06,273001 Liquidity Transfer,4451.2,0.0,PEPE,okx Transfer clearing,2024-06-30,CRYPTO ALL 2024-06,2024-06

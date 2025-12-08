@@ -1,0 +1,6 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-03,262500 Cost of acquisition of crypto assets,2293.62,0.0,FTM,okx Buy FTM - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,2294.7,FTM,okx Buy FTM - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.08,0.0,FTM,okx Buy FTM - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,1.08,FTM,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,1.08,0.0,FTM,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

@@ -1,0 +1,13 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-03,274200 Exchanges EUR,34617.24,0.0,FRONT,Sells proceeds FRONT,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,35904.55,FRONT,Relieve cost FRONT,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,14.96,0.0,FRONT,Trading fees FRONT,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,540100 Other Income,1272.34,0.0,FRONT,Realized PnL before fees FRONT,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,36.66,0.0,FRONT,okx Buy FRONT - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,36.68,FRONT,okx Buy FRONT - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,0.02,0.0,FRONT,okx Buy FRONT - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,1701942.37,0.0,FRONT,okx FRONT deposit (inventory increase),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,262500 Cost of acquisition of crypto assets,0.0,1666073.66,FRONT,okx FRONT withdrawal (inventory decrease),2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,273001 Liquidity Transfer,1666073.66,1701942.37,FRONT,okx Transfer clearing,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,274200 Exchanges EUR,0.0,14.98,FRONT,okx Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
+2024-03,631200 Other Costs and Bank Taxes,14.98,0.0,FRONT,okx Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

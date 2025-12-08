@@ -1,0 +1,6 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-05,262500 Cost of acquisition of crypto assets,3217.15,0.0,USDC,okx Buy USDC - inventory at cost,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,274200 Exchanges EUR,0.0,3218.76,USDC,okx Buy USDC - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,631200 Other Costs and Bank Taxes,1.61,0.0,USDC,okx Buy USDC - fees,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,274100 Crypto USD Wallets,0.0,1.61,USDC,okx Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,631200 Other Costs and Bank Taxes,1.61,0.0,USDC,okx Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05

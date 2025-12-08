@@ -1,0 +1,12 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-05,274200 Exchanges EUR,77700.13,0.0,BCH,Sells proceeds BCH,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,98712.02,BCH,Relieve cost BCH,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,631200 Other Costs and Bank Taxes,36.09,0.0,BCH,Trading fees BCH,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,540100 Other Income,20975.79,0.0,BCH,Realized PnL before fees BCH,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,262500 Cost of acquisition of crypto assets,21614.6,0.0,BCH,okx Buy BCH - inventory at cost,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,274200 Exchanges EUR,0.0,21624.72,BCH,okx Buy BCH - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,631200 Other Costs and Bank Taxes,10.12,0.0,BCH,okx Buy BCH - fees,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,262500 Cost of acquisition of crypto assets,0.0,21596.72,BCH,okx BCH withdrawal (inventory decrease),2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,273001 Liquidity Transfer,21596.72,0.0,BCH,okx Transfer clearing,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,274200 Exchanges EUR,0.0,46.21,BCH,okx Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
+2024-05,631200 Other Costs and Bank Taxes,46.21,0.0,BCH,okx Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05

@@ -1,0 +1,6 @@
+month,account,debit,credit,asset,memo,posting_date,Reference,year_month
+2024-02,262500 Cost of acquisition of crypto assets,4656.18,0.0,INJ,okx Buy INJ - inventory at cost,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,274200 Exchanges EUR,0.0,4658.4,INJ,okx Buy INJ - cash outflow (cost + fees),2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.22,0.0,INJ,okx Buy INJ - fees,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,274200 Exchanges EUR,0.0,2.22,INJ,okx Fee credit,2024-02-29,CRYPTO ALL 2024-02,2024-02
+2024-02,631200 Other Costs and Bank Taxes,2.22,0.0,INJ,okx Fee paid,2024-02-29,CRYPTO ALL 2024-02,2024-02
