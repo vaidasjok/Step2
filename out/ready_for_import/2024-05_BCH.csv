@@ -1,8 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-05,262500 Cost of acquisition of crypto assets,41333.46,0.0,BCH,binance Buy BCH - inventory at cost,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,41375.88,BCH,binance Buy BCH - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,42.41,0.0,BCH,binance Buy BCH - fees,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,262500 Cost of acquisition of crypto assets,0.0,44996.51,BCH,binance BCH withdrawal (inventory decrease),2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,273001 Liquidity Transfer,44996.51,0.0,BCH,binance Transfer clearing,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,42.41,BCH,binance Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,42.41,0.0,BCH,binance Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05

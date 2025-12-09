@@ -1,390 +1,96 @@
 month,account,asset,memo,debit,credit,posting_date,Reference
-2024-03,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),59466.37,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,262500 Cost of acquisition of crypto assets,CFX,binance CFX deposit (inventory increase),87343.65,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,262500 Cost of acquisition of crypto assets,DYM,binance DYM deposit (inventory increase),1937.53,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,262500 Cost of acquisition of crypto assets,ETH,binance ETH withdrawal (inventory decrease),0.0,4116.26,2024-03-31,CRYPTO ALL 2024-03
-2024-03,262500 Cost of acquisition of crypto assets,VET,binance VET deposit (inventory increase),21565.0,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,BTC,binance Transfer clearing,0.0,59466.37,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,CFX,binance Transfer clearing,0.0,87343.65,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,DYM,binance Transfer clearing,0.0,1937.53,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,ETH,binance Transfer clearing,4116.26,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,34918.14,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,60422.97,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,273001 Liquidity Transfer,VET,binance Transfer clearing,0.0,21565.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,34918.14,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,60422.97,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274200 Exchanges EUR,BTC,binance Fee credit,0.0,60.54,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274200 Exchanges EUR,ETH,binance Fee credit,0.0,4.12,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274200 Exchanges EUR,FET,binance Fee credit,0.0,18.93,2024-03-31,CRYPTO ALL 2024-03
-2024-03,274200 Exchanges EUR,SHI,binance Fee credit,0.0,5.74,2024-03-31,CRYPTO ALL 2024-03
-2024-03,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,60.54,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,4.12,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,631200 Other Costs and Bank Taxes,FET,binance Fee paid,18.93,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-03,631200 Other Costs and Bank Taxes,SHI,binance Fee paid,5.74,0.0,2024-03-31,CRYPTO ALL 2024-03
-2024-04,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),31647.27,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,262500 Cost of acquisition of crypto assets,IOTX,binance IOTX deposit (inventory increase),49094.36,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,262500 Cost of acquisition of crypto assets,LTC,binance LTC deposit (inventory increase),8673.76,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,273001 Liquidity Transfer,BTC,binance Transfer clearing,0.0,31647.27,2024-04-30,CRYPTO ALL 2024-04
-2024-04,273001 Liquidity Transfer,IOTX,binance Transfer clearing,0.0,49094.36,2024-04-30,CRYPTO ALL 2024-04
-2024-04,273001 Liquidity Transfer,LTC,binance Transfer clearing,0.0,8673.76,2024-04-30,CRYPTO ALL 2024-04
-2024-04,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,195287.28,2024-04-30,CRYPTO ALL 2024-04
-2024-04,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,140235.54,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,195287.28,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,140235.54,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,BTC,binance Fee credit,0.0,32.2,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,DOG,binance Fee credit,0.0,19.68,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,IOT,binance Fee credit,0.0,23.18,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,LTC,binance Fee credit,0.0,8.72,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,RUN,binance Fee credit,0.0,16.53,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,SEI,binance Fee credit,0.0,10.85,2024-04-30,CRYPTO ALL 2024-04
-2024-04,274200 Exchanges EUR,WIF,binance Fee credit,0.0,46.53,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,32.2,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,DOG,binance Fee paid,19.68,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,IOT,binance Fee paid,23.18,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,LTC,binance Fee paid,8.72,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,RUN,binance Fee paid,16.53,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,SEI,binance Fee paid,10.85,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-04,631200 Other Costs and Bank Taxes,WIF,binance Fee paid,46.53,0.0,2024-04-30,CRYPTO ALL 2024-04
-2024-05,262500 Cost of acquisition of crypto assets,ATOM,binance ATOM deposit (inventory increase),12401.98,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,BCH,binance BCH withdrawal (inventory decrease),0.0,44996.51,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,BNB,binance BNB deposit (inventory increase),53984.03,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,BONK,binance BONK deposit (inventory increase),17007.49,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),54458.48,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,BTC,binance BTC withdrawal (inventory decrease),0.0,29238.5,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,DOGE,binance DOGE deposit (inventory increase),36553.55,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,FET,binance FET deposit (inventory increase),36631.37,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,GRT,binance GRT deposit (inventory increase),48069.41,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,PEPE,binance PEPE deposit (inventory increase),29991.07,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,SHIB,binance SHIB deposit (inventory increase),9202.3,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),59235.79,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,SOL,binance SOL withdrawal (inventory decrease),0.0,75340.72,2024-05-31,CRYPTO ALL 2024-05
-2024-05,262500 Cost of acquisition of crypto assets,XTZ,binance XTZ deposit (inventory increase),5764.55,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,ATOM,binance Transfer clearing,0.0,12401.98,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,BCH,binance Transfer clearing,44996.51,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,BNB,binance Transfer clearing,0.0,53984.03,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,BONK,binance Transfer clearing,0.0,17007.49,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,BTC,binance Transfer clearing,29238.5,54458.48,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,DOGE,binance Transfer clearing,0.0,36553.55,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,FET,binance Transfer clearing,0.0,36631.37,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,GRT,binance Transfer clearing,0.0,48069.41,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,PEPE,binance Transfer clearing,0.0,29991.07,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,SHIB,binance Transfer clearing,0.0,9202.3,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,SOL,binance Transfer clearing,75340.72,59235.79,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,USDC,binance USDC withdrawal clearing,3233.51,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,330384.56,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,529422.52,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,273001 Liquidity Transfer,XTZ,binance Transfer clearing,0.0,5764.55,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274100 Crypto USD Wallets,USDC,binance USDC withdrawal from exchange,0.0,3233.51,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,330384.56,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,529422.52,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,ATO,binance Fee credit,0.0,30.89,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,BCH,binance Fee credit,0.0,42.41,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,BNB,binance Fee credit,0.0,52.26,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,BON,binance Fee credit,0.0,31.53,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,BTC,binance Fee credit,0.0,84.13,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,DCR,binance Fee credit,0.0,9.38,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,DOG,binance Fee credit,0.0,60.87,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,ENA,binance Fee credit,0.0,9.26,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,FET,binance Fee credit,0.0,65.27,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,GRT,binance Fee credit,0.0,60.58,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,IOT,binance Fee credit,0.0,77.45,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,PEP,binance Fee credit,0.0,73.09,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,RUN,binance Fee credit,0.0,13.41,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,SEI,binance Fee credit,0.0,9.86,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,SHI,binance Fee credit,0.0,22.58,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,SOL,binance Fee credit,0.0,130.14,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,VET,binance Fee credit,0.0,26.31,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,WIF,binance Fee credit,0.0,68.87,2024-05-31,CRYPTO ALL 2024-05
-2024-05,274200 Exchanges EUR,XTZ,binance Fee credit,0.0,5.73,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,ATO,binance Fee paid,30.89,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,BCH,binance Fee paid,42.41,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,BNB,binance Fee paid,52.26,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,BON,binance Fee paid,31.53,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,84.13,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,DCR,binance Fee paid,9.38,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,DOG,binance Fee paid,60.87,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,ENA,binance Fee paid,9.26,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,FET,binance Fee paid,65.27,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,GRT,binance Fee paid,60.58,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,IOT,binance Fee paid,77.45,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,PEP,binance Fee paid,73.09,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,RUN,binance Fee paid,13.41,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,SEI,binance Fee paid,9.86,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,SHI,binance Fee paid,22.58,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,130.14,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,VET,binance Fee paid,26.31,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,WIF,binance Fee paid,68.87,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-05,631200 Other Costs and Bank Taxes,XTZ,binance Fee paid,5.73,0.0,2024-05-31,CRYPTO ALL 2024-05
-2024-06,262500 Cost of acquisition of crypto assets,AVAX,binance AVAX deposit (inventory increase),6292.05,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,AXS,binance AXS deposit (inventory increase),2233.31,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,BNB,binance BNB withdrawal (inventory decrease),0.0,27.65,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,DOGE,binance DOGE deposit (inventory increase),2058.48,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,FET,binance FET deposit (inventory increase),5068.3,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,FTM,binance FTM deposit (inventory increase),2067.05,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,INJ,binance INJ deposit (inventory increase),2836.31,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,PEPE,binance PEPE deposit (inventory increase),18666.42,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,PYTH,binance PYTH deposit (inventory increase),3637.59,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,STX,binance STX deposit (inventory increase),1463.66,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,TRX,binance TRX withdrawal (inventory decrease),0.0,945.98,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,WIF,binance WIF deposit (inventory increase),13993.72,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,262500 Cost of acquisition of crypto assets,XRP,binance XRP deposit (inventory increase),3618.8,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,AVAX,binance Transfer clearing,0.0,6292.05,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,AXS,binance Transfer clearing,0.0,2233.31,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,BNB,binance Transfer clearing,27.65,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,DOGE,binance Transfer clearing,0.0,2058.48,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,FET,binance Transfer clearing,0.0,5068.3,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,FTM,binance Transfer clearing,0.0,2067.05,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,INJ,binance Transfer clearing,0.0,2836.31,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,PEPE,binance Transfer clearing,0.0,18666.42,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,PYTH,binance Transfer clearing,0.0,3637.59,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,STX,binance Transfer clearing,0.0,1463.66,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,TRX,binance Transfer clearing,945.98,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,86142.02,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,18721.93,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,WIF,binance Transfer clearing,0.0,13993.72,2024-06-30,CRYPTO ALL 2024-06
-2024-06,273001 Liquidity Transfer,XRP,binance Transfer clearing,0.0,3618.8,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,86142.02,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,18721.93,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,ADA,binance Fee credit,0.0,13.01,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,BNB,binance Fee credit,0.0,0.02,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,CFX,binance Fee credit,0.0,0.05,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,IOT,binance Fee credit,0.0,0.05,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,PEP,binance Fee credit,0.0,0.19,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,RUN,binance Fee credit,0.0,16.59,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,TRX,binance Fee credit,0.0,0.95,2024-06-30,CRYPTO ALL 2024-06
-2024-06,274200 Exchanges EUR,WIF,binance Fee credit,0.0,27.95,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,ADA,binance Fee paid,13.01,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,BNB,binance Fee paid,0.02,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,CFX,binance Fee paid,0.05,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,IOT,binance Fee paid,0.05,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,PEP,binance Fee paid,0.19,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,RUN,binance Fee paid,16.59,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,TRX,binance Fee paid,0.95,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-06,631200 Other Costs and Bank Taxes,WIF,binance Fee paid,27.95,0.0,2024-06-30,CRYPTO ALL 2024-06
-2024-07,262500 Cost of acquisition of crypto assets,IOTA,binance IOTA withdrawal (inventory decrease),0.0,9.1,2024-07-31,CRYPTO ALL 2024-07
-2024-07,273001 Liquidity Transfer,IOTA,binance Transfer clearing,9.1,0.0,2024-07-31,CRYPTO ALL 2024-07
-2024-07,273001 Liquidity Transfer,USDC,binance USDC deposit clearing,0.0,23510.82,2024-07-31,CRYPTO ALL 2024-07
-2024-07,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,9320.53,2024-07-31,CRYPTO ALL 2024-07
-2024-07,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,60054.9,0.0,2024-07-31,CRYPTO ALL 2024-07
-2024-07,274100 Crypto USD Wallets,USDC,binance USDC deposit to exchange,23510.82,0.0,2024-07-31,CRYPTO ALL 2024-07
-2024-07,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,9320.53,0.0,2024-07-31,CRYPTO ALL 2024-07
-2024-07,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,60054.9,2024-07-31,CRYPTO ALL 2024-07
-2024-07,274200 Exchanges EUR,IOT,binance Fee credit,0.0,0.01,2024-07-31,CRYPTO ALL 2024-07
-2024-07,631200 Other Costs and Bank Taxes,IOT,binance Fee paid,0.01,0.0,2024-07-31,CRYPTO ALL 2024-07
-2024-08,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),222350.53,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,262500 Cost of acquisition of crypto assets,BTC,binance BTC withdrawal (inventory decrease),0.0,690501.53,2024-08-31,CRYPTO ALL 2024-08
-2024-08,262500 Cost of acquisition of crypto assets,ETH,binance ETH deposit (inventory increase),122307.01,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),448805.91,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,262500 Cost of acquisition of crypto assets,XRP,binance XRP deposit (inventory increase),114365.13,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,BTC,binance Transfer clearing,690501.53,222350.53,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,ETH,binance Transfer clearing,0.0,122307.01,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,SOL,binance Transfer clearing,0.0,448805.91,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,USDC,binance USDC deposit clearing,0.0,499448.74,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,715949.09,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,1408237.39,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,273001 Liquidity Transfer,XRP,binance Transfer clearing,0.0,114365.13,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274100 Crypto USD Wallets,USDC,binance USDC deposit to exchange,499448.74,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,715949.09,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,1408237.39,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274200 Exchanges EUR,BTC,binance Fee credit,0.0,912.6,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274200 Exchanges EUR,ETH,binance Fee credit,0.0,101.33,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274200 Exchanges EUR,SOL,binance Fee credit,0.0,442.75,2024-08-31,CRYPTO ALL 2024-08
-2024-08,274200 Exchanges EUR,XRP,binance Fee credit,0.0,113.93,2024-08-31,CRYPTO ALL 2024-08
-2024-08,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,912.6,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,101.33,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,442.75,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-08,631200 Other Costs and Bank Taxes,XRP,binance Fee paid,113.93,0.0,2024-08-31,CRYPTO ALL 2024-08
-2024-09,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),374013.79,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,BTC,binance BTC withdrawal (inventory decrease),0.0,125629.74,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,ETH,binance ETH deposit (inventory increase),783915.42,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,PEPE,binance PEPE withdrawal (inventory decrease),0.0,34374.96,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),170012.97,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,WIF,binance WIF withdrawal (inventory decrease),0.0,26705.44,2024-09-30,CRYPTO ALL 2024-09
-2024-09,262500 Cost of acquisition of crypto assets,XRP,binance XRP deposit (inventory increase),143486.83,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,BTC,binance Transfer clearing,125629.74,374013.79,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,ETH,binance Transfer clearing,0.0,783915.42,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,PEPE,binance Transfer clearing,34374.96,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,SOL,binance Transfer clearing,0.0,170012.97,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,USDC,binance USDC withdrawal clearing,22556.63,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,202290.03,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,1452791.26,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,WIF,binance Transfer clearing,26705.44,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,273001 Liquidity Transfer,XRP,binance Transfer clearing,0.0,143486.83,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274100 Crypto USD Wallets,USDC,binance USDC withdrawal from exchange,0.0,22556.63,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,202290.03,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,1452791.26,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274200 Exchanges EUR,BTC,binance Fee credit,0.0,490.52,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274200 Exchanges EUR,ETH,binance Fee credit,0.0,766.58,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274200 Exchanges EUR,PEP,binance Fee credit,0.0,17.22,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274200 Exchanges EUR,SOL,binance Fee credit,0.0,166.03,2024-09-30,CRYPTO ALL 2024-09
-2024-09,274200 Exchanges EUR,XRP,binance Fee credit,0.0,137.96,2024-09-30,CRYPTO ALL 2024-09
-2024-09,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,490.52,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,766.58,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,631200 Other Costs and Bank Taxes,PEP,binance Fee paid,17.22,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,166.03,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-09,631200 Other Costs and Bank Taxes,XRP,binance Fee paid,137.96,0.0,2024-09-30,CRYPTO ALL 2024-09
-2024-10,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),254203.21,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,262500 Cost of acquisition of crypto assets,ETH,binance ETH deposit (inventory increase),781507.57,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,262500 Cost of acquisition of crypto assets,PEPE,binance PEPE withdrawal (inventory decrease),0.0,24799.85,2024-10-31,CRYPTO ALL 2024-10
-2024-10,262500 Cost of acquisition of crypto assets,SLF,binance SLF deposit (inventory increase),927116.14,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,262500 Cost of acquisition of crypto assets,SLF,binance SLF withdrawal (inventory decrease),0.0,896240.77,2024-10-31,CRYPTO ALL 2024-10
-2024-10,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),281555.26,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,BTC,binance Transfer clearing,0.0,254203.21,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,ETH,binance Transfer clearing,0.0,781507.57,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,PEPE,binance Transfer clearing,24799.85,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,SLF,binance Transfer clearing,896240.77,927116.14,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,SOL,binance Transfer clearing,0.0,281555.26,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,USDC,binance USDC deposit clearing,0.0,68176.6,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,USDC,binance USDC withdrawal clearing,1182774.39,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,1142285.07,2024-10-31,CRYPTO ALL 2024-10
-2024-10,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,1260456.41,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274100 Crypto USD Wallets,USDC,binance USDC deposit to exchange,68176.6,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274100 Crypto USD Wallets,USDC,binance USDC withdrawal from exchange,0.0,1182774.39,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,1142285.07,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,1260456.41,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,ATO,binance Fee credit,0.0,9.43,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,BTC,binance Fee credit,0.0,248.57,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,ETH,binance Fee credit,0.0,751.55,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,FET,binance Fee credit,0.0,9.51,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,PEP,binance Fee credit,0.0,24.5,2024-10-31,CRYPTO ALL 2024-10
-2024-10,274200 Exchanges EUR,SOL,binance Fee credit,0.0,273.45,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,ATO,binance Fee paid,9.43,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,248.57,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,751.55,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,FET,binance Fee paid,9.51,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,PEP,binance Fee paid,24.5,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-10,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,273.45,0.0,2024-10-31,CRYPTO ALL 2024-10
-2024-11,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),292979.71,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,BTC,binance BTC withdrawal (inventory decrease),0.0,25488.37,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,DOGE,binance DOGE deposit (inventory increase),433130.79,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,ETH,binance ETH deposit (inventory increase),567747.89,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,ETH,binance ETH withdrawal (inventory decrease),0.0,11072.66,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,LTC,binance LTC deposit (inventory increase),618334.36,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,LTC,binance LTC withdrawal (inventory decrease),0.0,618249.36,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,PEPE,binance PEPE withdrawal (inventory decrease),0.0,19095.14,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,SLF,binance SLF deposit (inventory increase),1156909.7,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,SLF,binance SLF withdrawal (inventory decrease),0.0,460930.78,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),479596.98,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,SOL,binance SOL withdrawal (inventory decrease),0.0,5171.63,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,XRP,binance XRP deposit (inventory increase),1957984.11,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,262500 Cost of acquisition of crypto assets,XRP,binance XRP withdrawal (inventory decrease),0.0,1015468.08,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,BTC,binance Transfer clearing,25488.37,292979.71,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,DOGE,binance Transfer clearing,0.0,433130.79,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,ETH,binance Transfer clearing,11072.66,567747.89,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,LTC,binance Transfer clearing,618249.36,618334.36,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,PEPE,binance Transfer clearing,19095.14,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,SLF,binance Transfer clearing,460930.78,1156909.7,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,SOL,binance Transfer clearing,5171.63,479596.98,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,USDC,binance USDC deposit clearing,0.0,219307.37,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,USDC,binance USDC withdrawal clearing,1422393.65,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,1285845.35,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,1404620.86,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,273001 Liquidity Transfer,XRP,binance Transfer clearing,1015468.08,1957984.11,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274100 Crypto USD Wallets,USDC,binance USDC deposit to exchange,219307.37,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274100 Crypto USD Wallets,USDC,binance USDC withdrawal from exchange,0.0,1422393.65,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,1285845.35,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,1404620.86,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,ADA,binance Fee credit,0.0,18.91,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,BCH,binance Fee credit,0.0,15.68,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,BON,binance Fee credit,0.0,9.01,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,BTC,binance Fee credit,0.0,316.28,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,ETH,binance Fee credit,0.0,588.28,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,LIN,binance Fee credit,0.0,10.28,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,NOT,binance Fee credit,0.0,10.54,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,PEP,binance Fee credit,0.0,26.83,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,SHI,binance Fee credit,0.0,9.97,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,SOL,binance Fee credit,0.0,478.58,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,WIF,binance Fee credit,0.0,11.91,2024-11-30,CRYPTO ALL 2024-11
-2024-11,274200 Exchanges EUR,XRP,binance Fee credit,0.0,8.08,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,ADA,binance Fee paid,18.91,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,BCH,binance Fee paid,15.68,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,BON,binance Fee paid,9.01,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,316.28,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,588.28,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,LIN,binance Fee paid,10.28,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,NOT,binance Fee paid,10.54,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,PEP,binance Fee paid,26.83,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,SHI,binance Fee paid,9.97,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,478.58,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,WIF,binance Fee paid,11.91,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-11,631200 Other Costs and Bank Taxes,XRP,binance Fee paid,8.08,0.0,2024-11-30,CRYPTO ALL 2024-11
-2024-12,262500 Cost of acquisition of crypto assets,ARB,binance ARB withdrawal (inventory decrease),0.0,10.96,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,BCH,binance BCH withdrawal (inventory decrease),0.0,39829.06,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,BNB,binance BNB deposit (inventory increase),1851753.13,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,BNB,binance BNB withdrawal (inventory decrease),0.0,18.95,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,BTC,binance BTC deposit (inventory increase),1453727.77,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,BTC,binance BTC withdrawal (inventory decrease),0.0,967454.81,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,DOGE,binance DOGE withdrawal (inventory decrease),0.0,74139.62,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,ETH,binance ETH deposit (inventory increase),323372.21,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,ETH,binance ETH withdrawal (inventory decrease),0.0,1486505.25,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,FET,binance FET withdrawal (inventory decrease),0.0,19450.14,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,GRT,binance GRT withdrawal (inventory decrease),0.0,9698.06,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,LINK,binance LINK withdrawal (inventory decrease),0.0,42189.44,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,OP,binance OP withdrawal (inventory decrease),0.0,19.83,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,RUNE,binance RUNE withdrawal (inventory decrease),0.0,13894.81,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,SHIB,binance SHIB deposit (inventory increase),185538.85,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,SOL,binance SOL deposit (inventory increase),91780.09,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,SOL,binance SOL withdrawal (inventory decrease),0.0,3894550.87,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,TRX,binance TRX deposit (inventory increase),277647.44,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,TRX,binance TRX withdrawal (inventory decrease),0.0,1925.41,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,XRP,binance XRP deposit (inventory increase),683404.73,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,262500 Cost of acquisition of crypto assets,XRP,binance XRP withdrawal (inventory decrease),0.0,333964.84,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,ARB,binance Transfer clearing,10.96,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,BCH,binance Transfer clearing,39829.06,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,BNB,binance Transfer clearing,18.95,1851753.13,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,BTC,binance Transfer clearing,967454.81,1453727.77,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,DOGE,binance Transfer clearing,74139.62,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,ETH,binance Transfer clearing,1486505.25,323372.21,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,FET,binance Transfer clearing,19450.14,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,GRT,binance Transfer clearing,9698.06,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,LINK,binance Transfer clearing,42189.44,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,OP,binance Transfer clearing,19.83,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,RUNE,binance Transfer clearing,13894.81,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,SHIB,binance Transfer clearing,0.0,185538.85,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,SOL,binance Transfer clearing,3894550.87,91780.09,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,TRX,binance Transfer clearing,1925.41,277647.44,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,USDC,binance USDC deposit clearing,0.0,2347310.84,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,USDC,binance USDC withdrawal clearing,1708225.68,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,USDT,binance USDT deposit clearing,0.0,9785067.31,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,USDT,binance USDT withdrawal clearing,9168031.49,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,273001 Liquidity Transfer,XRP,binance Transfer clearing,333964.84,683404.73,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274100 Crypto USD Wallets,USDC,binance USDC deposit to exchange,2347310.84,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274100 Crypto USD Wallets,USDC,binance USDC withdrawal from exchange,0.0,1708225.68,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274100 Crypto USD Wallets,USDT,binance USDT deposit to exchange,9785067.31,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274100 Crypto USD Wallets,USDT,binance USDT withdrawal from exchange,0.0,9168031.49,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,ARB,binance Fee credit,0.0,0.01,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,BCH,binance Fee credit,0.0,21.5,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,BNB,binance Fee credit,0.0,1881.5,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,BON,binance Fee credit,0.0,18.32,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,BTC,binance Fee credit,0.0,2424.65,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,DOG,binance Fee credit,0.0,48.1,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,ENA,binance Fee credit,0.0,12.09,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,ETC,binance Fee credit,0.0,33.25,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,ETH,binance Fee credit,0.0,1848.12,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,GRT,binance Fee credit,0.0,0.04,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,LIN,binance Fee credit,0.0,22.39,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,MOV,binance Fee credit,0.0,5113.85,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,OPU,binance Fee credit,0.0,0.02,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,SHI,binance Fee credit,0.0,192.65,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,SLF,binance Fee credit,0.0,1614.06,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,SOL,binance Fee credit,0.0,3942.83,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,TRX,binance Fee credit,0.0,239.26,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,XRP,binance Fee credit,0.0,2120.35,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,ARB,binance Fee paid,0.01,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,BCH,binance Fee paid,21.5,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,BNB,binance Fee paid,1881.5,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,BON,binance Fee paid,18.32,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,BTC,binance Fee paid,2424.65,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,DOG,binance Fee paid,48.1,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,ENA,binance Fee paid,12.09,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,ETC,binance Fee paid,33.25,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,ETH,binance Fee paid,1848.12,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,GRT,binance Fee paid,0.04,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,LIN,binance Fee paid,22.39,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,MOV,binance Fee paid,5113.85,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,OPU,binance Fee paid,0.02,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,SHI,binance Fee paid,192.65,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,SLF,binance Fee paid,1614.06,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,SOL,binance Fee paid,3942.83,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,TRX,binance Fee paid,239.26,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,XRP,binance Fee paid,2120.35,0.0,2024-12-31,CRYPTO ALL 2024-12
+2023-09,262500 Cost of acquisition of crypto assets,CMP,mexc CMP deposit (inventory increase),0.02,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-09,262500 Cost of acquisition of crypto assets,ZPAY,mexc ZPAY deposit (inventory increase),306.53,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-09,262500 Cost of acquisition of crypto assets,ZPAY,mexc ZPAY withdrawal (inventory decrease),0.0,2020.59,2023-09-30,CRYPTO ALL 2023-09
+2023-09,273001 Liquidity Transfer,CMP,mexc Transfer clearing,0.0,0.02,2023-09-30,CRYPTO ALL 2023-09
+2023-09,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,13974.84,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-09,273001 Liquidity Transfer,ZPAY,mexc Transfer clearing,2020.59,306.53,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,0.93,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,13974.84,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274200 Exchanges EUR,ZPAY,mexc Fee credit,0.0,0.01,2023-09-30,CRYPTO ALL 2023-09
+2023-09,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,0.93,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-09,631200 Other Costs and Bank Taxes,ZPAY,mexc Fee paid,0.01,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-11,262500 Cost of acquisition of crypto assets,CMP,mexc CMP withdrawal (inventory decrease),0.0,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,262500 Cost of acquisition of crypto assets,KFI,mexc KFI deposit (inventory increase),26087.42,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,262500 Cost of acquisition of crypto assets,LIFE,mexc LIFE withdrawal (inventory decrease),0.0,148.73,2023-11-30,CRYPTO ALL 2023-11
+2023-11,273001 Liquidity Transfer,CMP,mexc Transfer clearing,0.0,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,273001 Liquidity Transfer,KFI,mexc Transfer clearing,0.0,26087.42,2023-11-30,CRYPTO ALL 2023-11
+2023-11,273001 Liquidity Transfer,LIFE,mexc Transfer clearing,148.73,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,24043.51,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,2.77,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,24043.51,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,CMP,mexc Fee credit,0.0,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,LIFE,mexc Fee credit,0.0,4.74,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,CMP,mexc Fee paid,0.0,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,LIFE,mexc Fee paid,4.74,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,2.77,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-12,262500 Cost of acquisition of crypto assets,KFI,mexc KFI deposit (inventory increase),8895.57,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,273001 Liquidity Transfer,KFI,mexc Transfer clearing,0.0,8895.57,2023-12-31,CRYPTO ALL 2023-12
+2023-12,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,12113.62,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,1.84,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,12113.62,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,1.84,0.0,2023-12-31,CRYPTO ALL 2023-12
+2024-02,273001 Liquidity Transfer,USDT,mexc USDT deposit clearing,0.0,4679.76,2024-02-29,CRYPTO ALL 2024-02
+2024-02,274100 Crypto USD Wallets,USDT,mexc USDT deposit to exchange,4679.76,0.0,2024-02-29,CRYPTO ALL 2024-02
+2024-06,262500 Cost of acquisition of crypto assets,GENOME,mexc GENOME deposit (inventory increase),2393.69,0.0,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,GENOME,mexc Transfer clearing,0.0,2393.69,2024-06-30,CRYPTO ALL 2024-06
+2024-06,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,4504.5,0.0,2024-06-30,CRYPTO ALL 2024-06
+2024-06,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,2.75,2024-06-30,CRYPTO ALL 2024-06
+2024-06,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,4504.5,2024-06-30,CRYPTO ALL 2024-06
+2024-06,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,2.75,0.0,2024-06-30,CRYPTO ALL 2024-06
+2024-08,262500 Cost of acquisition of crypto assets,ASTO,mexc ASTO deposit (inventory increase),2965.48,0.0,2024-08-31,CRYPTO ALL 2024-08
+2024-08,273001 Liquidity Transfer,ASTO,mexc Transfer clearing,0.0,2965.48,2024-08-31,CRYPTO ALL 2024-08
+2024-08,274200 Exchanges EUR,ASTO,mexc Fee credit,0.0,0.01,2024-08-31,CRYPTO ALL 2024-08
+2024-08,631200 Other Costs and Bank Taxes,ASTO,mexc Fee paid,0.01,0.0,2024-08-31,CRYPTO ALL 2024-08
+2024-09,262500 Cost of acquisition of crypto assets,ASTO,mexc ASTO deposit (inventory increase),17361.91,0.0,2024-09-30,CRYPTO ALL 2024-09
+2024-09,273001 Liquidity Transfer,ASTO,mexc Transfer clearing,0.0,17361.91,2024-09-30,CRYPTO ALL 2024-09
+2024-09,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,13541.2,0.0,2024-09-30,CRYPTO ALL 2024-09
+2024-09,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,1.44,2024-09-30,CRYPTO ALL 2024-09
+2024-09,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,13541.2,2024-09-30,CRYPTO ALL 2024-09
+2024-09,274200 Exchanges EUR,ASTO,mexc Fee credit,0.0,0.3,2024-09-30,CRYPTO ALL 2024-09
+2024-09,631200 Other Costs and Bank Taxes,ASTO,mexc Fee paid,0.3,0.0,2024-09-30,CRYPTO ALL 2024-09
+2024-09,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,1.44,0.0,2024-09-30,CRYPTO ALL 2024-09
+2024-11,262500 Cost of acquisition of crypto assets,ALGO,mexc ALGO deposit (inventory increase),0.0,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,262500 Cost of acquisition of crypto assets,ASTO,mexc ASTO deposit (inventory increase),21549.56,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,262500 Cost of acquisition of crypto assets,GORA,mexc GORA deposit (inventory increase),14379.7,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,273001 Liquidity Transfer,ALGO,mexc Transfer clearing,0.0,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,273001 Liquidity Transfer,ASTO,mexc Transfer clearing,0.0,21549.56,2024-11-30,CRYPTO ALL 2024-11
+2024-11,273001 Liquidity Transfer,GORA,mexc Transfer clearing,0.0,14379.7,2024-11-30,CRYPTO ALL 2024-11
+2024-11,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,32836.96,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,3.82,2024-11-30,CRYPTO ALL 2024-11
+2024-11,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,32836.96,2024-11-30,CRYPTO ALL 2024-11
+2024-11,274200 Exchanges EUR,ASTO,mexc Fee credit,0.0,10.62,2024-11-30,CRYPTO ALL 2024-11
+2024-11,274200 Exchanges EUR,GORA,mexc Fee credit,0.0,6.79,2024-11-30,CRYPTO ALL 2024-11
+2024-11,631200 Other Costs and Bank Taxes,ASTO,mexc Fee paid,10.62,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,631200 Other Costs and Bank Taxes,GORA,mexc Fee paid,6.79,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-11,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,3.82,0.0,2024-11-30,CRYPTO ALL 2024-11
+2024-12,262500 Cost of acquisition of crypto assets,ALGO,mexc ALGO deposit (inventory increase),0.0,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,262500 Cost of acquisition of crypto assets,ASTO,mexc ASTO deposit (inventory increase),84545.39,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,262500 Cost of acquisition of crypto assets,DAG,mexc DAG deposit (inventory increase),58849.05,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,262500 Cost of acquisition of crypto assets,ETH,mexc ETH withdrawal (inventory decrease),0.0,332.39,2024-12-31,CRYPTO ALL 2024-12
+2024-12,262500 Cost of acquisition of crypto assets,GORA,mexc GORA deposit (inventory increase),19530.77,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,262500 Cost of acquisition of crypto assets,KLV,mexc KLV deposit (inventory increase),35359.9,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,ALGO,mexc Transfer clearing,0.0,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,ASTO,mexc Transfer clearing,0.0,84545.39,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,DAG,mexc Transfer clearing,0.0,58849.05,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,ETH,mexc Transfer clearing,332.39,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,GORA,mexc Transfer clearing,0.0,19530.77,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,KLV,mexc Transfer clearing,0.0,35359.9,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,USDC,mexc USDC withdrawal clearing,14250.47,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,273001 Liquidity Transfer,USDT,mexc USDT withdrawal clearing,178344.06,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274100 Crypto USD Wallets,USDC,mexc Fee credit,0.0,7.59,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274100 Crypto USD Wallets,USDC,mexc USDC withdrawal from exchange,0.0,14250.47,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274100 Crypto USD Wallets,USDT,mexc Fee credit,0.0,6.67,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274100 Crypto USD Wallets,USDT,mexc USDT withdrawal from exchange,0.0,178344.06,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274200 Exchanges EUR,ASTO,mexc Fee credit,0.0,40.23,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274200 Exchanges EUR,DAG,mexc Fee credit,0.0,25.52,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274200 Exchanges EUR,ETH,mexc Fee credit,0.0,12.84,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274200 Exchanges EUR,GORA,mexc Fee credit,0.0,10.56,2024-12-31,CRYPTO ALL 2024-12
+2024-12,274200 Exchanges EUR,KLV,mexc Fee credit,0.0,16.86,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,ASTO,mexc Fee paid,40.23,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,DAG,mexc Fee paid,25.52,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,ETH,mexc Fee paid,12.84,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,GORA,mexc Fee paid,10.56,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,KLV,mexc Fee paid,16.86,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,USDC,mexc Fee paid,7.59,0.0,2024-12-31,CRYPTO ALL 2024-12
+2024-12,631200 Other Costs and Bank Taxes,USDT,mexc Fee paid,6.67,0.0,2024-12-31,CRYPTO ALL 2024-12

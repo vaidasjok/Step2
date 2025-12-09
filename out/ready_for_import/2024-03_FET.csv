@@ -1,6 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-03,262500 Cost of acquisition of crypto assets,18504.72,0.0,FET,binance Buy FET - inventory at cost,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,18523.65,FET,binance Buy FET - cash outflow (cost + fees),2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,18.93,0.0,FET,binance Buy FET - fees,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,274200 Exchanges EUR,0.0,18.93,FET,binance Fee credit,2024-03-31,CRYPTO ALL 2024-03,2024-03
-2024-03,631200 Other Costs and Bank Taxes,18.93,0.0,FET,binance Fee paid,2024-03-31,CRYPTO ALL 2024-03,2024-03

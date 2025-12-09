@@ -6,7 +6,7 @@ from pandas.tseries.offsets import MonthEnd
 from step3_split_for_import import split_unified_journals_by_asset_month as split
 
 # ---------- CONFIG ----------
-INPUT_PATH = Path("unified_transactions.csv")   # can be .xlsx as well
+INPUT_PATH = Path("out/unified_transactions.csv")   # can be .xlsx as well
 OUTPUT_DIR = Path("out")
 
 PARAM_ACCOUNTS = {
@@ -760,10 +760,16 @@ def main():
 
     # Build a simple monthly journal (sells only). Extend later for buys, ledger, deposits/withdrawals.
     jl = build_monthly_journal(monthly, PARAM_ACCOUNTS)
+    print(monthly, 'cia')
     # Add posting date column for Odoo.
     jl = add_posting_date(jl, month_col="month")
     _force_numeric(jl,       ["debit", "credit"])
-    jl["Reference"] = jl.apply(lambda r: f"CRYPTO {r.get('exchange','ALL')} {r['month']}", axis=1)
+
+    if not jl.empty:
+        jl["Reference"] = jl.apply(lambda r: f"CRYPTO {r.get('exchange','ALL')} {r['month']}", axis=1)
+    else:
+        jl["Reference"] = jl.apply(lambda r: f"CRYPTO {r.get('exchange','ALL')}", axis=1)
+        
     (OUTPUT_DIR/"journal_monthly.csv").write_text(jl.to_csv(index=False))
 
     print("Saved in:", OUTPUT_DIR.resolve())

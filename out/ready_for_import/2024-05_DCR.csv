@@ -1,6 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-05,262500 Cost of acquisition of crypto assets,9107.14,0.0,DCR,binance Buy DCR - inventory at cost,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,9116.52,DCR,binance Buy DCR - cash outflow (cost + fees),2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,9.38,0.0,DCR,binance Buy DCR - fees,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,274200 Exchanges EUR,0.0,9.38,DCR,binance Fee credit,2024-05-31,CRYPTO ALL 2024-05,2024-05
-2024-05,631200 Other Costs and Bank Taxes,9.38,0.0,DCR,binance Fee paid,2024-05-31,CRYPTO ALL 2024-05,2024-05

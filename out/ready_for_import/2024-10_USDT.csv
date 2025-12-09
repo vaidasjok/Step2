@@ -1,5 +1,0 @@
-month,account,debit,credit,asset,memo,posting_date,Reference,year_month
-2024-10,273001 Liquidity Transfer,0.0,1142285.07,USDT,binance USDT deposit clearing,2024-10-31,CRYPTO ALL 2024-10,2024-10
-2024-10,273001 Liquidity Transfer,1260456.41,0.0,USDT,binance USDT withdrawal clearing,2024-10-31,CRYPTO ALL 2024-10,2024-10
-2024-10,274100 Crypto USD Wallets,1142285.07,0.0,USDT,binance USDT deposit to exchange,2024-10-31,CRYPTO ALL 2024-10,2024-10
-2024-10,274100 Crypto USD Wallets,0.0,1260456.41,USDT,binance USDT withdrawal from exchange,2024-10-31,CRYPTO ALL 2024-10,2024-10
