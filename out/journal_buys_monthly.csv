@@ -1,6 +1,43 @@
 month,account,asset,memo,debit,credit,posting_date,Reference
-2024-02,262500 Cost of acquisition of crypto assets,KUJI,mexc Buy KUJI - inventory at cost,2331.59,0.0,2024-02-29,CRYPTO ALL 2024-02
-2024-02,274200 Exchanges EUR,KUJI,mexc Buy KUJI - cash outflow (cost + fees),0.0,2331.59,2024-02-29,CRYPTO ALL 2024-02
-2024-12,262500 Cost of acquisition of crypto assets,ETH,mexc Buy ETH - inventory at cost,333.24,0.0,2024-12-31,CRYPTO ALL 2024-12
-2024-12,274200 Exchanges EUR,ETH,mexc Buy ETH - cash outflow (cost + fees),0.0,333.41,2024-12-31,CRYPTO ALL 2024-12
-2024-12,631200 Other Costs and Bank Taxes,ETH,mexc Buy ETH - fees,0.17,0.0,2024-12-31,CRYPTO ALL 2024-12
+2023-06,262500 Cost of acquisition of crypto assets,ETH,kraken Buy ETH - inventory at cost,458.33,0.0,2023-06-30,CRYPTO ALL 2023-06
+2023-06,274200 Exchanges EUR,ETH,kraken Buy ETH - cash outflow (cost + fees),0.0,459.54,2023-06-30,CRYPTO ALL 2023-06
+2023-06,631200 Other Costs and Bank Taxes,ETH,kraken Buy ETH - fees,1.21,0.0,2023-06-30,CRYPTO ALL 2023-06
+2023-07,262500 Cost of acquisition of crypto assets,ETH,kraken Buy ETH - inventory at cost,109.15,0.0,2023-07-31,CRYPTO ALL 2023-07
+2023-07,262500 Cost of acquisition of crypto assets,TRX,kraken Buy TRX - inventory at cost,551.44,0.0,2023-07-31,CRYPTO ALL 2023-07
+2023-07,274200 Exchanges EUR,ETH,kraken Buy ETH - cash outflow (cost + fees),0.0,109.43,2023-07-31,CRYPTO ALL 2023-07
+2023-07,274200 Exchanges EUR,TRX,kraken Buy TRX - cash outflow (cost + fees),0.0,552.88,2023-07-31,CRYPTO ALL 2023-07
+2023-07,631200 Other Costs and Bank Taxes,ETH,kraken Buy ETH - fees,0.28,0.0,2023-07-31,CRYPTO ALL 2023-07
+2023-07,631200 Other Costs and Bank Taxes,TRX,kraken Buy TRX - fees,1.44,0.0,2023-07-31,CRYPTO ALL 2023-07
+2023-08,262500 Cost of acquisition of crypto assets,USDT,kraken Buy USDT - inventory at cost,55541.14,0.0,2023-08-31,CRYPTO ALL 2023-08
+2023-08,274200 Exchanges EUR,USDT,kraken Buy USDT - cash outflow (cost + fees),0.0,55652.29,2023-08-31,CRYPTO ALL 2023-08
+2023-08,631200 Other Costs and Bank Taxes,USDT,kraken Buy USDT - fees,111.14,0.0,2023-08-31,CRYPTO ALL 2023-08
+2023-09,262500 Cost of acquisition of crypto assets,TRX,kraken Buy TRX - inventory at cost,19.6,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-09,274200 Exchanges EUR,TRX,kraken Buy TRX - cash outflow (cost + fees),0.0,19.65,2023-09-30,CRYPTO ALL 2023-09
+2023-09,631200 Other Costs and Bank Taxes,TRX,kraken Buy TRX - fees,0.05,0.0,2023-09-30,CRYPTO ALL 2023-09
+2023-10,262500 Cost of acquisition of crypto assets,BTC,kraken Buy BTC - inventory at cost,296.1,0.0,2023-10-31,CRYPTO ALL 2023-10
+2023-10,274200 Exchanges EUR,BTC,kraken Buy BTC - cash outflow (cost + fees),0.0,296.87,2023-10-31,CRYPTO ALL 2023-10
+2023-10,631200 Other Costs and Bank Taxes,BTC,kraken Buy BTC - fees,0.77,0.0,2023-10-31,CRYPTO ALL 2023-10
+2023-11,262500 Cost of acquisition of crypto assets,ETH,kraken Buy ETH - inventory at cost,64.63,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,262500 Cost of acquisition of crypto assets,TRX,kraken Buy TRX - inventory at cost,9.38,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,262500 Cost of acquisition of crypto assets,USDC,kraken Buy USDC - inventory at cost,26.59,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,ETH,kraken Buy ETH - cash outflow (cost + fees),0.0,64.8,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,TRX,kraken Buy TRX - cash outflow (cost + fees),0.0,9.4,2023-11-30,CRYPTO ALL 2023-11
+2023-11,274200 Exchanges EUR,USDC,kraken Buy USDC - cash outflow (cost + fees),0.0,26.65,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,ETH,kraken Buy ETH - fees,0.17,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,TRX,kraken Buy TRX - fees,0.02,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-11,631200 Other Costs and Bank Taxes,USDC,kraken Buy USDC - fees,0.05,0.0,2023-11-30,CRYPTO ALL 2023-11
+2023-12,262500 Cost of acquisition of crypto assets,BTC,kraken Buy BTC - inventory at cost,4867.98,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,262500 Cost of acquisition of crypto assets,ETH,kraken Buy ETH - inventory at cost,1334.06,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,262500 Cost of acquisition of crypto assets,NYM,kraken Buy NYM - inventory at cost,15.22,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,262500 Cost of acquisition of crypto assets,USDC,kraken Buy USDC - inventory at cost,2427.66,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,262500 Cost of acquisition of crypto assets,USDT,kraken Buy USDT - inventory at cost,17.47,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,BTC,kraken Buy BTC - cash outflow (cost + fees),0.0,4880.61,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,ETH,kraken Buy ETH - cash outflow (cost + fees),0.0,1336.63,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,NYM,kraken Buy NYM - cash outflow (cost + fees),0.0,15.26,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,USDC,kraken Buy USDC - cash outflow (cost + fees),0.0,2432.5,2023-12-31,CRYPTO ALL 2023-12
+2023-12,274200 Exchanges EUR,USDT,kraken Buy USDT - cash outflow (cost + fees),0.0,17.63,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,BTC,kraken Buy BTC - fees,12.62,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,ETH,kraken Buy ETH - fees,2.57,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,NYM,kraken Buy NYM - fees,0.04,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,USDC,kraken Buy USDC - fees,4.85,0.0,2023-12-31,CRYPTO ALL 2023-12
+2023-12,631200 Other Costs and Bank Taxes,USDT,kraken Buy USDT - fees,0.15,0.0,2023-12-31,CRYPTO ALL 2023-12
