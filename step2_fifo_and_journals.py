@@ -40,7 +40,42 @@ PARAM_ACCOUNTS = {
     "exchange_eur": "274200 Exchanges EUR"
 }
 
+# ---------- FIFO DEFICIT POLICY ----------
+# "raise"     -> stop immediately on first deficit (best for correctness)
+# "warn"      -> continue, but report deficits (inventory will be wrong)
+# "synthetic" -> auto-insert synthetic lots to bridge deficits (report will run, but must be disclosed)
+DEFICIT_POLICY = "synthetic"
+
+# Used only when DEFICIT_POLICY == "synthetic"
+# "last" -> use last known unit_cost for that asset
+# "avg"  -> use current weighted-average unit_cost for that asset
+# "zero" -> cost=0 (NOT recommended except for debugging)
+SYNTHETIC_COST_POLICY = "last"
+SYNTHETIC_COST_FALLBACK_UNIT_COST = 0.0  # used if no lots exist yet
+# --- Deficit dust tolerances (units) ---
+DEFICIT_DUST_TOL = {
+    "USDC": 1e-4,   # ignore up to 0.0001 USDC
+    "USDT": 1e-4,
+    "USD":  1e-4,
+    "EUR":  1e-6,
+}
+DEFICIT_DUST_TOL_DEFAULT = 1e-12
+
+OPENING_BALANCES_PATH = Path("out/opening_balances.csv")
+# CSV columns: asset, units, eur_cost_total
+# Example row: USDT,26279.9562,26279.9562   (or your EUR valuation for that opening)
+
 # ----------------------------
+
+def load_opening_balances(path: Path) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame(columns=["asset", "units", "eur_cost_total"])
+    ob = pd.read_csv(path)
+    ob["asset"] = ob["asset"].astype(str).str.upper().str.strip()
+    ob["units"] = pd.to_numeric(ob["units"], errors="coerce").fillna(0.0)
+    ob["eur_cost_total"] = pd.to_numeric(ob["eur_cost_total"], errors="coerce").fillna(0.0)
+    return ob
+
 
 def _force_numeric(df, cols):
     for c in cols:
@@ -122,13 +157,20 @@ def load_unified(path: Path) -> pd.DataFrame:
     return df
 
 
-def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
+def fifo_pnl(
+    df: pd.DataFrame,
+    verbose: bool = True,
+    deficit_policy: str = DEFICIT_POLICY,
+    synthetic_cost_policy: str = SYNTHETIC_COST_POLICY,
+    synthetic_fallback_unit_cost: float = SYNTHETIC_COST_FALLBACK_UNIT_COST,
+    deficits_out_path: str = "out/deficits.csv",
+):
     df = df.copy()
 
     if verbose:
         print("[FIFO] Using Option A: eur_amount as acquisition cost for deposits / staking / rewards.")
-    
-    
+        print(f"[FIFO] Deficit policy = {deficit_policy!r}")
+
     df["event_type"] = df["event_type"].astype(str).str.lower()
     df["side"] = df["side"].astype(str).str.lower()
 
@@ -136,9 +178,28 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
     df = df.sort_values(["date_utc", "txid"]).reset_index(drop=True)
 
     lots_state = {}
+    
+    # --- OPENING BALANCES (lots injected before processing) ---
+    ob = load_opening_balances(OPENING_BALANCES_PATH)
+    if not ob.empty:
+        for _, r0 in ob.iterrows():
+            a0 = str(r0["asset"]).upper()
+            u0 = float(r0["units"])
+            c0 = float(r0["eur_cost_total"])
+            if u0 > 0:
+                lots_state.setdefault(a0, [])
+                lots_state[a0].append({
+                    "units": u0,
+                    "total_cost": c0,
+                    "unit_cost": (c0 / u0) if u0 else 0.0
+                })
+        if verbose:
+            print(f"[FIFO] Injected opening lots from {OPENING_BALANCES_PATH}")
+
     rows = []
 
-    # --- counters for run-time info ---
+    deficits = []  # <-- collect deficit events for audit/debug
+
     stats = {
         "trade_buys": 0, "trade_sells": 0,
         "deposits_costed": 0, "deposits_zero_cost": 0,
@@ -146,6 +207,8 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         "staking_costed": 0, "staking_zero_cost": 0,
         "base_fees_relived": 0,
         "short_sells": 0,
+        "deficits": 0,
+        "synthetic_lots_added": 0,
     }
 
     def add_lot(asset, units, total_cost):
@@ -156,7 +219,26 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
             "unit_cost": float(total_cost)/float(units) if units else 0.0
         })
 
-    def relieve_lot(asset, units_to_relieve):
+    def estimate_unit_cost(asset: str) -> float:
+        lots = lots_state.get(asset, [])
+        if not lots:
+            return float(synthetic_fallback_unit_cost)
+
+        if synthetic_cost_policy == "last":
+            # last lot's unit cost
+            return float(lots[-1].get("unit_cost", synthetic_fallback_unit_cost) or synthetic_fallback_unit_cost)
+
+        if synthetic_cost_policy == "avg":
+            total_units = sum(l["units"] for l in lots)
+            total_cost = sum(l["total_cost"] for l in lots)
+            if total_units > 1e-18:
+                return float(total_cost / total_units)
+            return float(synthetic_fallback_unit_cost)
+
+        # "zero" or anything unknown
+        return 0.0
+
+    def relieve_lot_core(asset, units_to_relieve):
         cost = 0.0
         remaining = float(units_to_relieve)
         lots = lots_state.get(asset, [])
@@ -175,44 +257,125 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
                 i += 1
         lots_state[asset] = lots
         return cost, remaining
-    
+
+    CASH_LIKE_ASSETS = {"EUR", "USD", "USDT", "USDC"}
+
+    def handle_deficit(asset: str, missing: float, ctx: dict):
+        asset = str(asset).upper()
+        missing = float(missing or 0.0)
+
+        tol = DEFICIT_DUST_TOL.get(asset, DEFICIT_DUST_TOL_DEFAULT)
+
+        # 1) Ignore dust deficits
+        if missing <= tol:
+            print(
+                f"[FIFO][DEFICIT][IGNORED_DUST] {asset} missing {missing:g} <= tol {tol:g} | "
+                f"{ctx.get('event_type')} {ctx.get('side')} | {ctx.get('date_utc')} | "
+                f"txid={ctx.get('txid')} | exchange={ctx.get('exchange')}"
+            )
+            return
+
+        msg = (
+            f"[FIFO][DEFICIT] {asset} missing {missing:g} units | "
+            f"{ctx.get('event_type')} {ctx.get('side')} | {ctx.get('date_utc')} | "
+            f"txid={ctx.get('txid')} | exchange={ctx.get('exchange')}"
+        )
+
+        # 2) raise -> stop
+        if deficit_policy == "raise":
+            raise RuntimeError(msg)
+
+        # 3) warn -> record + continue (inventory stays wrong)
+        if deficit_policy == "warn":
+            print("[FIFO][DEFICIT][WARN]", msg)
+            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "warn"})
+            stats["deficits"] += 1
+            return
+
+        # 4) synthetic -> add synthetic lot at estimated cost
+        if deficit_policy == "synthetic":
+            ucost = estimate_unit_cost(asset)
+            eur_cost = missing * ucost
+            add_lot(asset, missing, eur_cost)
+            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "synthetic", "unit_cost": ucost})
+            stats["deficits"] += 1
+            stats["synthetic_lots_added"] += 1
+            print(f"[FIFO][DEFICIT][SYNTHETIC] Added lot {asset} +{missing:g} @ {ucost:.8f} EUR/unit")
+            return
+
+        # 5) bridge_cash -> only for cash-like assets; otherwise stop
+        if deficit_policy == "bridge_cash":
+            if asset not in CASH_LIKE_ASSETS:
+                raise RuntimeError(msg + " | policy=bridge_cash only allowed for cash-like assets")
+
+            # For stablecoins, cost basis ~ 1 EUR/unit is usually acceptable as a bridge,
+            # but you can also use estimate_unit_cost(asset) if you prefer consistency.
+            ucost = estimate_unit_cost(asset) if asset == "EUR" else 1.0
+            eur_cost = missing * ucost
+
+            add_lot(asset, missing, eur_cost)
+            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "bridge_cash", "unit_cost": ucost})
+            stats["deficits"] += 1
+            stats["synthetic_lots_added"] += 1
+            print(f"[FIFO][DEFICIT][BRIDGE_CASH] Bridged {asset} +{missing:g} @ {ucost:.8f} EUR/unit")
+            return
+
+        # unknown policy
+        raise RuntimeError(msg + f" | unknown deficit_policy={deficit_policy!r}")
+
+
+    def relieve_lot(asset: str, units_to_relieve: float, ctx: dict) -> float:
+        cost, remaining = relieve_lot_core(asset, units_to_relieve)
+        if remaining > 1e-18:
+            handle_deficit(asset, remaining, ctx)
+            # If synthetic, we inserted a lot; relieve again to finish the intended relief
+            if deficit_policy == "synthetic":
+                cost2, rem2 = relieve_lot_core(asset, units_to_relieve)
+                # rem2 should now be ~0; if not, surface it
+                if rem2 > 1e-18:
+                    handle_deficit(asset, rem2, ctx)
+                return cost2
+        return cost
+
     def add_lot_with_cost(asset, units, eur_cost, reason):
         units = float(units)
         eur_cost = float(eur_cost or 0.0)
-
         if units <= 0:
             return
-
         add_lot(asset, units, eur_cost)
-
         if verbose:
             unit_cost = eur_cost / units if units else 0.0
             print(f"[FIFO] ADD LOT {reason}: {asset} +{units:g} units, cost={eur_cost:.2f} EUR, unit_cost={unit_cost:.6f}")
-
 
     for _, r in df.iterrows():
         asset = str(r["base_ccy"]).upper()
         if "." in asset:
             asset = asset.split(".")[0]  # BTC.M -> BTC for FIFO only
-            
+
         et = str(r["event_type"]).lower()
         side = str(r.get("side", "")).lower()
 
         qty_base = float(r.get("qty_base") or 0.0)
         fee_eur  = float(r.get("eur_fee") or 0.0)
-        eur_val  = float(r.get("eur_amount") or 0.0)  # signed; buys negative, sells positive (per your unified schema)
+        eur_val  = float(r.get("eur_amount") or 0.0)
         fee_ccy  = str(r.get("fee_ccy") or "").upper()
-        # normalize fee_ccy the same way (so BTC.M fees hit BTC lots)
         if "." in fee_ccy:
             fee_ccy = fee_ccy.split(".")[0]
         fee_amt  = float(r.get("fee") or 0.0)
 
-        # ---------------------------
-        # 1) TRADES (PnL + inventory)
-        # ---------------------------
+        ctx = {
+            "date_utc": r.get("date_utc"),
+            "exchange": r.get("exchange"),
+            "txid": r.get("txid"),
+            "source": r.get("source"),
+            "event_type": et,
+            "side": side,
+        }
+
+        # 1) TRADES
         if et == "trade":
             if side == "buy" and qty_base > 0:
-                total_cost = -eur_val + fee_eur   # eur_val negative on buys
+                total_cost = -eur_val + fee_eur
                 add_lot_with_cost(asset, qty_base, total_cost, "TRADE BUY")
                 stats["trade_buys"] += 1
 
@@ -225,14 +388,9 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
 
             elif side == "sell" and qty_base < 0:
                 units = abs(qty_base)
-                proceeds_net = eur_val - fee_eur  # eur_val positive for sells
-                cost, remainder = relieve_lot(asset, units)
+                proceeds_net = eur_val - fee_eur
+                cost = relieve_lot(asset, units, ctx)
                 realized = proceeds_net - cost
-
-                if remainder > 1e-18:
-                    stats["short_sells"] += 1
-                    if verbose:
-                        print(f"[FIFO][WARN] SHORT SELL: {asset} sold {units:g}, missing {remainder:g} units in inventory.")
 
                 stats["trade_sells"] += 1
 
@@ -241,42 +399,30 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
                     "asset": asset, "side": "sell", "qty": units,
                     "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
                     "realized_pnl_eur": realized,
-                    "short_sold_without_inventory": bool(remainder > 1e-18)
                 })
 
-        # ------------------------------------
-        # 2) DEPOSITS / TRANSFERS IN (+inventory)
-        # ------------------------------------
+        # 2) DEPOSITS / TRANSFERS IN
         elif et in {"deposit", "transfer_in"} and qty_base > 0:
-            # ✅ Option A: use eur_amount as acquisition cost when available.
-            # Some exchanges might export eur_amount as negative or positive;
-            # for deposits we always treat cost as ABS(eur_amount).
             if eur_val != 0:
                 eur_cost = abs(eur_val)
                 add_lot_with_cost(asset, qty_base, eur_cost, et.upper())
                 stats["deposits_costed"] += 1
             else:
-                # True zero-cost deposits (rare; e.g., manual opening balance)
                 add_lot_with_cost(asset, qty_base, 0.0, et.upper() + " (ZERO COST)")
                 stats["deposits_zero_cost"] += 1
                 if verbose:
                     print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
 
-        # ---------------------------------------
-        # 3) WITHDRAWALS / TRANSFERS OUT (-inventory)
-        # ---------------------------------------
+        # 3) WITHDRAWALS / TRANSFERS OUT
         elif et in {"withdrawal", "transfer_out"} and qty_base < 0:
             units = abs(qty_base)
-            relieve_lot(asset, units)
+            _ = relieve_lot(asset, units, ctx)  # cost ignored; inventory relieved
             stats["withdrawals"] += 1
             if verbose:
                 print(f"[FIFO] RELIEVE LOT {et.upper()}: {asset} -{units:g} units")
 
-        # ---------------------------------------
-        # 4) STAKING / EARN / AIRDROP (+inventory)
-        # ---------------------------------------
+        # 4) STAKING / EARN / AIRDROP etc.
         elif et in {"staking", "earn", "interest", "airdrop", "reward"} and qty_base > 0:
-            # Same principle: use EUR valuation as cost basis (reward at fair value).
             if eur_val != 0:
                 eur_cost = abs(eur_val)
                 add_lot_with_cost(asset, qty_base, eur_cost, et.upper())
@@ -287,96 +433,59 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
                 if verbose:
                     print(f"[FIFO][INFO] {et.upper()} with no eur_amount -> ZERO cost lot: {asset} +{qty_base:g}")
 
-        # ---------------------------------------
-        # 5) FEE IN BASE CURRENCY (-inventory, on top of trade/deposit logic)
-        # ---------------------------------------
+        # 5) FEE IN BASE CURRENCY
         if fee_ccy == asset and fee_amt > 0:
-            relieve_lot(asset, fee_amt)
+            fee_ctx = dict(ctx)
+            fee_ctx["event_type"] = f"{et}_fee"
+            _ = relieve_lot(asset, fee_amt, fee_ctx)
             stats["base_fees_relived"] += 1
             if verbose:
                 print(f"[FIFO] RELIEVE LOT FEE in base: {asset} fee {fee_amt:g} units")
 
-
+    # --- build outputs (same as your current code) ---
     pnl_detailed = pd.DataFrame(rows)
-    # if not pnl_detailed.empty:
-    #     pnl_detailed["month"] = pd.to_datetime(pnl_detailed["date_utc"]).dt.to_period("M").astype(str)
 
-    # realized = pnl_detailed[pnl_detailed["side"]=="sell"].copy()
-    # monthly = realized.groupby(["month","asset"], as_index=False).agg(
-    #     qty_sold=("qty","sum"),
-    #     proceeds_eur=("proceeds_eur","sum"),
-    #     cost_eur=("cost_eur","sum"),
-    #     fees_eur=("fees_eur","sum"),
-    #     realized_pnl_eur=("realized_pnl_eur","sum")
-    # ).sort_values(["month","asset"])
-        
-    # If no trades passed the filters, return empty but well-formed tables
     if pnl_detailed.empty:
-        pnl_detailed = pd.DataFrame(
-            columns=[
-                "date_utc", "exchange", "txid", "asset", "side", "qty",
-                "proceeds_eur", "cost_eur", "fees_eur", "realized_pnl_eur", "month"
-            ]
-        )
-        monthly = pd.DataFrame(
-            columns=["month", "asset", "qty_sold", "proceeds_eur",
-                     "cost_eur", "fees_eur", "realized_pnl_eur"]
-        )
-        inventory = pd.DataFrame(
+        monthly = pd.DataFrame(columns=["month", "asset", "qty_sold", "proceeds_eur",
+                                        "cost_eur", "fees_eur", "realized_pnl_eur"])
+        inventory = pd.DataFrame(columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"])
+    else:
+        pnl_detailed["month"] = pd.to_datetime(pnl_detailed["date_utc"]).dt.to_period("M").astype(str)
+        realized = pnl_detailed[pnl_detailed["side"] == "sell"].copy()
+        monthly = realized.groupby(["month", "asset"], as_index=False).agg(
+            qty_sold=("qty", "sum"),
+            proceeds_eur=("proceeds_eur", "sum"),
+            cost_eur=("cost_eur", "sum"),
+            fees_eur=("fees_eur", "sum"),
+            realized_pnl_eur=("realized_pnl_eur", "sum"),
+        ).sort_values(["month", "asset"])
+
+        inv_rows = []
+        for a, lots in lots_state.items():
+            total_units = sum(l["units"] for l in lots)
+            total_cost = sum(l["total_cost"] for l in lots)
+            avg_cost = (total_cost / total_units) if total_units else 0.0
+            inv_rows.append({
+                "asset": a,
+                "closing_units": total_units,
+                "closing_cost_eur": total_cost,
+                "avg_cost_eur_per_unit": avg_cost,
+            })
+        inventory = pd.DataFrame(inv_rows).sort_values("asset") if inv_rows else pd.DataFrame(
             columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
         )
-        return pnl_detailed, monthly, inventory
 
-    # Normal path when we DO have trades
-    pnl_detailed["month"] = pd.to_datetime(pnl_detailed["date_utc"]).dt.to_period("M").astype(str)
+    # Write deficits report if any (even in warn/synthetic)
+    if deficits:
+        ddf = pd.DataFrame(deficits)
+        try:
+            Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
+            ddf.to_csv(deficits_out_path, index=False)
+            if verbose:
+                print(f"[FIFO] Deficits report written to: {deficits_out_path}")
+        except Exception as e:
+            print("[FIFO][WARN] Could not write deficits report:", e)
 
-    realized = pnl_detailed[pnl_detailed["side"] == "sell"].copy()
-    
-    monthly = realized.groupby(["month", "asset"], as_index=False).agg(
-        qty_sold=("qty", "sum"),
-        proceeds_eur=("proceeds_eur", "sum"),
-        cost_eur=("cost_eur", "sum"),
-        fees_eur=("fees_eur", "sum"),
-        realized_pnl_eur=("realized_pnl_eur", "sum"),
-    ).sort_values(["month", "asset"])
-    
-    # vj debug 
-    # --- DEBUG: check that, per month/asset, pnl = proceeds - cost ---
-    # If this identity fails for some groups, journal_monthly *cannot* balance.
-    print("Start Check")
-    monthly["_balance_check"] = (
-        monthly["proceeds_eur"] - monthly["cost_eur"] - monthly["realized_pnl_eur"]
-    ).round(6)
-    bad_pnl = monthly[monthly["_balance_check"].abs() > 0.01]
-    if verbose and not bad_pnl.empty:
-        print("\n[FIFO][WARN] Inconsistent monthly PnL rows "
-              "(proceeds - cost - realized_pnl != 0):")
-        print(
-            bad_pnl[
-                ["month", "asset",
-                 "proceeds_eur", "cost_eur",
-                 "realized_pnl_eur", "_balance_check"]
-            ].head(40)
-        )
-    print("End Check")
-    # vj end debug
-
-    inv_rows = []
-    for asset, lots in lots_state.items():
-        total_units = sum(l["units"] for l in lots)
-        total_cost = sum(l["total_cost"] for l in lots)
-        avg_cost = (total_cost / total_units) if total_units else 0.0
-        inv_rows.append({
-            "asset": asset,
-            "closing_units": total_units,
-            "closing_cost_eur": total_cost,
-            "avg_cost_eur_per_unit": avg_cost,
-        })
-        
-    inventory = pd.DataFrame(inv_rows).sort_values("asset") if inv_rows else pd.DataFrame(
-        columns=["asset", "closing_units", "closing_cost_eur", "avg_cost_eur_per_unit"]
-    )
-    
     if verbose:
         print("\n[FIFO] RUN SUMMARY")
         for k, v in stats.items():
@@ -384,6 +493,8 @@ def fifo_pnl(df: pd.DataFrame, verbose: bool = True):
         print(f"  - assets with open lots: {len(lots_state)}")
 
     return pnl_detailed, monthly, inventory
+
+
 
 def build_monthly_journal(monthly_pnl: pd.DataFrame, params: dict) -> pd.DataFrame:
     # Very simple journal from realized P&L perspective only (sells)
