@@ -174,8 +174,27 @@ def fifo_pnl(
     df["event_type"] = df["event_type"].astype(str).str.lower()
     df["side"] = df["side"].astype(str).str.lower()
 
-    # We will process ALL rows, but only "trade" rows create PnL rows.
-    df = df.sort_values(["date_utc", "txid"]).reset_index(drop=True)
+    # Deterministic processing order when multiple rows share the same timestamp.
+    # This prevents false deficits when (for example) withdrawal and deposit have the same date_utc.
+    plus_types = {"deposit", "transfer_in", "staking", "earn", "interest", "airdrop", "reward"}
+    minus_types = {"withdrawal", "transfer_out"}
+
+    rank = pd.Series(99, index=df.index)
+
+    # Inventory increases first
+    rank[df["event_type"].isin(list(plus_types))] = 10
+
+    # Trades: buys before sells (within the same timestamp)
+    rank[(df["event_type"] == "trade") & (df["side"] == "buy")] = 20
+    rank[(df["event_type"] == "trade") & (df["side"] == "sell")] = 30
+
+    # Inventory decreases last
+    rank[df["event_type"].isin(list(minus_types))] = 40
+
+    df["_event_rank"] = rank
+    df = df.sort_values(["date_utc", "_event_rank", "txid"], kind="mergesort").reset_index(drop=True)
+    df.drop(columns=["_event_rank"], inplace=True)
+
 
     lots_state = {}
     
