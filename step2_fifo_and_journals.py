@@ -3,6 +3,7 @@ import pandas as pd
 from pathlib import Path
 import numpy as np
 from pandas.tseries.offsets import MonthEnd
+import os
 from step3_split_for_import import split_unified_journals_by_asset_month as split
 
 # ---------- CONFIG ----------
@@ -40,26 +41,26 @@ PARAM_ACCOUNTS = {
     "exchange_eur": "274200 Exchanges EUR"
 }
 
-# ---------- FIFO DEFICIT POLICY ----------
-# "raise"     -> stop immediately on first deficit (best for correctness)
-# "warn"      -> continue, but report deficits (inventory will be wrong)
-# "synthetic" -> auto-insert synthetic lots to bridge deficits (report will run, but must be disclosed)
-DEFICIT_POLICY = "synthetic"
+# ---------- FIFO deficit policy ----------
+# raise        : stop on any material deficit
+# bridge_cash  : auto-bridge ONLY non-trade outflows (withdrawal/transfer_out/fees). Trade sells still raise.
+# synthetic_all: also bridge trade sells (NOT recommended; will distort realized PnL)
+DEFICIT_POLICY = os.getenv("FIFO_DEFICIT_POLICY", "raise").strip().lower()
 
-# Used only when DEFICIT_POLICY == "synthetic"
-# "last" -> use last known unit_cost for that asset
-# "avg"  -> use current weighted-average unit_cost for that asset
-# "zero" -> cost=0 (NOT recommended except for debugging)
-SYNTHETIC_COST_POLICY = "last"
-SYNTHETIC_COST_FALLBACK_UNIT_COST = 0.0  # used if no lots exist yet
 # --- Deficit dust tolerances (units) ---
+# Per-asset dust tolerance; anything <= tol is treated as rounding noise.
 DEFICIT_DUST_TOL = {
     "USDC": 1e-4,   # ignore up to 0.0001 USDC
     "USDT": 1e-4,
     "USD":  1e-4,
     "EUR":  1e-6,
 }
-DEFICIT_DUST_TOL_DEFAULT = 1e-12
+DEFICIT_DUST_TOL_DEFAULT = float(os.getenv("FIFO_DEFICIT_DUST_TOL_DEFAULT", "1e-12"))
+
+# Used only when bridging deficits
+SYNTHETIC_COST_POLICY = "last"
+SYNTHETIC_COST_FALLBACK_UNIT_COST = 0.0  # used if no lots exist yet
+
 
 OPENING_BALANCES_PATH = Path("out/opening_balances.csv")
 # CSV columns: asset, units, eur_cost_total
@@ -156,6 +157,65 @@ def load_unified(path: Path) -> pd.DataFrame:
 
     return df
 
+def expand_trade_quote_legs(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    For each trade row, add one synthetic row representing the quote-currency movement.
+    Example:
+      BUY BTC for USDT  -> USDT decreases (negative qty)
+      SELL BTC for USDT -> USDT increases (positive qty)
+
+    This fixes USDT/USDC deficits caused by missing quote-leg cash flows.
+    """
+    x = df.copy()
+
+    # normalize for logic
+    x["event_type"] = x["event_type"].astype(str).str.lower()
+    x["side"] = x["side"].astype(str).str.lower()
+
+    m = x["event_type"].eq("trade")
+    if not m.any():
+        return df
+
+    t = x.loc[m].copy()
+
+    # need quote_ccy + qty_quote
+    t["quote_ccy_u"] = t["quote_ccy"].astype(str).str.upper().str.strip()
+    t = t[t["quote_ccy_u"].notna() & (t["quote_ccy_u"] != "") & (t["quote_ccy_u"] != "NAN")]
+
+    qtyq = pd.to_numeric(t["qty_quote"], errors="coerce").fillna(0.0).abs()
+    # buy spends quote (negative), sell receives quote (positive)
+    sign = np.where(t["side"].eq("buy"), -1.0, 1.0)
+    quote_delta = sign * qtyq
+
+    # build synthetic quote rows
+    q = t.copy()
+    q["event_type"] = "trade_quote"
+    q["side"] = "quote"
+    q["base_ccy"] = q["quote_ccy_u"]
+    q["quote_ccy"] = ""
+    q["qty_base"] = quote_delta
+    q["qty_quote"] = np.nan
+
+    # IMPORTANT: fee in quote currency must reduce quote units.
+    # Your FIFO already deducts fee when fee_ccy == asset, so we keep fee only if it matches quote.
+    fee_ccy_u = q.get("fee_ccy", "").astype(str).str.upper()
+    fee_ccy_u = fee_ccy_u.str.split(".").str[0]
+
+    fee_n = pd.to_numeric(q.get("fee", 0.0), errors="coerce").fillna(0.0)
+
+    q["fee"] = np.where(fee_ccy_u.eq(q["base_ccy"]), fee_n, 0.0)
+    q["fee_ccy"] = np.where(fee_ccy_u.eq(q["base_ccy"]), q["base_ccy"], "")
+
+    # avoid double counting eur_fee (your trade logic already uses eur_fee for PnL/cost)
+    q["eur_fee"] = 0.0
+
+    # keep eur_amount as-is (direction already matches buy/sell)
+    # make txid unique to preserve stable sorting
+    q["txid"] = q["txid"].astype(str) + "|Q"
+    q["source"] = q["source"].astype(str) + "_quote"
+
+    return pd.concat([df, q], ignore_index=True)
+
 
 def fifo_pnl(
     df: pd.DataFrame,
@@ -187,6 +247,10 @@ def fifo_pnl(
     # Trades: buys before sells (within the same timestamp)
     rank[(df["event_type"] == "trade") & (df["side"] == "buy")] = 20
     rank[(df["event_type"] == "trade") & (df["side"] == "sell")] = 30
+    
+    # Quote legs should be processed before withdrawals/transfer_out
+    rank[df["event_type"] == "trade_quote"] = 25
+
 
     # Inventory decreases last
     rank[df["event_type"].isin(list(minus_types))] = 40
@@ -238,23 +302,26 @@ def fifo_pnl(
             "unit_cost": float(total_cost)/float(units) if units else 0.0
         })
 
-    def estimate_unit_cost(asset: str) -> float:
+    def estimate_unit_cost(asset: str, ctx: dict) -> float:
+        """
+        Best-effort EUR unit cost for bridging non-trade outflows.
+        Priority:
+        1) row valuation (abs(eur_amount) / abs(qty_base)) if available
+        2) last known lot unit_cost if available
+        3) 0.0
+        """
+        try:
+            q = abs(float(ctx.get("qty_base") or 0.0))
+            ea = abs(float(ctx.get("eur_amount") or 0.0))
+            if q > 0 and ea > 0:
+                return ea / q
+        except Exception:
+            pass
+
         lots = lots_state.get(asset, [])
-        if not lots:
-            return float(synthetic_fallback_unit_cost)
+        if lots:
+            return float(lots[-1].get("unit_cost") or 0.0)
 
-        if synthetic_cost_policy == "last":
-            # last lot's unit cost
-            return float(lots[-1].get("unit_cost", synthetic_fallback_unit_cost) or synthetic_fallback_unit_cost)
-
-        if synthetic_cost_policy == "avg":
-            total_units = sum(l["units"] for l in lots)
-            total_cost = sum(l["total_cost"] for l in lots)
-            if total_units > 1e-18:
-                return float(total_cost / total_units)
-            return float(synthetic_fallback_unit_cost)
-
-        # "zero" or anything unknown
         return 0.0
 
     def relieve_lot_core(asset, units_to_relieve):
@@ -279,82 +346,125 @@ def fifo_pnl(
 
     CASH_LIKE_ASSETS = {"EUR", "USD", "USDT", "USDC"}
 
-    def handle_deficit(asset: str, missing: float, ctx: dict):
+    def handle_deficit(asset: str, missing_units: float, ctx: dict) -> float:
+        """
+        Returns extra EUR cost added due to bridging (0 if ignored dust).
+        May raise depending on deficit_policy (local parameter).
+        """
         asset = str(asset).upper()
-        missing = float(missing or 0.0)
+        missing_units = float(missing_units or 0.0)
 
+        et = ctx.get("event_type", "")
+        side = ctx.get("side", "")
+        dt = ctx.get("date_utc")
+        txid = ctx.get("txid")
+        exch = ctx.get("exchange")
+
+        # per-asset dust tolerance
         tol = DEFICIT_DUST_TOL.get(asset, DEFICIT_DUST_TOL_DEFAULT)
 
-        # 1) Ignore dust deficits
-        if missing <= tol:
-            print(
-                f"[FIFO][DEFICIT][IGNORED_DUST] {asset} missing {missing:g} <= tol {tol:g} | "
-                f"{ctx.get('event_type')} {ctx.get('side')} | {ctx.get('date_utc')} | "
-                f"txid={ctx.get('txid')} | exchange={ctx.get('exchange')}"
-            )
-            return
+        # 1) Ignore tiny dust deficits (rounding noise)
+        if missing_units <= tol:
+            deficits.append({
+                **ctx,
+                "asset": asset,
+                "missing_units": missing_units,
+                "action": "ignored_dust",
+                "tol": tol,
+            })
+            if verbose:
+                print(
+                    f"[FIFO][DEFICIT][IGNORED_DUST] {asset} missing {missing_units:g} <= tol {tol:g} | "
+                    f"{et} {side} | {dt} | txid={txid} | exchange={exch}"
+                )
+            return 0.0
 
         msg = (
-            f"[FIFO][DEFICIT] {asset} missing {missing:g} units | "
-            f"{ctx.get('event_type')} {ctx.get('side')} | {ctx.get('date_utc')} | "
-            f"txid={ctx.get('txid')} | exchange={ctx.get('exchange')}"
+            f"[FIFO][DEFICIT] {asset} missing {missing_units:g} units | {et} {side} | {dt} | "
+            f"txid={txid} | exchange={exch}"
         )
 
-        # 2) raise -> stop
+        # 2) trade-sell deficits must not be bridged unless explicitly allowed
+        if et == "trade" and side == "sell" and deficit_policy != "synthetic_all":
+            deficits.append({**ctx, "asset": asset, "missing_units": missing_units, "action": "raise_trade_sell"})
+            raise RuntimeError(msg + " | (trade sell deficits must be fixed via missing buys/opening balance)")
+
+        # 3) strict mode
         if deficit_policy == "raise":
+            deficits.append({**ctx, "asset": asset, "missing_units": missing_units, "action": "raise"})
             raise RuntimeError(msg)
 
-        # 3) warn -> record + continue (inventory stays wrong)
-        if deficit_policy == "warn":
-            print("[FIFO][DEFICIT][WARN]", msg)
-            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "warn"})
-            stats["deficits"] += 1
-            return
-
-        # 4) synthetic -> add synthetic lot at estimated cost
-        if deficit_policy == "synthetic":
-            ucost = estimate_unit_cost(asset)
-            eur_cost = missing * ucost
-            add_lot(asset, missing, eur_cost)
-            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "synthetic", "unit_cost": ucost})
-            stats["deficits"] += 1
-            stats["synthetic_lots_added"] += 1
-            print(f"[FIFO][DEFICIT][SYNTHETIC] Added lot {asset} +{missing:g} @ {ucost:.8f} EUR/unit")
-            return
-
-        # 5) bridge_cash -> only for cash-like assets; otherwise stop
+        # 4) bridge_cash: allow bridging ONLY for cash-like assets and ONLY non-trade outflows
         if deficit_policy == "bridge_cash":
             if asset not in CASH_LIKE_ASSETS:
-                raise RuntimeError(msg + " | policy=bridge_cash only allowed for cash-like assets")
+                deficits.append({**ctx, "asset": asset, "missing_units": missing_units, "action": "raise_non_cash_like"})
+                raise RuntimeError(msg + " | bridge_cash only allowed for cash-like assets")
+            if et == "trade":
+                deficits.append({**ctx, "asset": asset, "missing_units": missing_units, "action": "raise_trade"})
+                raise RuntimeError(msg + " | bridge_cash does not bridge trades")
 
-            # For stablecoins, cost basis ~ 1 EUR/unit is usually acceptable as a bridge,
-            # but you can also use estimate_unit_cost(asset) if you prefer consistency.
-            ucost = estimate_unit_cost(asset) if asset == "EUR" else 1.0
-            eur_cost = missing * ucost
+        # 5) synthetic_all: bridge anything (dangerous; distorts PnL if it touches trade sells)
+        if deficit_policy not in {"bridge_cash", "synthetic_all"}:
+            deficits.append({**ctx, "asset": asset, "missing_units": missing_units, "action": "raise_unknown_policy"})
+            raise RuntimeError(msg + f" | Unknown deficit_policy={deficit_policy!r}")
 
-            add_lot(asset, missing, eur_cost)
-            deficits.append({**ctx, "asset": asset, "missing_units": missing, "policy": "bridge_cash", "unit_cost": ucost})
-            stats["deficits"] += 1
-            stats["synthetic_lots_added"] += 1
-            print(f"[FIFO][DEFICIT][BRIDGE_CASH] Bridged {asset} +{missing:g} @ {ucost:.8f} EUR/unit")
-            return
+        # Bridge: inject synthetic lot
+        uc = estimate_unit_cost(asset, ctx)
+        bridge_cost = missing_units * uc
+        add_lot(asset, missing_units, bridge_cost)
 
-        # unknown policy
-        raise RuntimeError(msg + f" | unknown deficit_policy={deficit_policy!r}")
+        deficits.append({
+            **ctx,
+            "asset": asset,
+            "missing_units": missing_units,
+            "action": "bridged",
+            "bridged_unit_cost_eur": uc,
+            "bridged_cost_eur": bridge_cost,
+            "policy": deficit_policy,
+        })
+        stats["deficits"] += 1
+        stats["synthetic_lots_added"] += 1
+
+        if verbose:
+            print(
+                f"[FIFO][DEFICIT][BRIDGED] {asset} +{missing_units:g} synthetic units | "
+                f"unit_cost={uc:.8f} EUR | cost={bridge_cost:.2f} EUR | {et} {side} | {dt} | txid={txid}"
+            )
+
+        return bridge_cost
 
 
-    def relieve_lot(asset: str, units_to_relieve: float, ctx: dict) -> float:
-        cost, remaining = relieve_lot_core(asset, units_to_relieve)
+    def relieve_lot(asset: str, units_to_relieve: float, ctx: dict):
+        cost = 0.0
+        remaining = float(units_to_relieve)
+        lots = lots_state.get(asset, [])
+        i = 0
+
+        while remaining > 1e-18 and i < len(lots):
+            lot = lots[i]
+            take = min(lot["units"], remaining)
+            part_cost = take * lot["unit_cost"]
+            cost += part_cost
+            lot["units"] -= take
+            lot["total_cost"] -= part_cost
+            remaining -= take
+            if lot["units"] <= 1e-18:
+                lots.pop(i)
+            else:
+                i += 1
+
+        lots_state[asset] = lots
+
         if remaining > 1e-18:
-            handle_deficit(asset, remaining, ctx)
-            # If synthetic, we inserted a lot; relieve again to finish the intended relief
-            if deficit_policy == "synthetic":
-                cost2, rem2 = relieve_lot_core(asset, units_to_relieve)
-                # rem2 should now be ~0; if not, surface it
-                if rem2 > 1e-18:
-                    handle_deficit(asset, rem2, ctx)
-                return cost2
-        return cost
+            # handle deficit according to policy; may add a synthetic lot
+            extra_cost = handle_deficit(asset, remaining, ctx)
+
+            # after bridging we consider remaining covered (non-trade outflows),
+            # so cost basis includes any bridged cost
+            cost += extra_cost
+            remaining = 0.0
+
+        return cost, remaining
 
     def add_lot_with_cost(asset, units, eur_cost, reason):
         units = float(units)
@@ -383,13 +493,16 @@ def fifo_pnl(
         fee_amt  = float(r.get("fee") or 0.0)
 
         ctx = {
-            "date_utc": r.get("date_utc"),
-            "exchange": r.get("exchange"),
-            "txid": r.get("txid"),
-            "source": r.get("source"),
             "event_type": et,
             "side": side,
+            "date_utc": r["date_utc"],
+            "txid": r.get("txid"),
+            "exchange": r.get("exchange"),
+            "qty_base": qty_base,
+            "eur_amount": eur_val,
+            "eur_fee": fee_eur,
         }
+
 
         # 1) TRADES
         if et == "trade":
@@ -408,8 +521,9 @@ def fifo_pnl(
             elif side == "sell" and qty_base < 0:
                 units = abs(qty_base)
                 proceeds_net = eur_val - fee_eur
-                cost = relieve_lot(asset, units, ctx)
+                cost, _ = relieve_lot(asset, units, ctx)
                 realized = proceeds_net - cost
+
 
                 stats["trade_sells"] += 1
 
@@ -419,6 +533,21 @@ def fifo_pnl(
                     "proceeds_eur": proceeds_net, "cost_eur": cost, "fees_eur": fee_eur,
                     "realized_pnl_eur": realized,
                 })
+                
+        # 1b) TRADE QUOTE LEG (synthetic rows from expand_trade_quote_legs)
+        elif et == "trade_quote":
+            # Here `asset` is actually the quote currency.
+            if qty_base > 0:
+                # quote inflow (e.g., sell BTC -> receive USDT)
+                eur_cost = abs(eur_val)  # safe default valuation
+                add_lot_with_cost(asset, qty_base, eur_cost, "TRADE QUOTE IN")
+            elif qty_base < 0:
+                # quote outflow (e.g., buy BTC -> spend USDT)
+                units = abs(qty_base)
+                _cost, _rem = relieve_lot(asset, units, ctx)
+                if verbose:
+                    print(f"[FIFO] RELIEVE LOT TRADE QUOTE OUT: {asset} -{units:g} units")
+
 
         # 2) DEPOSITS / TRANSFERS IN
         elif et in {"deposit", "transfer_in"} and qty_base > 0:
@@ -870,10 +999,84 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
 
 # End building journals 2025-09-01
 
+def audit_units_running_balance(df: pd.DataFrame, out_dir: Path) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    x = df.copy()
+    x["asset_raw"] = x["base_ccy"].astype(str).str.upper()
+    x["fee_ccy_u"] = x.get("fee_ccy", pd.Series("", index=x.index)).astype(str).str.upper()
+    x["qty_base_n"] = pd.to_numeric(x.get("qty_base", 0), errors="coerce").fillna(0.0)
+    x["fee_n"] = pd.to_numeric(x.get("fee", 0), errors="coerce").fillna(0.0)
+
+
+    # mimic FIFO: strip ".M" etc
+    x["asset"] = x["asset_raw"].str.split(".").str[0]
+
+    # mimic FIFO ordering (avoid same-timestamp false negatives)
+    x["event_type_l"] = x["event_type"].astype(str).str.lower()
+    x["side_l"] = x.get("side","").astype(str).str.lower()
+
+    plus_types = {"deposit", "transfer_in", "staking", "earn", "interest", "airdrop", "reward"}
+    minus_types = {"withdrawal", "transfer_out"}
+
+    rank = pd.Series(99, index=x.index)
+    rank[x["event_type_l"].isin(list(plus_types))] = 10
+    rank[(x["event_type_l"] == "trade") & (x["side_l"] == "buy")] = 20
+    rank[x["event_type_l"] == "trade_quote"] = 25
+    rank[(x["event_type_l"] == "trade") & (x["side_l"] == "sell")] = 30
+    rank[x["event_type_l"].isin(list(minus_types))] = 40
+
+    x["_rank"] = rank
+    x = x.sort_values(["date_utc", "_rank", "txid"], kind="mergesort").reset_index(drop=True)
+    x.drop(columns=["_rank"], inplace=True)
+
+    # --- Effective delta in units (matches FIFO idea) ---
+    # Start with qty_base
+    x["delta_units"] = x["qty_base_n"]
+
+    # Subtract fee if fee is paid in the same currency as the asset
+    fee_in_base = (x["fee_n"] > 0) & (x["fee_ccy_u"].str.split(".").str[0] == x["asset"])
+    x.loc[fee_in_base, "delta_units"] = x.loc[fee_in_base, "delta_units"] - x.loc[fee_in_base, "fee_n"]
+
+    # Cumulative by asset
+    x["cum_units"] = x.groupby("asset")["delta_units"].cumsum()
+
+
+    # Summary per asset: how negative did it go? => required opening to prevent deficits
+    g = x.groupby("asset", as_index=False).agg(
+        min_cum_units=("cum_units", "min"),
+        end_cum_units=("cum_units", "last"),
+        rows=("asset", "size"),
+    )
+    g["opening_needed_units"] = (-g["min_cum_units"]).clip(lower=0)
+
+    g.sort_values("opening_needed_units", ascending=False).to_csv(out_dir / "units_opening_needed_by_asset.csv", index=False)
+
+    # First negative row per asset (where deficit starts)
+    neg = x[x["cum_units"] < 0].copy()
+    if not neg.empty:
+        first_neg = neg.sort_values(["asset", "date_utc", "txid"]).groupby("asset", as_index=False).head(1)
+        cols = ["date_utc", "exchange", "txid", "source", "event_type", "side", "asset", "qty_base_n", "fee_n", "fee_ccy_u", "delta_units", "cum_units"]
+        first_neg[cols].to_csv(out_dir / "units_first_negative_rows.csv", index=False)
+
+    # Full trace (optional but very useful)
+    keep_cols = ["date_utc", "exchange", "txid", "source", "event_type", "side", "asset", "qty_base_n", "fee_n", "fee_ccy_u", "delta_units", "cum_units"]
+    x[keep_cols].to_csv(out_dir / "units_full_trace.csv", index=False)
+
+    print("[AUDIT] Wrote:",
+        (out_dir / "units_opening_needed_by_asset.csv"),
+        (out_dir / "units_first_negative_rows.csv"),
+        (out_dir / "units_full_trace.csv"),
+        sep="\n  - ")
+
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     df = load_unified(INPUT_PATH)
-
+    
+    df = expand_trade_quote_legs(df)
+    audit_units_running_balance(df, OUTPUT_DIR)
+    
     pnl_detailed, monthly, inventory = fifo_pnl(df)
 
     # Save CSV outputs
