@@ -50,10 +50,12 @@ DEFICIT_POLICY = os.getenv("FIFO_DEFICIT_POLICY", "raise").strip().lower()
 # --- Deficit dust tolerances (units) ---
 # Per-asset dust tolerance; anything <= tol is treated as rounding noise.
 DEFICIT_DUST_TOL = {
-    "USDC": 1e-4,   # ignore up to 0.0001 USDC
-    "USDT": 1e-4,
+    "USDC": 1e-3,   # ignore up to 0.0001 USDC
+    "USDT": 1e-3,
     "USD":  1e-4,
     "EUR":  1e-6,
+    
+    "TRX":  1e-6,
 }
 DEFICIT_DUST_TOL_DEFAULT = float(os.getenv("FIFO_DEFICIT_DUST_TOL_DEFAULT", "1e-12"))
 
