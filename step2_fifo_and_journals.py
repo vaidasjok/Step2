@@ -56,6 +56,10 @@ DEFICIT_DUST_TOL = {
     "EUR":  1e-6,
     
     "TRX":  1e-6,
+    "BTC":  1e-5,
+    "ETH":  1e-5,
+    "BCH":  1e-5,
+    "XRP":  1.0, 
 }
 DEFICIT_DUST_TOL_DEFAULT = float(os.getenv("FIFO_DEFICIT_DUST_TOL_DEFAULT", "1e-12"))
 
@@ -74,7 +78,7 @@ def load_opening_balances(path: Path) -> pd.DataFrame:
     if not path.exists():
         return pd.DataFrame(columns=["asset", "units", "eur_cost_total"])
     ob = pd.read_csv(path)
-    ob["asset"] = ob["asset"].astype(str).str.upper().str.strip()
+    ob["asset"] = ob["asset"].astype(str).str.upper().str.strip().str.split(".").str[0]
     ob["units"] = pd.to_numeric(ob["units"], errors="coerce").fillna(0.0)
     ob["eur_cost_total"] = pd.to_numeric(ob["eur_cost_total"], errors="coerce").fillna(0.0)
     return ob
@@ -257,18 +261,41 @@ def fifo_pnl(
     # Inventory decreases last
     rank[df["event_type"].isin(list(minus_types))] = 40
 
+    # df["_event_rank"] = rank
+    # df = df.sort_values(["date_utc", "_event_rank", "txid"], kind="mergesort").reset_index(drop=True)
+    # df.drop(columns=["_event_rank"], inplace=True)
+    
+    # vj start
     df["_event_rank"] = rank
-    df = df.sort_values(["date_utc", "_event_rank", "txid"], kind="mergesort").reset_index(drop=True)
-    df.drop(columns=["_event_rank"], inplace=True)
+
+    # Minute bucket sort key (prevents minute-only ledger from jumping ahead of second-level trades in same minute)
+    df["_sort_minute"] = pd.to_datetime(df["date_utc"], errors="coerce", utc=True).dt.floor("min")
+
+    df = df.sort_values(
+        ["_sort_minute", "_event_rank", "date_utc", "txid"],
+        kind="mergesort"
+    ).reset_index(drop=True)
+
+    df.drop(columns=["_event_rank", "_sort_minute"], inplace=True)
+    # vj end
 
 
     lots_state = {}
     
     # --- OPENING BALANCES (lots injected before processing) ---
     ob = load_opening_balances(OPENING_BALANCES_PATH)
+    
+    print("\n[DEBUG] opening_balances.csv head:")
+    print(ob.head(10))
+
+    opening_map = ob.groupby("asset")["units"].sum().to_dict() if not ob.empty else {}
+    print("\n[DEBUG] opening_map['USDT'] =", opening_map.get("USDT"))
+    print("[DEBUG] opening_map keys sample =", list(opening_map.keys())[:20])
+
+    
     if not ob.empty:
         for _, r0 in ob.iterrows():
-            a0 = str(r0["asset"]).upper()
+            a0 = str(r0["asset"]).upper().strip().split(".")[0].strip()
             u0 = float(r0["units"])
             c0 = float(r0["eur_cost_total"])
             if u0 > 0:
@@ -479,9 +506,9 @@ def fifo_pnl(
             print(f"[FIFO] ADD LOT {reason}: {asset} +{units:g} units, cost={eur_cost:.2f} EUR, unit_cost={unit_cost:.6f}")
 
     for _, r in df.iterrows():
-        asset = str(r["base_ccy"]).upper()
-        if "." in asset:
-            asset = asset.split(".")[0]  # BTC.M -> BTC for FIFO only
+        asset = str(r["base_ccy"]).upper().strip()
+        asset = asset.split(".")[0].strip()
+
 
         et = str(r["event_type"]).lower()
         side = str(r.get("side", "")).lower()
@@ -489,9 +516,9 @@ def fifo_pnl(
         qty_base = float(r.get("qty_base") or 0.0)
         fee_eur  = float(r.get("eur_fee") or 0.0)
         eur_val  = float(r.get("eur_amount") or 0.0)
-        fee_ccy  = str(r.get("fee_ccy") or "").upper()
-        if "." in fee_ccy:
-            fee_ccy = fee_ccy.split(".")[0]
+        fee_ccy  = str(r.get("fee_ccy") or "").upper().strip()
+        fee_ccy = fee_ccy.split(".")[0].strip()
+
         fee_amt  = float(r.get("fee") or 0.0)
 
         ctx = {
@@ -509,7 +536,11 @@ def fifo_pnl(
         # 1) TRADES
         if et == "trade":
             if side == "buy" and qty_base > 0:
-                total_cost = -eur_val + fee_eur
+                # BEFORE:
+                # total_cost = -eur_val + fee_eur
+                # AFTER:
+                total_cost = -eur_val  # inventory cost excludes fees
+                
                 add_lot_with_cost(asset, qty_base, total_cost, "TRADE BUY")
                 stats["trade_buys"] += 1
 
@@ -566,7 +597,16 @@ def fifo_pnl(
         # 3) WITHDRAWALS / TRANSFERS OUT
         elif et in {"withdrawal", "transfer_out"} and qty_base < 0:
             units = abs(qty_base)
-            _ = relieve_lot(asset, units, ctx)  # cost ignored; inventory relieved
+            try:
+                _cost, _rem = relieve_lot(asset, units, ctx)
+            except RuntimeError:
+                if asset == "USDT":
+                    avail = sum(l["units"] for l in lots_state.get("USDT", []))
+                    print(f"\n[FIFO][DEBUG] USDT available right before failure = {avail:g}")
+                    print(f"[FIFO][DEBUG] withdrawal units requested = {units:g}")
+                    print(f"[FIFO][DEBUG] txid = {ctx.get('txid')}")
+                raise
+
             stats["withdrawals"] += 1
             if verbose:
                 print(f"[FIFO] RELIEVE LOT {et.upper()}: {asset} -{units:g} units")
@@ -899,7 +939,9 @@ def build_ledger_journals(df: pd.DataFrame, params: dict) -> pd.DataFrame:
        date_utc, event_type, base_ccy, eur_amount, eur_fee
     """
 
-    led = df.copy()
+    # led = df.copy()
+    led = df[df["source"].astype(str).str.lower().eq("ledger")].copy()
+
     
     # Parse dates robustly
     parsed = pd.to_datetime(led["date_utc"], errors="coerce", utc=True)
@@ -1005,7 +1047,8 @@ def audit_units_running_balance(df: pd.DataFrame, out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     x = df.copy()
-    x["asset_raw"] = x["base_ccy"].astype(str).str.upper()
+    x["asset_raw"] = x["base_ccy"].astype(str).str.upper().str.strip()
+
     x["fee_ccy_u"] = x.get("fee_ccy", pd.Series("", index=x.index)).astype(str).str.upper()
     x["qty_base_n"] = pd.to_numeric(x.get("qty_base", 0), errors="coerce").fillna(0.0)
     x["fee_n"] = pd.to_numeric(x.get("fee", 0), errors="coerce").fillna(0.0)
@@ -1029,7 +1072,21 @@ def audit_units_running_balance(df: pd.DataFrame, out_dir: Path) -> None:
     rank[x["event_type_l"].isin(list(minus_types))] = 40
 
     x["_rank"] = rank
-    x = x.sort_values(["date_utc", "_rank", "txid"], kind="mergesort").reset_index(drop=True)
+    # x = x.sort_values(["date_utc", "_rank", "txid"], kind="mergesort").reset_index(drop=True)
+    
+    # vj korekcija
+    x["_sort_minute"] = pd.to_datetime(x["date_utc"], errors="coerce", utc=True).dt.floor("min")
+
+    x = x.sort_values(
+        ["_sort_minute", "_rank", "date_utc", "txid"],
+        kind="mergesort"
+    ).reset_index(drop=True)
+
+    x.drop(columns=["_sort_minute"], inplace=True)
+
+    # end vj korekcija
+    
+    
     x.drop(columns=["_rank"], inplace=True)
 
     # --- Effective delta in units (matches FIFO idea) ---
@@ -1041,7 +1098,31 @@ def audit_units_running_balance(df: pd.DataFrame, out_dir: Path) -> None:
     x.loc[fee_in_base, "delta_units"] = x.loc[fee_in_base, "delta_units"] - x.loc[fee_in_base, "fee_n"]
 
     # Cumulative by asset
-    x["cum_units"] = x.groupby("asset")["delta_units"].cumsum()
+    # --- APPLY OPENING BALANCES (so audit matches FIFO reality) ---
+    ob = load_opening_balances(OPENING_BALANCES_PATH)
+
+    if not ob.empty:
+        # normalize same way FIFO does (USDT.M -> USDT)
+        ob["asset"] = (
+            ob["asset"].astype(str)
+            .str.upper()
+            .str.strip()
+            .str.split(".").str[0]
+        )
+
+        # sum units per asset (in case you have multiple rows per asset)
+        opening_map = ob.groupby("asset")["units"].sum().to_dict()
+    else:
+        opening_map = {}
+
+    # opening units per row (0 if none)
+    x["opening_units"] = x["asset"].map(opening_map).fillna(0.0)
+    print("Opening units", x["opening_units"])
+
+    # cumulative units INCLUDING opening
+    x["cum_units"] = x.groupby("asset")["delta_units"].cumsum() + x["opening_units"]
+
+    
 
 
     # Summary per asset: how negative did it go? => required opening to prevent deficits
